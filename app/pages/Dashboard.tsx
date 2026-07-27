@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import type { CourseEntry, Transcript } from '../../lib/types.ts';
 import { cumulativeTotals, gpaByTerm } from '../../lib/planner/index.ts';
 import { selfCheck } from '../../lib/parser/selfCheck.ts';
+import { creditProgress, formatTermId, inProgressByTerm } from '../../lib/degree.ts';
 import { catalog } from '../data.ts';
 
 interface Props {
@@ -12,6 +13,8 @@ export function DashboardPage({ transcript }: Props) {
   const totals = useMemo(() => cumulativeTotals(transcript), [transcript]);
   const check = useMemo(() => selfCheck(transcript), [transcript]);
   const trend = useMemo(() => gpaByTerm(transcript), [transcript]);
+  const credits = useMemo(() => creditProgress(transcript), [transcript]);
+  const upcoming = useMemo(() => inProgressByTerm(transcript), [transcript]);
 
   return (
     <div className="space-y-6">
@@ -40,10 +43,60 @@ export function DashboardPage({ transcript }: Props) {
         <Stat label="GPA credits" value={String(totals.gpaCredits)} />
       </section>
 
-      {transcript.inProgress.length > 0 && (
-        <section className="card">
-          <h2 className="mb-3 font-semibold">In progress</h2>
-          <CourseTable courses={transcript.inProgress} showGrade={false} />
+      <section className="card">
+        <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+          <h2 className="font-semibold">Credits toward a degree</h2>
+          <p className="text-sm tabular-nums text-neutral-500 dark:text-neutral-400">
+            {credits.earned + credits.inProgress} of {credits.required}
+          </p>
+        </div>
+
+        <div
+          className="flex h-3 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-800"
+          role="img"
+          aria-label={`${credits.earned} credits earned, ${credits.inProgress} in progress, ${credits.remaining} still to take out of ${credits.required}`}
+        >
+          <div
+            className="bg-terp-red"
+            style={{ width: `${(credits.earned / credits.required) * 100}%` }}
+          />
+          <div
+            className="bg-terp-red/40"
+            style={{ width: `${(credits.inProgress / credits.required) * 100}%` }}
+          />
+        </div>
+
+        <p className="mt-3 text-sm">
+          <strong className="tabular-nums">{credits.earned}</strong> earned
+          {credits.inProgress > 0 && (
+            <>
+              {' · '}
+              <strong className="tabular-nums">{credits.inProgress}</strong> in progress
+            </>
+          )}
+          {' · '}
+          <strong className="tabular-nums">{credits.remaining}</strong> still to take
+        </p>
+        <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+          Against the {credits.required}-credit university minimum for a bachelor&apos;s degree;
+          your major may require more. This counts credits, not requirements — it does not yet
+          know whether they are the <em>right</em> credits for your major.
+        </p>
+      </section>
+
+      {upcoming.length > 0 && (
+        <section className="space-y-4">
+          {upcoming.map((group) => (
+            <article key={group.termId ?? 'upcoming'} className="card">
+              <header className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+                <h2 className="font-semibold">{formatTermId(group.termId)}</h2>
+                <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  registered · {group.courses.reduce((sum, c) => sum + c.credits, 0)} credits
+                </p>
+              </header>
+              <CourseTable courses={group.courses} showGrade={false} />
+            </article>
+          ))}
         </section>
       )}
 

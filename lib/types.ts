@@ -61,6 +61,11 @@ export interface CourseEntry {
    */
   countsTowardGpa: boolean;
   source: CreditSource;
+  /**
+   * Which term this sits in, matching `Term.id`. Only set for courses you are
+   * registered for — graded work already lives inside its `Term`.
+   */
+  termId?: string;
   /** Set when the transcript marks the attempt as excluded by the repeat policy. */
   repeatExcluded?: boolean;
 }

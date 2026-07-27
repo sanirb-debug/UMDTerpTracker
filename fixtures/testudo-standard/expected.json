@@ -140,7 +140,8 @@
       "grade": "NG",
       "gradePoints": null,
       "countsTowardGpa": false,
-      "source": "institution"
+      "source": "institution",
+      "termId": "2025-Fall"
     },
     {
       "courseId": "CMSC330",
@@ -149,7 +150,8 @@
       "grade": "NG",
       "gradePoints": null,
       "countsTowardGpa": false,
-      "source": "institution"
+      "source": "institution",
+      "termId": "2025-Fall"
     }
   ],
   "statedCumulativeGpa": 3.318,

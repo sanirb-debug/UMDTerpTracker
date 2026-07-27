@@ -64,6 +64,8 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
   let section: Section = 'header';
   let transferSource: CreditSource = 'transfer';
   let term: Term | null = null;
+  /** Term heading above the current-registration rows, which have no Term of their own. */
+  let registrationTermId: string | undefined;
   let statedCumulativeGpa: number | null = null;
   let statedCumulativeCredits: number | null = null;
   let major: string | undefined;
@@ -126,9 +128,10 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
     // --- term headings ------------------------------------------------------
     const heading = readTermHeader(text);
     if (heading) {
+      const id = `${heading.year}-${heading.season}${heading.session ? ` ${heading.session}` : ''}`;
       if (section === 'historic') {
         term = {
-          id: `${heading.year}-${heading.season}${heading.session ? ` ${heading.session}` : ''}`,
+          id,
           season: heading.season,
           year: heading.year,
           courses: [],
@@ -139,6 +142,9 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
         terms.push(term);
       } else {
         term = null;
+        // Registration rows are listed under their own term headings, which is
+        // the only record of which semester you are signed up for.
+        if (section === 'current') registrationTermId = id;
       }
       continue;
     }
@@ -161,7 +167,10 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
 
     if (section === 'current') {
       const registered = readRegisteredCourse(text);
-      if (registered && !registered.dropped) inProgress.push(registered.entry);
+      if (registered && !registered.dropped) {
+        if (registrationTermId) registered.entry.termId = registrationTermId;
+        inProgress.push(registered.entry);
+      }
       continue;
     }
 
