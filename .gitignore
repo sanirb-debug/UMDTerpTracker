@@ -3,6 +3,9 @@ dist
 .DS_Store
 *.local
 
+# Scratch worktree used by tools/deploy-pages.sh
+.deploy-gh-pages
+
 # Never commit a real transcript. Fixtures must be redacted by hand and added
 # explicitly with `git add -f fixtures/<name>`.
 *.pdf

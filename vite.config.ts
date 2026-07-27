@@ -2,7 +2,10 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  // GitHub Pages serves this from /UMDTerpTracker/, not from the domain root.
+  // Dev stays at / so `npm run dev` opens where you expect.
+  base: command === 'build' ? '/UMDTerpTracker/' : '/',
   plugins: [react()],
   resolve: {
     alias: {
@@ -15,4 +18,4 @@ export default defineConfig({
     environment: 'node',
     include: ['lib/**/*.test.ts', 'fixtures/**/*.test.ts'],
   },
-});
+}));

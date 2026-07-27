@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "fetch:catalog": "node tools/fetch-catalog.mjs",
-    "fetch:grades": "node tools/fetch-grades.mjs"
+    "fetch:grades": "node tools/fetch-grades.mjs",
+    "deploy": "npm run build && bash tools/deploy-pages.sh"
   },
   "dependencies": {
     "pdfjs-dist": "^5.4.149",

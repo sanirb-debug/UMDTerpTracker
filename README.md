@@ -1,5 +1,7 @@
 # TerpTracker
 
+**Live: https://sanirb-debug.github.io/UMDTerpTracker/**
+
 Drop in your UMD unofficial transcript, get your GPA broken down by term and a
 planner that tells you what grades you need next.
 
@@ -102,6 +104,27 @@ PDF and drop it into the running app (macOS):
 ```bash
 cupsfilter -t transcript -o cpi=12 -o lpi=8 fixtures/cmsc-standard/transcript.txt > /tmp/sample.pdf
 ```
+
+## Deploying
+
+```bash
+npm run deploy
+```
+
+Builds, then pushes `dist/` to the `gh-pages` branch, which is what GitHub
+Pages serves. Because everything runs client-side, static hosting is the whole
+deployment story — there is no server to run and nothing to configure.
+
+The site lives at `/UMDTerpTracker/` rather than a domain root, so
+`vite.config.ts` sets `base` for production builds only. Dev stays at `/`.
+
+**Run `npm run typecheck && npm test` before deploying.** Nothing enforces it
+right now, which is the one weakness of this setup. The fix is a GitHub Actions
+workflow that gates the deploy on a green build — it needs the personal access
+token in `remote.origin.url` to carry the `workflow` scope, which it currently
+does not. Add that scope at github.com/settings/tokens (signed in as
+sanirb-debug), `git remote set-url` with the new token, and the workflow can
+replace `tools/deploy-pages.sh` entirely.
 
 ## Not affiliated with the University of Maryland
 
