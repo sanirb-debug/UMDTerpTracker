@@ -22,9 +22,12 @@ export type Grade =
   | 'XF'
   | 'P'
   | 'S'
+  | 'U'
   | 'W'
   | 'I'
   | 'AU'
+  // Transfer work that was accepted but carried no credit.
+  | 'NC'
   | 'NG';
 
 /** The subset of grades that carry quality points and move the GPA. */
@@ -66,6 +69,8 @@ export interface Term {
   /** Stable key, e.g. `2024-Fall`. */
   id: string;
   season: Season;
+  /** `I` or `II` for the two summer sessions, which are separate terms. */
+  session?: string;
   year: number;
   /** `Freshman`, `Sophomore`, ... when the transcript prints it. */
   academicLevel?: string;
@@ -91,11 +96,10 @@ export interface ParseWarning {
 
 export interface Transcript {
   /**
-   * Non-identifying header fields only. We deliberately do not model the
-   * student's name or UID — nothing needs them and not storing them keeps
-   * localStorage boring.
+   * Non-identifying header fields only. The parser deliberately never reads
+   * the student's name, email or UID — nothing needs them, and not storing
+   * them means there is nothing sensitive in localStorage beyond coursework.
    */
-  program?: string;
   major?: string;
   terms: Term[];
   /** Transfer and exam credit, which carries credits but no quality points. */

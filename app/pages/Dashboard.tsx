@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import type { CourseEntry, Transcript } from '../../lib/types.ts';
 import { cumulativeTotals, gpaByTerm } from '../../lib/planner/index.ts';
 import { selfCheck } from '../../lib/parser/selfCheck.ts';
+import { catalog } from '../data.ts';
 
 interface Props {
   transcript: Transcript;
@@ -51,7 +52,8 @@ export function DashboardPage({ transcript }: Props) {
           <article key={term.id} className="card">
             <header className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
               <h2 className="font-semibold">
-                {term.season} {term.year}
+                {term.season}
+                {term.session ? ` ${term.session}` : ''} {term.year}
                 {term.academicLevel && (
                   <span className="ml-2 text-xs font-normal uppercase tracking-wide text-neutral-500">
                     {term.academicLevel}
@@ -105,7 +107,10 @@ function CourseTable({ courses, showGrade }: { courses: CourseEntry[]; showGrade
             className="border-t border-neutral-100 first:border-0 dark:border-neutral-800"
           >
             <td className="py-1.5 pr-3 font-medium">{course.courseId}</td>
-            <td className="py-1.5 pr-3 text-neutral-600 dark:text-neutral-300">{course.title}</td>
+            <td className="py-1.5 pr-3 text-neutral-600 dark:text-neutral-300">
+              {/* Testudo omits the title for courses you are only registered for. */}
+              {course.title || catalog.get(course.courseId)?.title || ''}
+            </td>
             <td className="py-1.5 pr-3 text-right tabular-nums text-neutral-500">
               {course.credits}
             </td>

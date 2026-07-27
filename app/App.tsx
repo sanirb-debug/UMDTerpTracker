@@ -1,10 +1,17 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import type { Transcript } from '../lib/types.ts';
 import { cumulativeTotals } from '../lib/planner/index.ts';
 import { UploadPage } from './pages/Upload.tsx';
-import { DashboardPage } from './pages/Dashboard.tsx';
-import { PlannerPage } from './pages/Planner.tsx';
 import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
+
+// These two pull in the cached catalog and PlanetTerp grade data — a megabyte
+// of JSON between them. Nobody who has not uploaded a transcript yet needs it.
+const DashboardPage = lazy(() =>
+  import('./pages/Dashboard.tsx').then((module) => ({ default: module.DashboardPage })),
+);
+const PlannerPage = lazy(() =>
+  import('./pages/Planner.tsx').then((module) => ({ default: module.PlannerPage })),
+);
 
 type Tab = 'upload' | 'dashboard' | 'planner';
 
@@ -81,11 +88,13 @@ export function App() {
       </nav>
 
       <main>
-        {tab === 'upload' && (
-          <UploadPage transcript={transcript} onParsed={onParsed} onForget={onForget} />
-        )}
-        {tab === 'dashboard' && transcript && <DashboardPage transcript={transcript} />}
-        {tab === 'planner' && transcript && <PlannerPage transcript={transcript} />}
+        <Suspense fallback={<p className="text-sm text-neutral-500">Loading…</p>}>
+          {tab === 'upload' && (
+            <UploadPage transcript={transcript} onParsed={onParsed} onForget={onForget} />
+          )}
+          {tab === 'dashboard' && transcript && <DashboardPage transcript={transcript} />}
+          {tab === 'planner' && transcript && <PlannerPage transcript={transcript} />}
+        </Suspense>
       </main>
 
       <footer className="mt-12 border-t border-neutral-200 pt-4 text-xs text-neutral-500 dark:border-neutral-800">

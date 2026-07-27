@@ -1,0 +1,158 @@
+{
+  "major": "Computer Science",
+  "terms": [
+    {
+      "id": "2024-Fall",
+      "season": "Fall",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "CMSC131",
+          "title": "OBJECT-ORIENT PROGRAM I",
+          "credits": 4,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "MATH141",
+          "title": "CALCULUS II",
+          "credits": 4,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRET AMER HISTORY",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "UNIV100",
+          "title": "STUDENT IN UNIVERSITY",
+          "credits": 1,
+          "grade": "P",
+          "gradePoints": null,
+          "countsTowardGpa": false,
+          "source": "institution",
+          "creditsEarned": 1
+        }
+      ],
+      "statedTermGpa": 3.473,
+      "statedTermCredits": 12
+    },
+    {
+      "id": "2025-Spring",
+      "season": "Spring",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "CMSC132",
+          "title": "OBJECT-ORIENT PROGRAM II",
+          "credits": 4,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "CMSC250",
+          "title": "DISCRETE STRUCTURES",
+          "credits": 4,
+          "grade": "B-",
+          "gradePoints": 2.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "STAT400",
+          "title": "APPLIED PROBABILITY I",
+          "credits": 3,
+          "grade": "W",
+          "gradePoints": null,
+          "countsTowardGpa": false,
+          "source": "institution",
+          "creditsEarned": 0
+        },
+        {
+          "courseId": "ENGL393",
+          "title": "TECHNICAL WRITING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.164,
+      "statedTermCredits": 11
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "MATH140",
+      "title": "CALCULUS AB/SCR 4",
+      "credits": 4,
+      "creditsEarned": 4,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam"
+    },
+    {
+      "courseId": "ENGL101",
+      "title": "ENG LANG/COMP/SCR 3",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam"
+    },
+    {
+      "courseId": "",
+      "title": "U.S. HISTORY/SCR 2",
+      "credits": 0,
+      "creditsEarned": 0,
+      "grade": "NC",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam"
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "CMSC351",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution"
+    },
+    {
+      "courseId": "CMSC330",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution"
+    }
+  ],
+  "statedCumulativeGpa": 3.318,
+  "statedCumulativeCredits": 30,
+  "warnings": []
+}

@@ -87,9 +87,9 @@ takes a couple of minutes for four departments. Do not raise the rate.
 Fixtures are fixed-width text, not PDFs — you can read them in a diff and edit
 them by hand to reproduce a bug.
 
-1. `fixtures/<name>/transcript.txt` — columns separated by **three or more**
-   spaces. Two or fewer reads as a word gap and merges, exactly as it does in a
-   real extraction.
+1. `fixtures/<name>/transcript.txt` — mirror the column positions in
+   `fixtures/testudo-standard/transcript.txt`, which were measured off a real
+   Testudo PDF.
 2. `fixtures/<name>/expected.json` — the `Transcript` it should parse to.
 3. `npm test`. The suite picks up new directories automatically and checks the
    parse, the stated-GPA self-check, the stated credit total, and every term
@@ -97,13 +97,13 @@ them by hand to reproduce a bug.
 
 Add one for every parsing bug you find.
 
-To exercise the real pdf.js path end to end — the one part the fixtures cannot
-cover, since they start after text extraction — render a fixture to an actual
-PDF and drop it into the running app (macOS):
+**Never commit a real transcript.** Fixture layout is real; fixture data is
+invented. This repo is public and a transcript is an education record.
+`.gitignore` blocks `*.pdf` so one cannot be added by accident.
 
-```bash
-cupsfilter -t transcript -o cpi=12 -o lpi=8 fixtures/cmsc-standard/transcript.txt > /tmp/sample.pdf
-```
+To check a parser change against a real transcript, do it locally and let the
+self-check be the verdict: if the computed GPA and credit total match what the
+transcript prints, the parse is right.
 
 ## Deploying
 

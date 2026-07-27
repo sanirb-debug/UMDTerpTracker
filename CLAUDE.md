@@ -39,9 +39,18 @@ fixtures/      redacted transcripts + expected parse output
 ## Parser conventions
 
 - Uses `pdfjs-dist` text extraction. Text items carry x/y coordinates — use
-  positional data to reconstruct table rows, don't regex a flat text blob.
-- Every fixture in `fixtures/` is a redacted real transcript with a paired
-  expected-output JSON. Add a new fixture for every parsing bug found.
+  positional data to reconstruct table **rows**, don't regex a flat text blob.
+- **Columns are not recoverable from geometry.** Testudo prints the transcript
+  as fixed-width text, and on a real PDF the gap between the course title and
+  the grade measures 5.9pt against a 5.87pt character width — one space. pdf.js
+  hands the whole row over as a single text run. So rows come from y
+  coordinates and columns come from row-text shape: anchor on the course id,
+  the grade token and the `0.00` decimals, and let the title absorb the middle.
+  See `lib/parser/rows.ts`.
+- Every fixture in `fixtures/` pairs a fixed-width `transcript.txt` with the
+  expected-output JSON. Column positions must match a real Testudo PDF, but the
+  student data must not be real — never commit anyone's actual grades. Add a
+  new fixture for every parsing bug found.
 - **Self-check:** the transcript prints its own cumulative GPA. Computed GPA must
   match `statedCumulativeGpa`. Mismatch = parse bug, surface it as a UI warning.
 - Grades excluded from GPA: `P S W I AU`, plus all transfer/AP credit.

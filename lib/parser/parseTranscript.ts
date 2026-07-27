@@ -2,60 +2,58 @@ import type { Line } from './lines.ts';
 import { allLines } from './lines.ts';
 import type { TextPage } from './textItems.ts';
 import type { CourseEntry, CreditSource, ParseWarning, Season, Term, Transcript } from '../types.ts';
-import { parseCourseLine } from './courseLine.ts';
+import { looksLikeCourse, readHistoricCourse, readRegisteredCourse, readTransferCourse } from './rows.ts';
 
-const TERM_HEADER =
-  /^(?:(Fall|Spring|Summer|Winter)\s+(?:Semester\s+|Term\s+)?(\d{4})|(\d{4})\s+(Fall|Spring|Summer|Winter))\b/i;
+/**
+ * `Fall 2025`, `Summer I 2026`. Summer runs in two sessions and the transcript
+ * numbers them, so the numeral is part of the term's identity.
+ */
+const TERM_HEADER = /^(Fall|Spring|Summer|Winter)(?:\s+(I{1,2}))?\s+(\d{4})\b/i;
 
-const TRANSFER_SECTION =
-  /\b(TRANSFER\s+CREDIT|CREDIT\s+ACCEPTED\s+BY|TRANSFER\s+WORK|ADVANCED\s+PLACEMENT|AP\s+CREDIT|IB\s+CREDIT|TEST\s+CREDIT|CREDIT\s+BY\s+EXAM)/i;
-const EXAM_SECTION = /\b(ADVANCED\s+PLACEMENT|AP\s+CREDIT|IB\s+CREDIT|TEST\s+CREDIT|CREDIT\s+BY\s+EXAM)/i;
-const INSTITUTION_SECTION =
-  /\b(INSTITUTION\s+CREDIT|BEGINNING\s+OF\s+(?:UNDERGRADUATE\s+)?RECORD|UNIVERSITY\s+OF\s+MARYLAND\s+RECORD)/i;
-const IN_PROGRESS_SECTION = /\b(COURSES?\s+IN\s+PROGRESS|IN\s+PROGRESS\s+WORK|CURRENT\s+REGISTRATION)/i;
-const TOTALS_SECTION = /\b(TRANSCRIPT\s+TOTALS|UNDERGRADUATE\s+TOTALS)/i;
+// Section markers. Testudo prints each as its own banner line.
+const TRANSFER_SECTION = /\*\*\s*Transfer\s+Credit\s+Information/i;
+const HISTORIC_SECTION = /\bHistoric\s+Course\s+Information/i;
+const CURRENT_SECTION = /\*\*\s*Current\s+Course\s+Information/i;
 
-const TERM_GPA = /\b(?:TERM|SEMESTER|SEM)\s*(?:GPA|G\.P\.A\.)\b\D{0,4}([0-4](?:\.\d+)?)/i;
-const CUM_GPA =
-  /\b(?:CUM|CUMULATIVE|OVERALL|TOTAL\s+INSTITUTION)\s*(?:GPA|G\.P\.A\.)\b\D{0,4}([0-4](?:\.\d+)?)/i;
-const TERM_CREDITS =
-  /\b(?:TERM|SEMESTER|SEM)\s*(?:CREDITS?|HOURS?|HRS)\s*(?:EARNED|PASSED)?\b\D{0,4}(\d+(?:\.\d+)?)/i;
-const CUM_CREDITS =
-  /\b(?:CUM|CUMULATIVE|OVERALL)\s*(?:CREDITS?|HOURS?|HRS)\s*(?:EARNED|PASSED)?\b\D{0,4}(\d+(?:\.\d+)?)/i;
+/** Sub-headers inside the transfer block naming where the credit came from. */
+const EXAM_SOURCE = /^(Advanced\s+Placement|AP\s+Exam|International\s+Baccalaureate|IB\s+Exam|CLEP)/i;
+const SCHOOL_SOURCE = /\b(College|University|Institute|School|Academy)\b/i;
 
-const ACADEMIC_LEVEL = /\b(Freshman|Sophomore|Junior|Senior|Non-Degree|Graduate)\b/i;
-const PROGRAM = /^(?:Program|College)\s*:?\s*(.+)$/i;
-const MAJOR = /^(?:Major(?:\s+and\s+Department)?)\s*:?\s*(.+)$/i;
+const SEMESTER_TOTALS =
+  /^Semester:\s*Attempted\s+([\d.]+);\s*Earned\s+([\d.]+);\s*QPoints\s+([\d.]+);\s*GPA\s+([\d.]+)/i;
+/** Running institution totals: attempted; earned; quality points; GPA. */
+const CUMULATIVE_ROW = /^UG\s+Cumulative:\s*([\d.]+);\s*([\d.]+);\s*([\d.]+);\s*([\d.]+)/i;
+/** Final totals, which unlike the running rows include transfer credit. */
+const CUMULATIVE_CREDIT = /^UG\s+Cumulative\s+Credit\s*:\s*([\d.]+)/i;
+const CUMULATIVE_GPA = /^UG\s+Cumulative\s+GPA\s*:\s*([\d.]+)/i;
 
-const LOOKS_LIKE_COURSE = /^[A-Z]{4}[-\s]?\d{3}[A-Z]?\b/;
+const MAJOR = /^Major\s*:\s*(.+)$/i;
+const SEPARATOR = /^[=\s]+$/;
 
-type Section = CreditSource | 'in_progress' | 'totals';
+type Section = 'header' | 'transfer' | 'historic' | 'current';
 
-interface ParserState {
-  section: Section;
-  term: Term | null;
-}
-
-function titleCase(value: string): Season {
-  const lower = value.toLowerCase();
-  return (lower.charAt(0).toUpperCase() + lower.slice(1)) as Season;
-}
-
-function readTermHeader(line: Line): { season: Season; year: number } | null {
-  const match = TERM_HEADER.exec(line.text);
+function readTermHeader(line: string): { season: Season; session?: string; year: number } | null {
+  const match = TERM_HEADER.exec(line);
   if (!match) return null;
-  const season = match[1] ?? match[4];
-  const year = match[2] ?? match[3];
-  if (!season || !year) return null;
-  return { season: titleCase(season), year: Number(year) };
+  const season = match[1]!;
+  const term = {
+    season: (season.charAt(0).toUpperCase() + season.slice(1).toLowerCase()) as Season,
+    year: Number(match[3]),
+  } as { season: Season; session?: string; year: number };
+  if (match[2]) term.session = match[2].toUpperCase();
+  return term;
 }
 
 /**
  * Turn reconstructed lines into a `Transcript`.
  *
- * The shape of a Testudo unofficial transcript is a sequence of sections —
- * transfer credit, then institution credit broken into terms, then transcript
- * totals — so this walks the lines once, tracking which section it is in.
+ * A Testudo transcript is a sequence of banner-delimited sections — transfer
+ * credit, then historic (graded) coursework broken into terms, then current
+ * registration — so this walks the lines once, tracking which section it is in
+ * and which row shape to expect there.
+ *
+ * Rows are only read inside a known section. Before the first banner there is
+ * only the student's name, email and UID, which this deliberately never reads.
  */
 export function parseTranscriptLines(lines: Line[]): Transcript {
   const warnings: ParseWarning[] = [];
@@ -63,129 +61,131 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
   const nonGpaCredits: CourseEntry[] = [];
   const inProgress: CourseEntry[] = [];
 
-  const state: ParserState = { section: 'institution', term: null };
+  let section: Section = 'header';
+  let transferSource: CreditSource = 'transfer';
+  let term: Term | null = null;
   let statedCumulativeGpa: number | null = null;
   let statedCumulativeCredits: number | null = null;
-  let program: string | undefined;
   let major: string | undefined;
 
   for (const line of lines) {
-    const { text } = line;
+    const text = line.text;
+    if (!text || SEPARATOR.test(text)) continue;
 
-    // --- section boundaries -------------------------------------------------
-    if (TOTALS_SECTION.test(text)) {
-      state.section = 'totals';
-      state.term = null;
-      continue;
-    }
-    if (IN_PROGRESS_SECTION.test(text)) {
-      state.section = 'in_progress';
-      state.term = null;
-      continue;
-    }
+    // --- section banners ----------------------------------------------------
     if (TRANSFER_SECTION.test(text)) {
-      state.section = EXAM_SECTION.test(text) ? 'exam' : 'transfer';
-      state.term = null;
+      section = 'transfer';
+      term = null;
       continue;
     }
-    if (INSTITUTION_SECTION.test(text)) {
-      state.section = 'institution';
-      state.term = null;
+    if (HISTORIC_SECTION.test(text)) {
+      section = 'historic';
+      term = null;
       continue;
     }
-
-    // --- header fields ------------------------------------------------------
-    const majorMatch = MAJOR.exec(text);
-    if (majorMatch) {
-      major ??= majorMatch[1]!.trim();
-      continue;
-    }
-    const programMatch = PROGRAM.exec(text);
-    if (programMatch) {
-      program ??= programMatch[1]!.trim();
+    if (CURRENT_SECTION.test(text)) {
+      section = 'current';
+      term = null;
       continue;
     }
 
-    // --- running totals -----------------------------------------------------
-    // Cumulative figures are reprinted after every term; the last one wins,
-    // which is also the one under TRANSCRIPT TOTALS.
-    const cumGpa = CUM_GPA.exec(text);
-    if (cumGpa) statedCumulativeGpa = Number(cumGpa[1]);
-    const cumCredits = CUM_CREDITS.exec(text);
-    if (cumCredits) statedCumulativeCredits = Number(cumCredits[1]);
-
-    if (state.term) {
-      const termGpa = TERM_GPA.exec(text);
-      if (termGpa) state.term.statedTermGpa = Number(termGpa[1]);
-      const termCredits = TERM_CREDITS.exec(text);
-      if (termCredits) state.term.statedTermCredits = Number(termCredits[1]);
-    }
-    if (cumGpa || CUM_CREDITS.test(text) || TERM_GPA.test(text) || TERM_CREDITS.test(text)) {
+    if (section === 'header') {
+      major ??= MAJOR.exec(text)?.[1]?.trim();
       continue;
     }
 
-    // --- term headers -------------------------------------------------------
-    const header = readTermHeader(line);
-    if (header && (state.section === 'institution' || state.section === 'in_progress')) {
-      const term: Term = {
-        id: `${header.year}-${header.season}`,
-        season: header.season,
-        year: header.year,
-        courses: [],
-        statedTermGpa: null,
-        statedTermCredits: null,
-      };
-      const level = ACADEMIC_LEVEL.exec(text);
-      if (level) term.academicLevel = level[1];
-      if (state.section === 'institution') {
+    // --- totals -------------------------------------------------------------
+    const semester = SEMESTER_TOTALS.exec(text);
+    if (semester) {
+      if (term) {
+        term.statedTermCredits = Number(semester[2]);
+        term.statedTermGpa = Number(semester[4]);
+      }
+      continue;
+    }
+    // The running rows are institution-only; the final `UG Cumulative Credit`
+    // line adds transfer on top. Both write here and the last one wins, which
+    // is the order they appear in.
+    const running = CUMULATIVE_ROW.exec(text);
+    if (running) {
+      statedCumulativeCredits = Number(running[2]);
+      statedCumulativeGpa = Number(running[4]);
+      continue;
+    }
+    const cumulativeCredit = CUMULATIVE_CREDIT.exec(text);
+    if (cumulativeCredit) {
+      statedCumulativeCredits = Number(cumulativeCredit[1]);
+      continue;
+    }
+    const cumulativeGpa = CUMULATIVE_GPA.exec(text);
+    if (cumulativeGpa) {
+      statedCumulativeGpa = Number(cumulativeGpa[1]);
+      continue;
+    }
+
+    // --- term headings ------------------------------------------------------
+    const heading = readTermHeader(text);
+    if (heading) {
+      if (section === 'historic') {
+        term = {
+          id: `${heading.year}-${heading.season}${heading.session ? ` ${heading.session}` : ''}`,
+          season: heading.season,
+          year: heading.year,
+          courses: [],
+          statedTermGpa: null,
+          statedTermCredits: null,
+        };
+        if (heading.session) term.session = heading.session;
         terms.push(term);
-        state.term = term;
       } else {
-        state.term = null;
+        term = null;
       }
       continue;
     }
 
-    if (state.term && state.term.courses.length === 0 && !state.term.academicLevel) {
-      const level = ACADEMIC_LEVEL.exec(text);
-      if (level) state.term.academicLevel = level[1];
+    // --- rows ---------------------------------------------------------------
+    if (section === 'transfer') {
+      // Sub-headers name the institution the following rows came from.
+      if (EXAM_SOURCE.test(text)) {
+        transferSource = 'exam';
+        continue;
+      }
+      if (SCHOOL_SOURCE.test(text) && !/\d\.\d{2}/.test(text)) {
+        transferSource = 'transfer';
+        continue;
+      }
+      const entry = readTransferCourse(text, transferSource);
+      if (entry) nonGpaCredits.push(entry);
+      continue;
     }
 
-    // --- course rows --------------------------------------------------------
-    if (state.section === 'totals') continue;
+    if (section === 'current') {
+      const registered = readRegisteredCourse(text);
+      if (registered && !registered.dropped) inProgress.push(registered.entry);
+      continue;
+    }
 
-    const source: CreditSource = state.section === 'in_progress' ? 'institution' : state.section;
-    const { entry, problem } = parseCourseLine(line, source);
-
-    if (!entry) {
-      if (problem && LOOKS_LIKE_COURSE.test(text)) {
+    const course = readHistoricCourse(text);
+    if (course) {
+      if (term) {
+        term.courses.push(course);
+      } else {
         warnings.push({
           code: 'unparsed_line',
-          message: 'A row looked like a course but could not be read.',
+          message: `${course.courseId} was not under any term heading.`,
           page: line.page,
-          detail: problem,
         });
       }
       continue;
     }
 
-    // A missing grade means "not graded yet" only for institution credit —
-    // transfer blocks routinely print no grade at all.
-    if (state.section === 'in_progress' || (entry.grade === 'NG' && source === 'institution')) {
-      inProgress.push({ ...entry, countsTowardGpa: false });
-    } else if (source === 'institution' && state.term) {
-      state.term.courses.push(entry);
-    } else if (source === 'institution') {
-      // A graded course outside any term. Keep it rather than drop it — the
-      // GPA self-check is what decides whether that was the right call.
+    if (looksLikeCourse(text)) {
       warnings.push({
         code: 'unparsed_line',
-        message: `${entry.courseId} was not under any term heading.`,
+        message: 'A row looked like a course but could not be read.',
         page: line.page,
+        detail: text,
       });
-      nonGpaCredits.push({ ...entry, countsTowardGpa: false });
-    } else {
-      nonGpaCredits.push({ ...entry, countsTowardGpa: false });
     }
   }
 
@@ -204,7 +204,6 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
   }
 
   return {
-    program,
     major,
     terms,
     nonGpaCredits,

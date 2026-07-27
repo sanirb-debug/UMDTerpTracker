@@ -24,7 +24,7 @@ const QUALITY_POINTS: Record<LetterGrade, number> = {
 };
 
 /** Marks that appear on the transcript but never touch the GPA. */
-const NON_GPA_MARKS = ['P', 'S', 'W', 'I', 'AU', 'NG'] as const;
+const NON_GPA_MARKS = ['P', 'S', 'U', 'W', 'I', 'AU', 'NC', 'NG'] as const;
 
 const ALL_GRADES: Grade[] = [
   ...(Object.keys(QUALITY_POINTS) as LetterGrade[]),

@@ -63,16 +63,34 @@ the GPA as a plain weighted average.
 ```
 PDF bytes
   → extractTextPages()   pdfjs-dist; the only module that imports it
-  → groupIntoLines()     x/y coordinates → table rows and columns
+  → groupIntoLines()     y coordinates → table rows
+  → rows.ts              row text → course / transfer / registered entries
   → parseTranscriptLines()  section state machine → Transcript
   → withSelfCheck()      computed GPA vs. stated GPA
 ```
 
+A Testudo unofficial transcript is a browser print-to-PDF of a fixed-width
+page, laid out in banner-delimited sections: transfer credit, then historic
+(graded) coursework by term, then current registration.
+
+**Rows are positional; columns are not.** Measured on a real transcript, the
+gap between a course title and its grade is 5.9pt against a character width of
+5.87pt — one space. There is no geometric signal there, and pdf.js emits the
+whole row as one text run. So `groupIntoLines` recovers rows from y
+coordinates, and `rows.ts` recovers columns by anchoring on the parts of a row
+that cannot be confused: the course id, the grade token, and the two-decimal
+credit figures. The title absorbs whatever sits between.
+
 Fixtures are stored as fixed-width **text**, not PDFs, and converted to
 positioned text items by `fixtures/support/layout.ts`. A checked-in PDF is
 opaque: you cannot see what changed in a diff and you cannot hand-edit one to
-reproduce a bug. Columns in a fixture are separated by three or more spaces;
-anything less reads as a word gap, exactly as it does in a real extraction.
+reproduce a bug.
+
+Fixture column positions mirror a real Testudo PDF, but **the student data in
+them is invented**. Committing a real transcript would publish somebody's
+education record, and this repo is public. Verify parser changes against a real
+PDF locally — the stated-GPA self-check tells you whether it worked — and keep
+the fixture synthetic.
 
 ## Requirements JSON schema (phase 3)
 
