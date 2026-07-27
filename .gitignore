@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# Never commit a real transcript. Fixtures must be redacted by hand and added
+# explicitly with `git add -f fixtures/<name>`.
+*.pdf

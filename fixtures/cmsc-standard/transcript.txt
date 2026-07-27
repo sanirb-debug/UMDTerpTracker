@@ -1,0 +1,53 @@
+                    UNIVERSITY OF MARYLAND, COLLEGE PARK
+                          UNOFFICIAL TRANSCRIPT
+
+Program: Computer Science, Bachelor of Science
+Major: Computer Science
+
+TRANSFER CREDIT ACCEPTED BY THE INSTITUTION
+
+Advanced Placement Credit
+MATH140    Calculus I                                  4.000     4.000
+PSYC100    Introduction to Psychology                  3.000     3.000
+
+INSTITUTION CREDIT
+
+Fall 2023           Freshman
+CMSC131    Object-Oriented Programming I               4.000     4.000     A     16.000
+MATH141    Calculus II                                 4.000     4.000     B+    13.200
+ENGL101    Academic Writing                            3.000     3.000     A-    11.100
+HIST200    Interpreting American History               3.000     3.000     B     9.000
+    Term GPA:  3.521                    Term Credits Earned:  14.000
+    Cumulative GPA:  3.521              Cumulative Credits Earned:  21.000
+
+Spring 2024         Freshman
+CMSC132    Object-Oriented Programming II              4.000     4.000     B     12.000
+CMSC250    Discrete Structures                         4.000     4.000     B-    10.800
+MATH240    Linear Algebra                              4.000     4.000     C+    9.200
+COMM107    Oral Communication                          3.000     3.000     A     12.000
+UNIV100    The Student in the University               1.000     1.000     P
+    Term GPA:  2.933                    Term Credits Earned:  16.000
+    Cumulative GPA:  3.217              Cumulative Credits Earned:  37.000
+
+Fall 2024           Sophomore
+CMSC216    Introduction to Computer Systems            4.000     4.000     A-    14.800
+CMSC330    Organization of Programming Languages       3.000     3.000     B+    9.900
+STAT400    Applied Probability and Statistics I        3.000     0.000     W
+ENGL393    Technical Writing                           3.000     3.000     A     12.000
+    Term GPA:  3.670                    Term Credits Earned:  10.000
+    Cumulative GPA:  3.333              Cumulative Credits Earned:  47.000
+
+COURSES IN PROGRESS
+
+Spring 2025         Sophomore
+CMSC351    Algorithms                                  3.000
+CMSC320    Introduction to Data Science                3.000
+MATH246    Differential Equations for Scientists       3.000
+
+TRANSCRIPT TOTALS
+
+Total Institution                                      39.000    130.000   3.333
+Total Transfer                                         7.000     0.000     0.000
+Overall                                                46.000    130.000   3.333
+    Cumulative GPA:  3.333              Cumulative Credits Earned:  47.000
+
