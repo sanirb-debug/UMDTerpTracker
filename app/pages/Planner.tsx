@@ -4,6 +4,7 @@ import { cumulativeTotals, requiredAverage, solvePlans, standingFromTotals } fro
 import type { Plan } from '../../lib/planner/index.ts';
 import { catalog } from '../data/catalog.ts';
 import { distributions, gradeData } from '../data/grades.ts';
+import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
 import { loadPlan, savePlan } from '../storage.ts';
 
 interface Props {
@@ -81,6 +82,28 @@ export function PlannerPage({ transcript }: Props) {
             out. Combined odds assume your courses go independently, which is optimistic — treat
             them as a ranking, not a forecast.
           </p>
+        </section>
+      )}
+
+      {valid.length > 0 && (
+        <section className="space-y-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-neutral-500">
+            Who to take these with
+          </h2>
+          {valid.map((course) => (
+            <article key={course.courseId} className="card">
+              <h3 className="mb-2 font-semibold">
+                {course.courseId}
+                {catalog.get(course.courseId)?.title && (
+                  <span className="ml-2 text-sm font-normal text-neutral-500">
+                    {catalog.get(course.courseId)?.title}
+                  </span>
+                )}
+              </h3>
+              <TopRated courseId={course.courseId} />
+            </article>
+          ))}
+          <RatingCaveat />
         </section>
       )}
     </div>

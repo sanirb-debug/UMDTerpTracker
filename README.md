@@ -37,7 +37,8 @@ of done. For parser work that includes every fixture.
 lib/parser/       PDF → Transcript. Positional row reconstruction, not regex.
 lib/planner/      GPA math, scenario projection, and the reverse solver.
 lib/schedule.ts   Registered sections → a weekly timetable.
-lib/professors.ts Who teaches a course, and how students did with them.
+lib/professors.ts Who teaches a course, their PlanetTerp rating, and how
+                  students did with them.
 lib/degree.ts     Credits earned, in progress and remaining.
 lib/catalog.ts    Cached umd.io catalog: credits and Gen Ed tags.
 lib/audit/        Not built yet — see SPEC.md phase 3.
@@ -81,7 +82,14 @@ Both APIs are run by other people. Nothing calls them at page load.
 node tools/fetch-catalog.mjs INST CMSC MATH  # api.umd.io → courses.json
 node tools/fetch-sections.mjs 202601 202605 202608   # api.umd.io → sections.json
 node tools/fetch-grades.mjs                  # PlanetTerp → grades.json + professors.json
+node tools/fetch-ratings.mjs                 # PlanetTerp → star ratings into professors.json
 ```
+
+Run `fetch-ratings` after `fetch-grades` — it annotates the file the latter
+writes. It takes about twelve minutes, most of it counting reviews one
+professor at a time, because PlanetTerp has no bulk reviews endpoint. That
+count is not optional: a bare score out of 5 puts three unqualified 5.0s at the
+top of a course and buries a 4.83 drawn from real volume.
 
 `fetch-grades` is one sequential request per course with a 350ms delay —
 several minutes for a dozen departments. Do not raise the rate. It writes two

@@ -14,7 +14,9 @@ import type { ScheduleEntry, Weekday } from '../../lib/schedule.ts';
 import type { Recommendation } from '../../lib/professors.ts';
 import { formatGpa } from '../../lib/professors.ts';
 import { catalog } from '../data/catalog.ts';
-import { professors, sectionData } from '../data/sections.ts';
+import { professors } from '../data/professors.ts';
+import { sectionData } from '../data/sections.ts';
+import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
 
 interface Props {
   transcript: Transcript;
@@ -172,12 +174,7 @@ export function SchedulePage({ transcript }: Props) {
         {entries.map((entry) => (
           <CourseCard key={entry.courseId} entry={entry} />
         ))}
-        <p className="text-xs text-neutral-500 dark:text-neutral-400">
-          Averages are the mean GPA students earned with that professor in that course, from
-          PlanetTerp&apos;s historical grade data. A professor who taught the hardest sections
-          will look worse than one who taught the easiest, so read these as a starting point for
-          asking around, not a verdict.
-        </p>
+        <RatingCaveat />
       </section>
     </div>
   );
@@ -248,6 +245,11 @@ function CourseCard({ entry }: { entry: ScheduleEntry }) {
       </header>
 
       <ProfessorVerdict recommendation={recommendation} instructors={entry.instructors} />
+
+      <div className="mt-3 border-t border-neutral-100 pt-3 dark:border-neutral-800">
+        <h4 className="label mb-2">Top rated on PlanetTerp</h4>
+        <TopRated courseId={entry.courseId} teaching={entry.offeredBy} yours={entry.instructors} />
+      </div>
     </article>
   );
 }
