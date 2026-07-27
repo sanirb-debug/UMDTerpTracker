@@ -66,6 +66,8 @@ export interface CourseEntry {
    * registered for — graded work already lives inside its `Term`.
    */
   termId?: string;
+  /** Section number, e.g. `0101` or `WB21`. Only on courses you are registered for. */
+  section?: string;
   /** Set when the transcript marks the attempt as excluded by the repeat policy. */
   repeatExcluded?: boolean;
 }

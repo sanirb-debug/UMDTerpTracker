@@ -158,6 +158,9 @@ export function readRegisteredCourse(text: string): RegisteredCourse | null {
       gradePoints: null,
       countsTowardGpa: false,
       source: 'institution',
+      // The section number is how a schedule finds your actual meeting times —
+      // `WB21` and `0101` are different rooms at different hours.
+      section: match[2]!.toUpperCase(),
     },
   };
 }

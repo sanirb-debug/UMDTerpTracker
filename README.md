@@ -34,13 +34,16 @@ of done. For parser work that includes every fixture.
 ## What is here
 
 ```
-lib/parser/     PDF → Transcript. Positional row reconstruction, not regex.
-lib/planner/    GPA math, scenario projection, and the reverse solver.
-lib/catalog.ts  Cached umd.io catalog: credits and Gen Ed tags.
-lib/audit/      Not built yet — see SPEC.md phase 3.
-data/cache/     Static umd.io and PlanetTerp caches, refreshed by tools/.
-fixtures/       Transcript fixtures with paired expected output.
-app/            React UI. Nothing in lib/ imports React.
+lib/parser/       PDF → Transcript. Positional row reconstruction, not regex.
+lib/planner/      GPA math, scenario projection, and the reverse solver.
+lib/schedule.ts   Registered sections → a weekly timetable.
+lib/professors.ts Who teaches a course, and how students did with them.
+lib/degree.ts     Credits earned, in progress and remaining.
+lib/catalog.ts    Cached umd.io catalog: credits and Gen Ed tags.
+lib/audit/        Not built yet — see SPEC.md phase 3.
+data/cache/       Static umd.io and PlanetTerp caches, refreshed by tools/.
+fixtures/         Transcript fixtures with paired expected output.
+app/              React UI. Nothing in lib/ imports React.
 ```
 
 Read [SPEC.md](SPEC.md) before planning a feature — it carries the design
@@ -75,12 +78,22 @@ in front of a student.
 Both APIs are run by other people. Nothing calls them at page load.
 
 ```bash
-node tools/fetch-catalog.mjs CMSC MATH STAT ENGL   # api.umd.io → data/cache/courses.json
-node tools/fetch-grades.mjs                        # PlanetTerp → data/cache/grades.json
+node tools/fetch-catalog.mjs INST CMSC MATH  # api.umd.io → courses.json
+node tools/fetch-sections.mjs 202601 202605 202608   # api.umd.io → sections.json
+node tools/fetch-grades.mjs                  # PlanetTerp → grades.json + professors.json
 ```
 
-`fetch-grades` is one sequential request per course with a 350ms delay. It
-takes a couple of minutes for four departments. Do not raise the rate.
+`fetch-grades` is one sequential request per course with a 350ms delay —
+several minutes for a dozen departments. Do not raise the rate. It writes two
+files from the same responses: course-level distributions for the planner, and
+per-professor summaries for the schedule. The professor breakdown is already in
+every `/grades` response, so keeping it costs no extra requests.
+
+`fetch-sections` pages through a whole semester at a time rather than asking per
+course, and keeps only the departments already in `courses.json` so the bundle
+stays a sane size. Semester codes are `YYYYMM`: `01` spring, `05` summer, `08`
+fall, `12` winter — and winter belongs to the *previous* year's code, since the
+term starts in January.
 
 ## Adding a fixture
 

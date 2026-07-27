@@ -40,9 +40,20 @@ tables.
 | Phase | Scope | Status |
 |---|---|---|
 | 1 | Transcript parser, GPA dashboard, GPA planner with reverse solver | **done** |
-| 2 | Gen Ed progress from cached umd.io `gen_ed` tags | not started |
-| 3 | One hand-authored major (CMSC BS), audit engine over the rule schema | not started |
+| 1b | Weekly schedule from registered sections, professor recommendations, credits-to-degree | **done** |
+| 2 | Gen Ed progress from Gen Ed codes the transcript already prints | not started |
+| 3 | One hand-authored major, audit engine over the rule schema | not started |
 | 4 | Second major, catalog-year switching | not started |
+
+Phase 2 should read Gen Ed codes off the **transcript**, not off umd.io. The
+transcript prints what UMD actually credited you for (`DSHS`, `FSPW`, `DSSP`)
+next to each course, whereas umd.io's `gen_ed` tags are present on only about a
+sixth of the cached catalog. The transcript is both more complete and more
+authoritative.
+
+Until phase 3 exists, the app can say how many credits are left but not *which
+courses* — see `lib/degree.ts`, which is deliberately named for credits rather
+than graduation.
 
 ## Data model
 

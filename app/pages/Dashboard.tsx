@@ -3,7 +3,7 @@ import type { CourseEntry, Transcript } from '../../lib/types.ts';
 import { cumulativeTotals, gpaByTerm } from '../../lib/planner/index.ts';
 import { selfCheck } from '../../lib/parser/selfCheck.ts';
 import { creditProgress, formatTermId, inProgressByTerm } from '../../lib/degree.ts';
-import { catalog } from '../data.ts';
+import { catalog } from '../data/catalog.ts';
 
 interface Props {
   transcript: Transcript;

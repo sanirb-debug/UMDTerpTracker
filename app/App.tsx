@@ -12,11 +12,15 @@ const DashboardPage = lazy(() =>
 const PlannerPage = lazy(() =>
   import('./pages/Planner.tsx').then((module) => ({ default: module.PlannerPage })),
 );
+const SchedulePage = lazy(() =>
+  import('./pages/Schedule.tsx').then((module) => ({ default: module.SchedulePage })),
+);
 
-type Tab = 'upload' | 'dashboard' | 'planner';
+type Tab = 'upload' | 'dashboard' | 'schedule' | 'planner';
 
 const TABS: Array<{ id: Tab; label: string }> = [
   { id: 'dashboard', label: 'Dashboard' },
+  { id: 'schedule', label: 'Schedule' },
   { id: 'planner', label: 'Planner' },
   { id: 'upload', label: 'Transcript' },
 ];
@@ -93,6 +97,7 @@ export function App() {
             <UploadPage transcript={transcript} onParsed={onParsed} onForget={onForget} />
           )}
           {tab === 'dashboard' && transcript && <DashboardPage transcript={transcript} />}
+          {tab === 'schedule' && transcript && <SchedulePage transcript={transcript} />}
           {tab === 'planner' && transcript && <PlannerPage transcript={transcript} />}
         </Suspense>
       </main>

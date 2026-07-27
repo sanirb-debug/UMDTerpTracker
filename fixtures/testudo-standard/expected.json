@@ -141,6 +141,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
+      "section": "0101",
       "termId": "2025-Fall"
     },
     {
@@ -151,6 +152,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
+      "section": "0201",
       "termId": "2025-Fall"
     }
   ],

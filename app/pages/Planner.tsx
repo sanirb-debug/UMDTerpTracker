@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import type { PlannedCourse, Transcript } from '../../lib/types.ts';
 import { cumulativeTotals, requiredAverage, solvePlans, standingFromTotals } from '../../lib/planner/index.ts';
 import type { Plan } from '../../lib/planner/index.ts';
-import { catalog, distributions, gradeData } from '../data.ts';
+import { catalog } from '../data/catalog.ts';
+import { distributions, gradeData } from '../data/grades.ts';
 import { loadPlan, savePlan } from '../storage.ts';
 
 interface Props {
