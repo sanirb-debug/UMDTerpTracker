@@ -1,9 +1,11 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import type { Transcript } from '../lib/types.ts';
+import type { IssueView } from '../lib/issueReport.ts';
 import { cumulativeTotals } from '../lib/planner/index.ts';
 import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { parseTranscriptText } from '../lib/parser/fixedWidth.ts';
 import { findSample, majorOf } from './data/samples.ts';
+import { SomethingWrong } from './components/SomethingWrong.tsx';
 import { UploadPage } from './pages/Upload.tsx';
 import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
 
@@ -23,6 +25,15 @@ const RequirementsPage = lazy(() =>
 );
 
 type Tab = 'upload' | 'dashboard' | 'requirements' | 'schedule' | 'planner';
+
+/** Tab ids as the bug report names them. */
+const VIEW_FOR_TAB: Record<Tab, IssueView> = {
+  dashboard: 'Dashboard',
+  requirements: 'Requirements',
+  schedule: 'Schedule',
+  planner: 'Planner',
+  upload: 'Transcript',
+};
 
 const TABS: Array<{ id: Tab; label: string }> = [
   { id: 'dashboard', label: 'Dashboard' },
@@ -85,7 +96,7 @@ export function App() {
 
   return (
     <div className="mx-auto min-h-screen max-w-4xl px-4 py-8">
-      <header className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
+      <header className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">
             Terp<span className="text-terp-red">Tracker</span>
@@ -107,6 +118,12 @@ export function App() {
             <div className="text-xs uppercase tracking-wide text-neutral-500">
               {totals.earnedCredits} credits
             </div>
+            <SomethingWrong
+              view={VIEW_FOR_TAB[tab]}
+              transcript={transcript}
+              sampleId={sampleId}
+              className="mt-1"
+            />
           </div>
         )}
       </header>
@@ -180,7 +197,9 @@ export function App() {
             />
           )}
           {tab === 'dashboard' && transcript && <DashboardPage transcript={transcript} />}
-          {tab === 'requirements' && transcript && <RequirementsPage transcript={transcript} />}
+          {tab === 'requirements' && transcript && (
+            <RequirementsPage transcript={transcript} sampleId={sampleId} />
+          )}
           {tab === 'schedule' && transcript && <SchedulePage transcript={transcript} />}
           {tab === 'planner' && transcript && <PlannerPage transcript={transcript} />}
         </Suspense>

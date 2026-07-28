@@ -6,12 +6,14 @@ import { catalog } from '../data/catalog.ts';
 import { allRequirements } from '../data/requirements.ts';
 import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
 import { CourseLink, CourseLinkList } from '../components/CourseLink.tsx';
+import { SomethingWrong } from '../components/SomethingWrong.tsx';
 
 interface Props {
   transcript: Transcript;
+  sampleId?: string;
 }
 
-export function RequirementsPage({ transcript }: Props) {
+export function RequirementsPage({ transcript, sampleId }: Props) {
   const requirements = useMemo(
     () => findRequirements(transcript.major, allRequirements),
     [transcript.major],
@@ -39,6 +41,9 @@ export function RequirementsPage({ transcript }: Props) {
           Requirements are transcribed by hand from the official catalog, one major at a time.
           Written up so far: {allRequirements.map((r) => r.major).join(', ')}.
         </p>
+        <div className="mt-3">
+          <SomethingWrong view="Requirements" transcript={transcript} sampleId={sampleId} />
+        </div>
       </section>
     );
   }
@@ -53,10 +58,13 @@ export function RequirementsPage({ transcript }: Props) {
               {requirements.degree} · {requirements.catalogYear} catalog
             </span>
           </h2>
-          <p className="text-sm tabular-nums text-neutral-500">
-            {audit.results.filter((r) => r.satisfied).length} of {audit.results.length} requirements
-            met
-          </p>
+          <div className="text-right">
+            <p className="text-sm tabular-nums text-neutral-500">
+              {audit.results.filter((r) => r.satisfied).length} of {audit.results.length}{' '}
+              requirements met
+            </p>
+            <SomethingWrong view="Requirements" transcript={transcript} sampleId={sampleId} />
+          </div>
         </div>
 
         {audit.satisfied ? (
