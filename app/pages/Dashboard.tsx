@@ -4,6 +4,7 @@ import { cumulativeTotals, gpaByTerm } from '../../lib/planner/index.ts';
 import { selfCheck } from '../../lib/parser/selfCheck.ts';
 import { creditProgress, formatTermId, inProgressByTerm } from '../../lib/degree.ts';
 import { catalog } from '../data/catalog.ts';
+import { CourseLink } from '../components/CourseLink.tsx';
 
 interface Props {
   transcript: Transcript;
@@ -159,7 +160,9 @@ function CourseTable({ courses, showGrade }: { courses: CourseEntry[]; showGrade
             key={`${course.courseId}-${index}`}
             className="border-t border-neutral-100 first:border-0 dark:border-neutral-800"
           >
-            <td className="py-1.5 pr-3 font-medium">{course.courseId}</td>
+            <td className="py-1.5 pr-3 font-medium">
+              <CourseLink courseId={course.courseId} source={course.source} />
+            </td>
             <td className="py-1.5 pr-3 text-neutral-600 dark:text-neutral-300">
               {/* Testudo omits the title for courses you are only registered for. */}
               {course.title || catalog.get(course.courseId)?.title || ''}

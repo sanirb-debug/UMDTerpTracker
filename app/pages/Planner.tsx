@@ -5,6 +5,7 @@ import type { Plan } from '../../lib/planner/index.ts';
 import { catalog } from '../data/catalog.ts';
 import { distributions, gradeData } from '../data/grades.ts';
 import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
+import { CourseLink } from '../components/CourseLink.tsx';
 import { loadPlan, savePlan } from '../storage.ts';
 
 interface Props {
@@ -93,7 +94,7 @@ export function PlannerPage({ transcript }: Props) {
           {valid.map((course) => (
             <article key={course.courseId} className="card">
               <h3 className="mb-2 font-semibold">
-                {course.courseId}
+                <CourseLink courseId={course.courseId} />
                 {catalog.get(course.courseId)?.title && (
                   <span className="ml-2 text-sm font-normal text-neutral-500">
                     {catalog.get(course.courseId)?.title}
@@ -166,7 +167,8 @@ function PlanCard({ plan, rank }: { plan: Plan; rank: number }) {
         {plan.grades.map((course) => (
           <li key={course.courseId} className="flex items-baseline justify-between gap-3 text-sm">
             <span>
-              <strong className="font-semibold">{course.grade}</strong> in {course.courseId}
+              <strong className="font-semibold">{course.grade}</strong> in{' '}
+              <CourseLink courseId={course.courseId} />
               <span className="ml-2 text-xs text-neutral-500">{course.credits} cr</span>
             </span>
             <span className="text-right text-xs text-neutral-500 dark:text-neutral-400">

@@ -17,6 +17,7 @@ import { catalog } from '../data/catalog.ts';
 import { professors } from '../data/professors.ts';
 import { sectionData } from '../data/sections.ts';
 import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
+import { CourseLink } from '../components/CourseLink.tsx';
 
 interface Props {
   transcript: Transcript;
@@ -152,7 +153,7 @@ export function SchedulePage({ transcript }: Props) {
             {unscheduled.map((entry) => (
               <li key={entry.courseId} className="flex justify-between gap-3">
                 <span>
-                  <strong>{entry.courseId}</strong>
+                  <CourseLink courseId={entry.courseId} className="font-bold" />
                   {entry.section && <span className="ml-2 text-neutral-500">{entry.section}</span>}
                   {entry.title && <span className="ml-2 text-neutral-500">{entry.title}</span>}
                 </span>
@@ -227,7 +228,7 @@ function CourseCard({ entry }: { entry: ScheduleEntry }) {
     <article className="card">
       <header className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">
-          {entry.courseId}
+          <CourseLink courseId={entry.courseId} />
           {entry.section && (
             <span className="ml-2 text-xs font-normal text-neutral-500">{entry.section}</span>
           )}

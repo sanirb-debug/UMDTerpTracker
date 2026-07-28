@@ -5,6 +5,7 @@ import type { RuleResult } from '../../lib/audit/index.ts';
 import { catalog } from '../data/catalog.ts';
 import { allRequirements } from '../data/requirements.ts';
 import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
+import { CourseLink, CourseLinkList } from '../components/CourseLink.tsx';
 
 interface Props {
   transcript: Transcript;
@@ -68,7 +69,7 @@ export function RequirementsPage({ transcript }: Props) {
             <ul className="mt-1 list-inside list-disc">
               {audit.remainingCourses.map((courseId) => (
                 <li key={courseId}>
-                  <strong>{courseId}</strong>
+                  <CourseLink courseId={courseId} className="font-bold" />
                   {catalog.get(courseId)?.title && (
                     <span className="text-neutral-500"> — {catalog.get(courseId)!.title}</span>
                   )}
@@ -107,7 +108,7 @@ export function RequirementsPage({ transcript }: Props) {
           {audit.remainingCourses.map((courseId) => (
             <article key={courseId} className="card">
               <h3 className="mb-2 font-semibold">
-                {courseId}
+                <CourseLink courseId={courseId} />
                 {catalog.get(courseId)?.title && (
                   <span className="ml-2 text-sm font-normal text-neutral-500">
                     {catalog.get(courseId)!.title}
@@ -123,7 +124,7 @@ export function RequirementsPage({ transcript }: Props) {
 
       <p className="text-xs text-neutral-500 dark:text-neutral-400">
         Transcribed by hand from the{' '}
-        <a className="underline" href={requirements.source} target="_blank" rel="noreferrer">
+        <a className="underline" href={requirements.source} target="_blank" rel="noopener noreferrer">
           UMD catalog
         </a>
         {requirements.crossChecked && (
@@ -134,7 +135,7 @@ export function RequirementsPage({ transcript }: Props) {
               className="underline"
               href={requirements.crossChecked}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
               iSchool curriculum page
             </a>
@@ -205,19 +206,21 @@ function RequirementCard({ result }: { result: RuleResult }) {
       {result.completed.length > 0 && (
         <p className="text-sm">
           <span className="text-neutral-500">Done: </span>
-          {result.completed.map((course) => course.courseId || course.title).join(', ')}
+          <CourseLinkList courses={result.completed} />
         </p>
       )}
       {result.inProgress.length > 0 && (
         <p className="mt-1 text-sm">
           <span className="text-neutral-500">Taking: </span>
-          {result.inProgress.map((course) => course.courseId).join(', ')}
+          <CourseLinkList courses={result.inProgress} />
         </p>
       )}
       {!result.satisfied && result.rule.type === 'all_of' && result.missing.length > 0 && (
         <p className="mt-1 text-sm">
           <span className="text-neutral-500">Missing: </span>
-          <strong>{result.missing.join(', ')}</strong>
+          <strong>
+            <CourseLinkList courses={result.missing.map((courseId) => ({ courseId }))} />
+          </strong>
         </p>
       )}
       {!result.satisfied && result.rule.type !== 'all_of' && result.rule.type !== 'credits' && (
