@@ -6,6 +6,7 @@ import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { parseTranscriptText } from '../lib/parser/fixedWidth.ts';
 import { findSample, majorOf } from './data/samples.ts';
 import { SomethingWrong } from './components/SomethingWrong.tsx';
+import { Testudo } from './components/Testudo.tsx';
 import { UploadPage } from './pages/Upload.tsx';
 import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
 
@@ -209,6 +210,10 @@ export function App() {
         Course data from api.umd.io, grades and ratings from PlanetTerp. Both are run by students
         and volunteers, and both are cached here rather than called on your behalf.
       </footer>
+
+      {/* Last in the DOM, so last in the tab order — somebody driving this by
+          keyboard passes the turtle on the way out rather than through it. */}
+      <Testudo />
     </div>
   );
 }
