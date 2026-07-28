@@ -33,7 +33,7 @@ export function SomethingWrong({ view, transcript, sampleId, className }: Props)
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className={`text-xs text-neutral-500 underline decoration-dotted underline-offset-2 hover:text-neutral-900 dark:hover:text-neutral-100 ${className ?? ''}`}
+        className={`inline-flex min-h-11 items-center text-xs text-neutral-500 underline decoration-dotted underline-offset-2 hover:text-neutral-900 sm:min-h-0 dark:hover:text-neutral-100 ${className ?? ''}`}
       >
         Something looks wrong
       </button>

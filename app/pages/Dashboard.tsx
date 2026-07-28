@@ -129,7 +129,7 @@ export function DashboardPage({ transcript }: Props) {
           <p className="mb-3 text-xs text-neutral-500 dark:text-neutral-400">
             Counts toward credits earned, never toward your UMD GPA.
           </p>
-          <CourseTable courses={transcript.nonGpaCredits} showGrade={false} />
+          <CourseTable courses={transcript.nonGpaCredits} showGrade={false} showTerm />
         </section>
       )}
     </div>
@@ -151,37 +151,97 @@ function Stat({ label, value, tone }: { label: string; value: string; tone?: 'ok
   );
 }
 
-function CourseTable({ courses, showGrade }: { courses: CourseEntry[]; showGrade: boolean }) {
+/**
+ * Four columns on a desktop, one card per course on a phone.
+ *
+ * A four-column table in 343px gives the title about 150px, so
+ * "Introduction to Computer Systems" wraps to three lines and the grade — the
+ * thing anybody scanning a transcript is actually looking for — ends up
+ * squeezed against the right edge next to a credit count it can be confused
+ * with. Horizontal scroll would not fix that; it would hide the grade off
+ * screen instead, and a column you have to swipe to reach may as well not be
+ * there.
+ *
+ * So below `sm` each row becomes a card: course and grade on the first line at
+ * full size, title and credits underneath in secondary type. The table markup
+ * is untouched and simply takes over from `sm` up, which is why desktop looks
+ * exactly as it did.
+ */
+function CourseTable({
+  courses,
+  showGrade,
+  showTerm = false,
+}: {
+  courses: CourseEntry[];
+  showGrade: boolean;
+  /** For lists that mix terms, like transfer credit. Elsewhere the card header already says it. */
+  showTerm?: boolean;
+}) {
+  // Testudo omits the title for courses you are only registered for.
+  const titleOf = (course: CourseEntry) =>
+    course.title || catalog.get(course.courseId)?.title || '';
+
   return (
-    <table className="w-full text-sm">
-      <tbody>
+    <>
+      <ul className="divide-y divide-neutral-100 text-sm sm:hidden dark:divide-neutral-800">
         {courses.map((course, index) => (
-          <tr
-            key={`${course.courseId}-${index}`}
-            className="border-t border-neutral-100 first:border-0 dark:border-neutral-800"
-          >
-            <td className="py-1.5 pr-3 font-medium">
-              <CourseLink courseId={course.courseId} source={course.source} />
-            </td>
-            <td className="py-1.5 pr-3 text-neutral-600 dark:text-neutral-300">
-              {/* Testudo omits the title for courses you are only registered for. */}
-              {course.title || catalog.get(course.courseId)?.title || ''}
-            </td>
-            <td className="py-1.5 pr-3 text-right tabular-nums text-neutral-500">
-              {course.credits}
-            </td>
+          <li key={`${course.courseId}-${index}`} className="flex items-start gap-3 py-2.5">
+            <div className="min-w-0 flex-1">
+              <div className="font-medium">
+                <CourseLink courseId={course.courseId} source={course.source} />
+              </div>
+              {titleOf(course) && (
+                <div className="mt-0.5 text-xs text-neutral-600 dark:text-neutral-300">
+                  {titleOf(course)}
+                </div>
+              )}
+              <div className="mt-0.5 text-xs tabular-nums text-neutral-500">
+                {course.credits} {course.credits === 1 ? 'credit' : 'credits'}
+                {showTerm && course.termId && ` · ${formatTermId(course.termId)}`}
+              </div>
+            </div>
             {showGrade && (
-              <td
-                className={`w-12 py-1.5 text-right font-semibold tabular-nums ${
+              <div
+                className={`shrink-0 text-lg font-semibold tabular-nums ${
                   course.countsTowardGpa ? '' : 'text-neutral-400'
                 }`}
               >
                 {course.grade}
-              </td>
+              </div>
             )}
-          </tr>
+          </li>
         ))}
-      </tbody>
-    </table>
+      </ul>
+
+      <table className="hidden w-full text-sm sm:table">
+        <tbody>
+          {courses.map((course, index) => (
+            <tr
+              key={`${course.courseId}-${index}`}
+              className="border-t border-neutral-100 first:border-0 dark:border-neutral-800"
+            >
+              <td className="py-1.5 pr-3 font-medium">
+                <CourseLink courseId={course.courseId} source={course.source} />
+              </td>
+              <td className="py-1.5 pr-3 text-neutral-600 dark:text-neutral-300">
+                {titleOf(course)}
+              </td>
+              <td className="py-1.5 pr-3 text-right tabular-nums text-neutral-500">
+                {course.credits}
+              </td>
+              {showGrade && (
+                <td
+                  className={`w-12 py-1.5 text-right font-semibold tabular-nums ${
+                    course.countsTowardGpa ? '' : 'text-neutral-400'
+                  }`}
+                >
+                  {course.grade}
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }

@@ -58,6 +58,15 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
 
   return (
     <div className="space-y-6">
+      {/*
+        Tap first, drag second.
+        "Drop your transcript here" is instructions for a gesture a phone does
+        not have, and it was the biggest thing on the page. The button is now
+        the affordance and the drop zone is a desktop enhancement: the dashed
+        border and the wording about dragging only appear from `sm` up, where a
+        pointer exists. The drop handlers stay on at every width — they simply
+        never fire on a touch device.
+      */}
       <section
         onDragOver={(event) => {
           event.preventDefault();
@@ -70,31 +79,55 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           const file = event.dataTransfer.files[0];
           if (file) void handleFile(file);
         }}
-        className={`rounded-xl border-2 border-dashed p-10 text-center transition-colors ${
+        className={`rounded-xl border p-5 text-center transition-colors sm:border-2 sm:border-dashed sm:p-10 ${
           dragging
             ? 'border-terp-red bg-red-50 dark:bg-red-950/20'
-            : 'border-neutral-300 dark:border-neutral-700'
+            : 'border-neutral-200 dark:border-neutral-800 sm:border-neutral-300 sm:dark:border-neutral-700'
         }`}
       >
-        <p className="mb-1 text-lg font-semibold">Drop your unofficial transcript here</p>
+        <p className="mb-1 text-lg font-semibold">
+          <span className="sm:hidden">Add your unofficial transcript</span>
+          <span className="hidden sm:inline">Drop your unofficial transcript here</span>
+        </p>
         <p className="mb-5 text-sm text-neutral-500 dark:text-neutral-400">
           Testudo → Academics → Unofficial Transcript → save as PDF
         </p>
+
+        {/*
+          A real <label> for the input, not a button that calls .click() on it.
+          On iOS Safari the label is what reliably opens the picker — and the
+          picker's "Browse" tab is the Files app, so a PDF saved from Testudo to
+          iCloud Drive or Downloads is reachable. `accept` stays broad enough
+          that Files does not grey the file out.
+        */}
         <input
           ref={inputRef}
+          id="transcript-file"
           type="file"
           accept="application/pdf,.pdf"
           className="sr-only"
+          disabled={busy}
           onChange={(event) => {
             const file = event.target.files?.[0];
             if (file) void handleFile(file);
             event.target.value = '';
           }}
         />
-        <button type="button" className="button" disabled={busy} onClick={() => inputRef.current?.click()}>
-          {busy ? 'Reading…' : 'Choose a PDF'}
-        </button>
-
+        {busy ? (
+          <span className="button w-full cursor-wait sm:w-auto" aria-live="polite">
+            Reading…
+          </span>
+        ) : (
+          <label
+            htmlFor="transcript-file"
+            className="button w-full cursor-pointer text-base focus-within:ring-2 focus-within:ring-terp-red focus-within:ring-offset-2 sm:w-auto sm:text-sm dark:focus-within:ring-offset-neutral-950"
+          >
+            Choose file
+          </label>
+        )}
+        <p className="mt-3 hidden text-xs text-neutral-500 sm:block dark:text-neutral-400">
+          or drag it onto this box
+        </p>
       </section>
 
       <section className="card">
@@ -104,7 +137,19 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           major and a year — no file, no upload.
         </p>
 
-        <div className="mt-4 overflow-x-auto">
+        {/*
+          Narrow screens get two native selects instead of the grid.
+
+          Thirteen majors as columns is 1318px of table. On a 375px screen that
+          is a 3.5-screen sideways scroll through a grid whose row and column
+          headers are the only thing that makes a cell mean anything, and the
+          sticky headers do not survive the trip. Two selects say the same thing
+          in one screen, and the iOS picker wheel is a better control than
+          anything that could be built here.
+        */}
+        <SampleChooser sampleId={sampleId} onLoad={loadSample} />
+
+        <div className="mt-4 hidden overflow-x-auto sm:block">
           <table className="w-full border-separate border-spacing-1 text-sm">
             <caption className="sr-only">
               Sample transcripts by major and class year. Majors marked &ldquo;no audit&rdquo; have
@@ -172,13 +217,18 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           </table>
         </div>
 
-        <p className="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
+        <p className="mt-3 hidden text-xs text-neutral-500 sm:block dark:text-neutral-400">
           Solid columns have degree requirements on file and produce a full audit. Dashed ones do
           not — everything else works, but the audit page says so instead of guessing. Requirements
           are transcribed from the catalog by hand, one major at a time.
         </p>
+        <p className="mt-3 text-xs text-neutral-500 sm:hidden dark:text-neutral-400">
+          Majors marked &ldquo;no audit&rdquo; have no degree requirements on file — everything else
+          works, but the audit page says so instead of guessing. Requirements are transcribed from
+          the catalog by hand, one major at a time.
+        </p>
         <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-          Each column is one invented student across four years, so later rows contain everything
+          Each major is one invented student across four years, so later years contain everything
           the earlier ones do. Entirely synthetic; no real transcript is in this repository.
         </p>
       </section>
@@ -206,6 +256,91 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           </button>
         )}
       </section>
+    </div>
+  );
+}
+
+/**
+ * The demo grid, for a screen too narrow to hold a grid.
+ *
+ * Two native selects and a button. Native because the iOS picker is better
+ * than anything that could be built here — it is a full-height wheel with the
+ * system's own hit targets, it works with VoiceOver, and it does not need a
+ * single line of dropdown code to go wrong.
+ *
+ * Selecting does not load: a wheel fires `change` on every value it passes on
+ * an Android long-press, and reparsing a transcript on each one would be a
+ * mess. The button is the commit.
+ */
+function SampleChooser({
+  sampleId,
+  onLoad,
+}: {
+  sampleId?: string;
+  onLoad: (id: string, text: string) => void;
+}) {
+  const [majorSlug, setMajorSlug] = useState(() => {
+    const loaded = SAMPLE_MAJORS.find((major) =>
+      SAMPLE_YEARS.some((year) => sampleFor(major.slug, year.slug)?.id === sampleId),
+    );
+    return loaded?.slug ?? SAMPLE_MAJORS[0]!.slug;
+  });
+  const [yearSlug, setYearSlug] = useState(
+    () => SAMPLE_YEARS.find((year) => sampleFor(majorSlug, year.slug)?.id === sampleId)?.slug
+      ?? SAMPLE_YEARS[0]!.slug,
+  );
+
+  const major = SAMPLE_MAJORS.find((m) => m.slug === majorSlug) ?? SAMPLE_MAJORS[0]!;
+  const sample = sampleFor(majorSlug, yearSlug);
+  const showing = sample != null && sample.id === sampleId;
+
+  return (
+    <div className="mt-4 space-y-3 sm:hidden">
+      <label className="block">
+        <span className="label">Major</span>
+        <select
+          className="select mt-1"
+          value={majorSlug}
+          onChange={(event) => setMajorSlug(event.target.value)}
+        >
+          {SAMPLE_MAJORS.map((option) => (
+            <option key={option.slug} value={option.slug}>
+              {option.name}
+              {option.hasRequirements ? '' : ' (no audit)'}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label className="block">
+        <span className="label">Class year</span>
+        <select
+          className="select mt-1"
+          value={yearSlug}
+          onChange={(event) => setYearSlug(event.target.value)}
+        >
+          {SAMPLE_YEARS.map((option) => (
+            <option key={option.slug} value={option.slug}>
+              {option.label}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <button
+        type="button"
+        className="button w-full"
+        disabled={!sample || showing}
+        onClick={() => sample && onLoad(sample.id, sample.text)}
+      >
+        {showing ? 'Showing this sample' : 'Load this sample'}
+      </button>
+
+      <p className="text-xs text-neutral-500 dark:text-neutral-400">
+        {major.hasRequirements
+          ? `${major.name} has degree requirements on file, so this one produces a full audit.`
+          : `${major.name} has no degree requirements on file yet — everything works except the audit page, which says so instead of guessing.`}
+      </p>
     </div>
   );
 }

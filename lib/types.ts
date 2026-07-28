@@ -142,6 +142,12 @@ export interface GpaTotals {
 export interface PlannedCourse {
   courseId: string;
   credits: number;
+  /**
+   * A grade the student is trying on for size. Optional, and usually unset:
+   * without it the solver works out what grades would reach the target, and
+   * with it the planner projects the GPA that grade would produce.
+   */
+  grade?: LetterGrade;
 }
 
 /** Aggregated PlanetTerp grade distribution for one course. */

@@ -95,8 +95,13 @@ export function App() {
   // printing confidently. See the banner below and the detail on the dashboard.
   const gpaSuspect = Boolean(check && check.statedGpa !== null && !check.ok);
 
+  // `min-h-dvh` over `min-h-screen`: on iOS Safari `100vh` is the height with
+  // the toolbars hidden, so a `100vh` page is always taller than the window and
+  // its last row sits under the address bar. `dvh` tracks the real viewport as
+  // the toolbars come and go. Both are set, in that order, so Safari before
+  // 15.4 keeps the `vh` it understands and everything newer takes the `dvh`.
   return (
-    <div className="mx-auto min-h-screen max-w-4xl px-4 py-8">
+    <div className="pad-safe-x mx-auto min-h-screen min-h-dvh max-w-4xl py-8">
       <header className="mb-4 flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">
@@ -168,7 +173,7 @@ export function App() {
         </p>
       )}
 
-      <nav className="mb-6 flex gap-1 border-b border-neutral-200 dark:border-neutral-800">
+      <nav className="mb-6 flex flex-wrap gap-1 border-b border-neutral-200 dark:border-neutral-800 sm:flex-nowrap">
         {TABS.map(({ id, label }) => (
           <button
             key={id}
@@ -176,7 +181,7 @@ export function App() {
             onClick={() => setTab(id)}
             disabled={id !== 'upload' && !transcript}
             aria-current={tab === id ? 'page' : undefined}
-            className={`-mb-px border-b-2 px-4 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 ${
+            className={`-mb-px min-h-11 border-b-2 px-3 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 sm:min-h-0 sm:px-4 ${
               tab === id
                 ? 'border-terp-red text-terp-red'
                 : 'border-transparent text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100'

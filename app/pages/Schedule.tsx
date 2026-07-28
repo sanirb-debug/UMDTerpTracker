@@ -76,10 +76,10 @@ export function SchedulePage({ transcript }: Props) {
   return (
     <div className="space-y-6">
       <section className="flex flex-wrap items-end justify-between gap-4">
-        <label>
+        <label className="w-full sm:w-auto">
           <span className="label">Term</span>
           <select
-            className="input mt-1"
+            className="select mt-1 sm:w-auto"
             value={selected}
             onChange={(event) => setSelected(event.target.value)}
           >
@@ -109,6 +109,9 @@ export function SchedulePage({ transcript }: Props) {
 
       {scheduled.length > 0 && (
         <section className="card overflow-x-auto">
+          <p className="mb-2 text-xs text-neutral-500 sm:hidden dark:text-neutral-400">
+            Swipe the grid sideways to see the whole week.
+          </p>
           <div className="min-w-[34rem]">
             <div className="grid grid-cols-[3rem_repeat(5,1fr)] gap-1">
               <div />
@@ -151,13 +154,16 @@ export function SchedulePage({ transcript }: Props) {
           <h2 className="mb-1 font-semibold">No fixed meeting time</h2>
           <ul className="mt-2 space-y-1 text-sm">
             {unscheduled.map((entry) => (
-              <li key={entry.courseId} className="flex justify-between gap-3">
-                <span>
+              <li
+                key={entry.courseId}
+                className="flex flex-col gap-0.5 sm:flex-row sm:justify-between sm:gap-3"
+              >
+                <span className="min-w-0">
                   <CourseLink courseId={entry.courseId} className="font-bold" />
                   {entry.section && <span className="ml-2 text-neutral-500">{entry.section}</span>}
                   {entry.title && <span className="ml-2 text-neutral-500">{entry.title}</span>}
                 </span>
-                <span className="shrink-0 text-xs text-neutral-500">
+                <span className="text-xs text-neutral-500 sm:shrink-0">
                   {entry.status === 'async'
                     ? 'online, no set time'
                     : 'section not in the cached schedule'}
@@ -299,16 +305,19 @@ function ProfessorVerdict({
       )}
 
       <details>
-        <summary className="cursor-pointer text-xs uppercase tracking-wide text-neutral-500">
+        <summary className="flex min-h-11 cursor-pointer items-center text-xs uppercase tracking-wide text-neutral-500 sm:min-h-0">
           Everyone on record ({history.length})
         </summary>
         <ul className="mt-2 space-y-1">
           {history.map((record) => (
-            <li key={record.name} className="flex items-baseline justify-between gap-3 text-xs">
+            <li
+              key={record.name}
+              className="flex flex-col text-xs sm:flex-row sm:items-baseline sm:justify-between sm:gap-3"
+            >
               <span className={record.name === yours?.name ? 'font-semibold' : ''}>
                 {record.name}
               </span>
-              <span className="shrink-0 tabular-nums text-neutral-500">
+              <span className="tabular-nums text-neutral-500 sm:shrink-0">
                 {formatGpa(record.avgGpa)} · {Math.round(record.aOrBetter * 100)}% A- or better ·{' '}
                 {record.students} students
               </span>

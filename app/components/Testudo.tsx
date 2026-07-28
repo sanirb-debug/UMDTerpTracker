@@ -51,7 +51,7 @@ export function Testudo({ quotes = defaultQuotes, random }: Props) {
   if (quotes.length === 0) return null;
 
   return (
-    <div className="pointer-events-none fixed bottom-3 right-3 z-40 flex flex-col items-end gap-2">
+    <div className="pad-safe-bottom pointer-events-none fixed inset-x-0 bottom-0 z-40 flex flex-col items-end gap-2 pr-3 sm:inset-x-auto sm:right-3 sm:pb-3">
       {quote && (
         <blockquote
           id="testudo-quote"
@@ -92,7 +92,7 @@ export function Testudo({ quotes = defaultQuotes, random }: Props) {
             return next;
           })
         }
-        className="pointer-events-auto rounded-full p-1 text-lg leading-none opacity-30 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terp-red"
+        className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full text-lg leading-none opacity-30 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terp-red sm:h-8 sm:w-8"
       >
         <span aria-hidden="true">🐢</span>
       </button>
