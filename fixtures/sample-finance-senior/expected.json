@@ -1,0 +1,558 @@
+{
+  "major": "Finance",
+  "terms": [
+    {
+      "id": "2023-Fall",
+      "season": "Fall",
+      "year": 2023,
+      "courses": [
+        {
+          "courseId": "BMGT110",
+          "title": "INTRODUCTION TO THE BUSI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "ECON200",
+          "title": "PRINCIPLES OF MICROECONO",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POPULAR CULTURE IN AMERI",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION PRINC",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRODUCTION TO SOCIOLOG",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Spring",
+      "season": "Spring",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "BMGT220",
+          "title": "PRINCIPLES OF ACCOUNTING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ECON201",
+          "title": "PRINCIPLES OF MACROECONO",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "BMGT230",
+          "title": "BUSINESS STATISTICS",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR"
+          ]
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRETING AMERICAN HI",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "AMST205",
+          "title": "AMERICAN MATERIAL CULTUR",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Fall",
+      "season": "Fall",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "BMGT221",
+          "title": "PRINCIPLES OF ACCOUNTING",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT301",
+          "title": "INFORMATION SYSTEMS AI A",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BSCI170",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS"
+          ]
+        },
+        {
+          "courseId": "BSCI171",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 1,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 1,
+          "genEd": [
+            "DSNL"
+          ]
+        },
+        {
+          "courseId": "ENGL393",
+          "title": "TECHNICAL WRITING",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSPW"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.469,
+      "statedTermCredits": 13
+    },
+    {
+      "id": "2025-Spring",
+      "season": "Spring",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "BMGT340",
+          "title": "BUSINESS FINANCE",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ECON305",
+          "title": "INTERMEDIATE MACROECONOM",
+          "credits": 4,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "AOSC200",
+          "title": "WEATHER AND CLIMATE",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "SOCY241",
+          "title": "INEQUALITY IN AMERICAN S",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVCC"
+          ]
+        },
+        {
+          "courseId": "BMGT364",
+          "title": "MANAGING PEOPLE AND ORGA",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.394,
+      "statedTermCredits": 16
+    },
+    {
+      "id": "2025-Fall",
+      "season": "Fall",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "BMGT343",
+          "title": "INVESTMENTS",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT310",
+          "title": "INTERMEDIATE ACCOUNTING",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT341",
+          "title": "FINANCIAL MARKETS",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT170",
+          "title": "AMERICAN GOVERNMENT",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "ENGL234",
+          "title": "AFRICAN-AMERICAN LITERAT",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.4,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Spring",
+      "season": "Spring",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "BMGT440",
+          "title": "ADVANCED FINANCIAL MANAG",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT347",
+          "title": "QUANTITATIVE FINANCIAL A",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT441",
+          "title": "FIXED INCOME",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ECON230",
+          "title": "APPLIED ECONOMIC STATIST",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "HIST111",
+          "title": "THE MEDIEVAL WORLD",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.34,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Fall",
+      "season": "Fall",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "BMGT444",
+          "title": "FUTURES AND OPTIONS CONT",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT446",
+          "title": "INTERNATIONAL FINANCE",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT350",
+          "title": "MARKETING PRINCIPLES AND",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "SOCY230",
+          "title": "SOCIOLOGICAL SOCIAL PSYC",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT200",
+          "title": "INTERNATIONAL POLITICAL",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.4,
+      "statedTermCredits": 15
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "MATH120",
+      "title": "CALCULUS AB/SCR 4",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSMA"
+      ]
+    },
+    {
+      "courseId": "ENGL101",
+      "title": "ENG LANG/COMP/SCR 4",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSAW"
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "BMGT495",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "ECON330",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0102",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "AMST101",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0103",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "SOCY105",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0104",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "COMM200",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0105",
+      "termId": "2027-Spring"
+    }
+  ],
+  "statedCumulativeGpa": 3.439,
+  "statedCumulativeCredits": 110,
+  "warnings": []
+}

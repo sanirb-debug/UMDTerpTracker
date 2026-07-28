@@ -21,20 +21,25 @@ export function RequirementsPage({ transcript }: Props) {
     [transcript, requirements],
   );
 
+  // No requirements file for this major. Everything else in the app still
+  // works; only the audit is unavailable, and saying so beats rendering an
+  // empty one that reads like a finished degree.
   if (!requirements || !audit) {
     return (
-      <div className="space-y-3">
-        <p className="text-sm">
+      <section className="card border-l-4 border-amber-500/60">
+        <h2 className="font-semibold">Degree audit not yet available for this major</h2>
+        <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
           {transcript.major
-            ? `No requirements have been written up for ${transcript.major} yet.`
-            : 'Your transcript did not name a major, so there is nothing to check against.'}
+            ? `Nobody has transcribed the ${transcript.major} requirements yet, so there is nothing to check your coursework against.`
+            : 'Your transcript did not name a major, so there is nothing to check your coursework against.'}{' '}
+          Your GPA, schedule and planner are unaffected and work normally — it is only this page
+          that needs the requirements.
         </p>
-        <p className="text-sm text-neutral-500 dark:text-neutral-400">
-          Requirements are transcribed by hand from the official catalog, one major at a time. So
-          far that is{' '}
-          {allRequirements.map((r) => r.major).join(', ')} only.
+        <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
+          Requirements are transcribed by hand from the official catalog, one major at a time.
+          Written up so far: {allRequirements.map((r) => r.major).join(', ')}.
         </p>
-      </div>
+      </section>
     );
   }
 

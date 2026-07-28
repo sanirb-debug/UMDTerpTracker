@@ -1,0 +1,78 @@
+                    UNIVERSITY OF MARYLAND
+                        COLLEGE PARK
+                    Office of the Registrar
+                    UNOFFICIAL TRANSCRIPT
+                  FOR ADVISING PURPOSES ONLY
+
+Terrapin, Sample T
+E-Mail: sample@terpmail.umd.edu
+Major: Computer Science
+Undergraduate Degree Seeking
+GenEd Program                           Current Status: Registered Fall 2025
+
+Transcripts received from the following institutions:
+Advanced Placement Exam       on 08/15/23
+
+** Transfer Credit Information **            ** Equivalences **
+Advanced Placement Exam
+2308  CALCULUS AB/SCR 5       P   4.00 MATH140   FSMA
+      ENG LANG/COMP/SCR 4     P   3.00 ENGL101   FSAW
+Acceptable UG Inst. Credits:      7.00
+Total UG Credits Applicable:      7.00
+
+Historic Course Information is listed in the order:
+Course, Title, Grade, Credits Attempted, Earned and Quality Points
+
+Fall 2023
+MAJOR: COMPUTER SCIENCE
+CMSC131  OBJECT-ORIENTED PROGRAMM A- 4.00  4.00 14.80 FSAR
+MATH141  CALCULUS II              B+ 4.00  4.00 13.20
+HIST200  INTERPRETING AMERICAN HI A- 3.00  3.00 11.10 DSHS
+SOCY100  INTRODUCTION TO SOCIOLOG B  3.00  3.00 9.00  DSHS
+AMST203  POPULAR CULTURE IN AMERI A  3.00  3.00 12.00 DSHU, DVUP
+Semester:     Attempted 17.00; Earned 17.00; QPoints 60.10; GPA 3.535
+UG Cumulative:            17.00;   17.00;    60.10;    3.535
+
+Spring 2024
+MAJOR: COMPUTER SCIENCE
+CMSC132  OBJECT-ORIENTED PROGRAMM A  4.00  4.00 16.00
+CMSC250  DISCRETE STRUCTURES      B+ 4.00  4.00 13.20
+MATH240  INTRODUCTION TO LINEAR A B  4.00  4.00 12.00
+COMM107  ORAL COMMUNICATION PRINC A  3.00  3.00 12.00 FSOC
+AMST205  AMERICAN MATERIAL CULTUR A- 3.00  3.00 11.10 DSHU
+Semester:     Attempted 18.00; Earned 18.00; QPoints 64.30; GPA 3.572
+UG Cumulative:            35.00;   35.00;    124.40;   3.554
+
+Fall 2024
+MAJOR: COMPUTER SCIENCE
+CMSC216  INTRODUCTION TO COMPUTER B+ 4.00  4.00 13.20
+MATH241  CALCULUS III             B  4.00  4.00 12.00
+BSCI170  PRINCIPLES OF MOLECULAR  B+ 3.00  3.00 9.90  DSNS
+BSCI171  PRINCIPLES OF MOLECULAR  A  1.00  1.00 4.00  DSNL
+ENGL393  TECHNICAL WRITING        A  3.00  3.00 12.00 FSPW
+Semester:     Attempted 15.00; Earned 15.00; QPoints 51.10; GPA 3.407
+UG Cumulative:            50.00;   50.00;    175.50;   3.510
+
+Spring 2025
+MAJOR: COMPUTER SCIENCE
+CMSC330  ORGANIZATION OF PROGRAMM A- 3.00  3.00 11.10
+CMSC351  ALGORITHMS               B  3.00  3.00 9.00
+STAT400  APPLIED PROBABILITY AND  B+ 3.00  3.00 9.90
+AOSC200  WEATHER AND CLIMATE      B+ 3.00  3.00 9.90  DSNS, SCIS
+SOCY241  INEQUALITY IN AMERICAN S B  3.00  3.00 9.00  DSHS, DVCC
+Semester:     Attempted 15.00; Earned 15.00; QPoints 48.90; GPA 3.260
+UG Cumulative:            65.00;   65.00;    224.40;   3.452
+
+UG Cumulative Credit          : 72.00
+UG Cumulative GPA             :         3.452
+
+** Current Course Information **
+Fall 2025 Course    Sec Credits Grd/ Drop         Add       Drop      Modified GenEd
+                    Meth /Add Date                          Date      Date
+======== ==== ======= ==== ==== ======== ======== ======== =============
+CMSC411 0101 3.00  REG A  04/01/26 04/01/26
+CMSC420 0102 3.00  REG A  04/01/26 04/01/26
+ENES210 0103 3.00  REG A  04/01/26 04/01/26
+ECON300 0104 3.00  REG A  04/01/26 04/01/26
+GVPT170 0105 3.00  REG A  04/01/26 04/01/26
+

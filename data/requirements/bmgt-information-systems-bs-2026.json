@@ -1,0 +1,283 @@
+{
+  "id": "bmgt-information-systems-bs-2026",
+  "major": "Information Systems",
+  "degree": "BS",
+  "catalogYear": 2026,
+  "source": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/business/decision-operations-information-technologies/information-systems-major/",
+  "crossChecked": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/business/",
+  "genEdSource": "https://gened.umd.edu/node/35",
+  "lastVerified": "2026-07-28",
+  "minGrade": "C-",
+  "rules": [
+    {
+      "type": "gpa",
+      "label": "[UNIV] Cumulative GPA Requirement",
+      "minimum": 2
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] UMD Degree Requirements",
+      "credits": 120
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] Credits in residence at UMD",
+      "credits": 30,
+      "source": "institution",
+      "pool": "residency"
+    },
+    {
+      "type": "gpa",
+      "label": "Major GPA",
+      "minimum": 2,
+      "prefixes": [
+        "BMGT"
+      ]
+    },
+    {
+      "type": "all_of",
+      "label": "Business lower-level core",
+      "courses": [
+        "BMGT110",
+        "BMGT220",
+        "BMGT221",
+        "ECON200",
+        "ECON201",
+        "BMGT230"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Mathematics (MATH120 or MATH140)",
+      "courses": [
+        "MATH120",
+        "MATH140"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Communication (COMM100, COMM107 or COMM200)",
+      "courses": [
+        "COMM100",
+        "COMM107",
+        "COMM200"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Business and management subjects",
+      "credits": 45,
+      "prefixes": [
+        "BMGT"
+      ],
+      "consumes": false,
+      "pool": "business"
+    },
+    {
+      "type": "credits",
+      "label": "Half the BMGT credits taken at UMD",
+      "credits": 22.5,
+      "prefixes": [
+        "BMGT"
+      ],
+      "source": "institution",
+      "consumes": false,
+      "pool": "residency"
+    },
+    {
+      "type": "credits",
+      "label": "Credits at the 300-400 level",
+      "credits": 58,
+      "minLevel": 300,
+      "consumes": false,
+      "pool": "level"
+    },
+    {
+      "type": "all_of",
+      "label": "Information Systems core",
+      "courses": [
+        "BMGT302",
+        "BMGT402",
+        "BMGT403",
+        "BMGT407"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "distribute",
+      "label": "Information Systems electives",
+      "n": 2,
+      "pool": "major",
+      "groups": [
+        {
+          "label": "List A",
+          "courses": [
+            "BMGT400",
+            "BMGT401",
+            "BMGT404",
+            "BMGT406",
+            "BMGT408",
+            "BMGT485"
+          ]
+        },
+        {
+          "label": "List B",
+          "courses": [
+            "BMGT326",
+            "BMGT430",
+            "BMGT461",
+            "BMGT476",
+            "BMGT484"
+          ],
+          "max": 1
+        }
+      ]
+    },
+    {
+      "type": "credits",
+      "label": "[CORE/GenEd] General Education Required Credits",
+      "credits": 40,
+      "genEd": [
+        "FSAW",
+        "FSPW",
+        "FSOC",
+        "FSMA",
+        "FSAR",
+        "DSHS",
+        "DSHU",
+        "DSNS",
+        "DSNL",
+        "DSSP",
+        "SCIS",
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Academic Writing (FSAW)",
+      "credits": 3,
+      "genEd": [
+        "FSAW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Professional Writing (FSPW)",
+      "credits": 3,
+      "genEd": [
+        "FSPW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Oral Communication (FSOC)",
+      "credits": 3,
+      "genEd": [
+        "FSOC"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Mathematics (FSMA)",
+      "credits": 3,
+      "genEd": [
+        "FSMA"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Analytic Reasoning (FSAR)",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] History and Social Sciences (DSHS)",
+      "credits": 6,
+      "genEd": [
+        "DSHS"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Humanities (DSHU)",
+      "credits": 6,
+      "genEd": [
+        "DSHU"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Natural Sciences (DSNS/DSNL)",
+      "credits": 7,
+      "genEd": [
+        "DSNS",
+        "DSNL"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] Natural Science with a lab (DSNL)",
+      "genEd": [
+        "DSNL"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Scholarship in Practice (DSSP)",
+      "credits": 6,
+      "genEd": [
+        "DSSP"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] The Big Question / I-Series (SCIS)",
+      "credits": 6,
+      "genEd": [
+        "SCIS"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "n_of",
+      "label": "[GenEd] Diversity (DVUP/DVCC)",
+      "n": 2,
+      "genEd": [
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] At least one Understanding Plural Societies (DVUP)",
+      "genEd": [
+        "DVUP"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    }
+  ]
+}

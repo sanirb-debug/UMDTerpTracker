@@ -8,7 +8,7 @@
       "courses": [
         {
           "courseId": "INST126",
-          "title": "INTRO PROGRAM INFO SCI",
+          "title": "INTRODUCTION TO PROGRAMM",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -31,7 +31,7 @@
         },
         {
           "courseId": "HIST200",
-          "title": "INTERPRET AMER HISTORY",
+          "title": "INTERPRETING AMERICAN HI",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -44,7 +44,7 @@
         },
         {
           "courseId": "SOCY100",
-          "title": "INTRO TO SOCIOLOGY",
+          "title": "INTRODUCTION TO SOCIOLOG",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
@@ -57,7 +57,7 @@
         },
         {
           "courseId": "AMST101",
-          "title": "INTRO AMERICAN STUDIES",
+          "title": "INTRODUCTION AMERICAN ST",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -79,7 +79,7 @@
       "courses": [
         {
           "courseId": "INST201",
-          "title": "INTRO INFORMATION SCI",
+          "title": "INTRODUCTION TO INFORMAT",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -92,7 +92,7 @@
         },
         {
           "courseId": "STAT100",
-          "title": "ELEMENTARY STATISTICS",
+          "title": "ELEMENTARY STATISTICS AN",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
@@ -105,7 +105,7 @@
         },
         {
           "courseId": "COMM107",
-          "title": "ORAL COMMUNICATION",
+          "title": "ORAL COMMUNICATION PRINC",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -118,7 +118,7 @@
         },
         {
           "courseId": "AMST203",
-          "title": "POP CULTURE IN AMER",
+          "title": "POPULAR CULTURE IN AMERI",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -132,7 +132,7 @@
         },
         {
           "courseId": "ECON200",
-          "title": "PRIN MICROECONOMICS",
+          "title": "PRINCIPLES OF MICROECONO",
           "credits": 3,
           "grade": "B",
           "gradePoints": 3,
@@ -164,7 +164,7 @@
         },
         {
           "courseId": "INST314",
-          "title": "STATISTICS FOR INFO SCI",
+          "title": "STATISTICS FOR INFORMATI",
           "credits": 3,
           "grade": "B",
           "gradePoints": 3,
@@ -187,7 +187,7 @@
         },
         {
           "courseId": "BSCI170",
-          "title": "PRIN MOLECULAR BIOLOGY",
+          "title": "PRINCIPLES OF MOLECULAR",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
@@ -200,7 +200,7 @@
         },
         {
           "courseId": "BSCI171",
-          "title": "MOLECULAR BIOLOGY LAB",
+          "title": "PRINCIPLES OF MOLECULAR",
           "credits": 1,
           "grade": "A",
           "gradePoints": 4,
@@ -232,7 +232,7 @@
       "courses": [
         {
           "courseId": "INST326",
-          "title": "OBJ-ORIENT PROG INFO SCI",
+          "title": "OBJECT-ORIENTED PROGRAMM",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -242,7 +242,7 @@
         },
         {
           "courseId": "INST327",
-          "title": "DATABASE DESIGN MODELING",
+          "title": "DATABASE DESIGN AND MODE",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -268,7 +268,7 @@
         },
         {
           "courseId": "AMST205",
-          "title": "MATERIAL ASPECTS AMER",
+          "title": "AMERICAN MATERIAL CULTUR",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -281,7 +281,7 @@
         },
         {
           "courseId": "SOCY241",
-          "title": "INEQUALITY AMER SOCIETY",
+          "title": "INEQUALITY IN AMERICAN S",
           "credits": 3,
           "grade": "B",
           "gradePoints": 3,
@@ -304,7 +304,7 @@
       "courses": [
         {
           "courseId": "INST335",
-          "title": "ORG MANAGEMENT TEAMWORK",
+          "title": "ORGANIZATIONS MANAGEMENT",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -314,7 +314,7 @@
         },
         {
           "courseId": "INST346",
-          "title": "TECH INFRASTRUCTURE ARCH",
+          "title": "TECHNOLOGIES INFRASTRUCT",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
@@ -324,7 +324,7 @@
         },
         {
           "courseId": "INST366",
-          "title": "PRIV SEC ETHICS BIG DATA",
+          "title": "PRIVACY SECURITY AND ETH",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -351,7 +351,7 @@
         },
         {
           "courseId": "ENES210",
-          "title": "ENTREPRENEURIAL OPPS",
+          "title": "ENTREPRENEURIAL OPPORTUN",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -373,7 +373,7 @@
       "courses": [
         {
           "courseId": "INST352",
-          "title": "INFO USER NEEDS ASSESS",
+          "title": "INFORMATION USER NEEDS A",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -393,7 +393,7 @@
         },
         {
           "courseId": "INST354",
-          "title": "DECISION-MAKING INFO SCI",
+          "title": "DECISION-MAKING FOR INFO",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
@@ -403,7 +403,7 @@
         },
         {
           "courseId": "INST341",
-          "title": "LEGAL ETHICAL ISSUES",
+          "title": "INTRODUCTION TO DIGITAL",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -413,7 +413,7 @@
         },
         {
           "courseId": "ECON201",
-          "title": "PRIN MACROECONOMICS",
+          "title": "PRINCIPLES OF MACROECONO",
           "credits": 3,
           "grade": "B",
           "gradePoints": 3,
@@ -435,7 +435,7 @@
       "courses": [
         {
           "courseId": "INST466",
-          "title": "TECHNOLOGY CULTURE SOC",
+          "title": "TECHNOLOGY CULTURE AND S",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -455,7 +455,7 @@
         },
         {
           "courseId": "BMGT220",
-          "title": "PRIN OF ACCOUNTING I",
+          "title": "PRINCIPLES OF ACCOUNTING",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -475,7 +475,7 @@
         },
         {
           "courseId": "ENGL222",
-          "title": "AMERICAN LITERATURE",
+          "title": "AMERICAN LITERATURES",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
@@ -485,7 +485,7 @@
         },
         {
           "courseId": "GVPT200",
-          "title": "INTL POLITICAL RELATIONS",
+          "title": "INTERNATIONAL POLITICAL",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -546,7 +546,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0101",
+      "section": "0102",
       "termId": "2027-Spring"
     },
     {
@@ -557,7 +557,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0101",
+      "section": "0103",
       "termId": "2027-Spring"
     },
     {
@@ -568,7 +568,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0101",
+      "section": "0104",
       "termId": "2027-Spring"
     },
     {
@@ -579,7 +579,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0201",
+      "section": "0105",
       "termId": "2027-Spring"
     }
   ],

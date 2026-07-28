@@ -1,0 +1,493 @@
+{
+  "major": "Computer Science",
+  "terms": [
+    {
+      "id": "2023-Fall",
+      "season": "Fall",
+      "year": 2023,
+      "courses": [
+        {
+          "courseId": "CMSC131",
+          "title": "OBJECT-ORIENTED PROGRAMM",
+          "credits": 4,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4,
+          "genEd": [
+            "FSAR"
+          ]
+        },
+        {
+          "courseId": "MATH141",
+          "title": "CALCULUS II",
+          "credits": 4,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRETING AMERICAN HI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRODUCTION TO SOCIOLOG",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POPULAR CULTURE IN AMERI",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.535,
+      "statedTermCredits": 17
+    },
+    {
+      "id": "2024-Spring",
+      "season": "Spring",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "CMSC132",
+          "title": "OBJECT-ORIENTED PROGRAMM",
+          "credits": 4,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "CMSC250",
+          "title": "DISCRETE STRUCTURES",
+          "credits": 4,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "MATH240",
+          "title": "INTRODUCTION TO LINEAR A",
+          "credits": 4,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION PRINC",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "AMST205",
+          "title": "AMERICAN MATERIAL CULTUR",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.572,
+      "statedTermCredits": 18
+    },
+    {
+      "id": "2024-Fall",
+      "season": "Fall",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "CMSC216",
+          "title": "INTRODUCTION TO COMPUTER",
+          "credits": 4,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "MATH241",
+          "title": "CALCULUS III",
+          "credits": 4,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "BSCI170",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS"
+          ]
+        },
+        {
+          "courseId": "BSCI171",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 1,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 1,
+          "genEd": [
+            "DSNL"
+          ]
+        },
+        {
+          "courseId": "ENGL393",
+          "title": "TECHNICAL WRITING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSPW"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.407,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2025-Spring",
+      "season": "Spring",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "CMSC330",
+          "title": "ORGANIZATION OF PROGRAMM",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "CMSC351",
+          "title": "ALGORITHMS",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "STAT400",
+          "title": "APPLIED PROBABILITY AND",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "AOSC200",
+          "title": "WEATHER AND CLIMATE",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "SOCY241",
+          "title": "INEQUALITY IN AMERICAN S",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVCC"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.26,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2025-Fall",
+      "season": "Fall",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "CMSC411",
+          "title": "COMPUTER SYSTEMS ARCHITE",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "CMSC420",
+          "title": "ADVANCED DATA STRUCTURES",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENES210",
+          "title": "ENTREPRENEURIAL OPPORTUN",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "ECON300",
+          "title": "METHODS AND TOOLS FOR EC",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT170",
+          "title": "AMERICAN GOVERNMENT",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Spring",
+      "season": "Spring",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "CMSC421",
+          "title": "INTRODUCTION TO ARTIFICI",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "CMSC451",
+          "title": "DESIGN AND ANALYSIS OF C",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "CMSC434",
+          "title": "INTRODUCTION TO HUMAN-CO",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "ECON305",
+          "title": "INTERMEDIATE MACROECONOM",
+          "credits": 4,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "ECON306",
+          "title": "INTERMEDIATE MICROECONOM",
+          "credits": 4,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        }
+      ],
+      "statedTermGpa": 3.247,
+      "statedTermCredits": 17
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "MATH140",
+      "title": "CALCULUS AB/SCR 5",
+      "credits": 4,
+      "creditsEarned": 4,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSMA"
+      ]
+    },
+    {
+      "courseId": "ENGL101",
+      "title": "ENG LANG/COMP/SCR 4",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSAW"
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "CMSC430",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "ECON330",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0102",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "PSYC100",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0103",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "ENGL222",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0104",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "GVPT200",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0105",
+      "termId": "2026-Fall"
+    }
+  ],
+  "statedCumulativeGpa": 3.43,
+  "statedCumulativeCredits": 104,
+  "warnings": []
+}

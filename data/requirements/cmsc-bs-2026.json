@@ -1,0 +1,303 @@
+{
+  "id": "cmsc-bs-2026",
+  "major": "Computer Science",
+  "degree": "BS",
+  "catalogYear": 2026,
+  "source": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/computer-mathematical-natural-sciences/computer-science/computer-science-major/",
+  "genEdSource": "https://gened.umd.edu/node/35",
+  "lastVerified": "2026-07-28",
+  "minGrade": "C-",
+  "rules": [
+    {
+      "type": "gpa",
+      "label": "[UNIV] Cumulative GPA Requirement",
+      "minimum": 2
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] UMD Degree Requirements",
+      "credits": 120
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] Credits in residence at UMD",
+      "credits": 30,
+      "source": "institution",
+      "pool": "residency"
+    },
+    {
+      "type": "gpa",
+      "label": "Major GPA",
+      "minimum": 2,
+      "prefixes": [
+        "CMSC"
+      ]
+    },
+    {
+      "type": "all_of",
+      "label": "Computer Science core",
+      "courses": [
+        "CMSC131",
+        "CMSC132",
+        "CMSC216",
+        "CMSC250",
+        "CMSC330",
+        "CMSC351"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Calculus",
+      "courses": [
+        "MATH140",
+        "MATH141"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "STAT 400-level course",
+      "credits": 3,
+      "prefixes": [
+        "STAT"
+      ],
+      "minLevel": 400,
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Upper-level MATH/AMSC/STAT (prerequisite not checked)",
+      "credits": 3,
+      "prefixes": [
+        "MATH",
+        "AMSC",
+        "STAT"
+      ],
+      "minLevel": 200,
+      "pool": "major"
+    },
+    {
+      "type": "distribute",
+      "label": "Upper-level CMSC across at least three areas",
+      "n": 5,
+      "minGroups": 3,
+      "pool": "major",
+      "groups": [
+        {
+          "label": "Systems",
+          "courses": [
+            "CMSC411",
+            "CMSC412",
+            "CMSC414",
+            "CMSC416",
+            "CMSC417"
+          ],
+          "max": 3
+        },
+        {
+          "label": "Information Processing",
+          "courses": [
+            "CMSC420",
+            "CMSC421",
+            "CMSC422",
+            "CMSC423",
+            "CMSC424",
+            "CMSC426",
+            "CMSC427",
+            "CMSC470",
+            "CMSC471",
+            "CMSC472"
+          ],
+          "max": 3
+        },
+        {
+          "label": "Software Engineering and Programming Languages",
+          "courses": [
+            "CMSC430",
+            "CMSC433",
+            "CMSC434",
+            "CMSC435",
+            "CMSC436",
+            "CMSC471"
+          ],
+          "max": 3
+        },
+        {
+          "label": "Theory",
+          "courses": [
+            "CMSC451",
+            "CMSC452",
+            "CMSC454",
+            "CMSC456",
+            "CMSC457",
+            "CMSC474"
+          ],
+          "max": 3
+        },
+        {
+          "label": "Numerical Analysis",
+          "courses": [
+            "CMSC460",
+            "CMSC466"
+          ],
+          "max": 3
+        }
+      ]
+    },
+    {
+      "type": "credits",
+      "label": "Twelve credits in one discipline outside CMSC",
+      "credits": 12,
+      "minLevel": 300,
+      "excludePrefixes": [
+        "CMSC"
+      ],
+      "sameDiscipline": true,
+      "pool": "outside"
+    },
+    {
+      "type": "credits",
+      "label": "[CORE/GenEd] General Education Required Credits",
+      "credits": 40,
+      "genEd": [
+        "FSAW",
+        "FSPW",
+        "FSOC",
+        "FSMA",
+        "FSAR",
+        "DSHS",
+        "DSHU",
+        "DSNS",
+        "DSNL",
+        "DSSP",
+        "SCIS",
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Academic Writing (FSAW)",
+      "credits": 3,
+      "genEd": [
+        "FSAW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Professional Writing (FSPW)",
+      "credits": 3,
+      "genEd": [
+        "FSPW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Oral Communication (FSOC)",
+      "credits": 3,
+      "genEd": [
+        "FSOC"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Mathematics (FSMA)",
+      "credits": 3,
+      "genEd": [
+        "FSMA"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Analytic Reasoning (FSAR)",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] History and Social Sciences (DSHS)",
+      "credits": 6,
+      "genEd": [
+        "DSHS"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Humanities (DSHU)",
+      "credits": 6,
+      "genEd": [
+        "DSHU"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Natural Sciences (DSNS/DSNL)",
+      "credits": 7,
+      "genEd": [
+        "DSNS",
+        "DSNL"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] Natural Science with a lab (DSNL)",
+      "genEd": [
+        "DSNL"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Scholarship in Practice (DSSP)",
+      "credits": 6,
+      "genEd": [
+        "DSSP"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] The Big Question / I-Series (SCIS)",
+      "credits": 6,
+      "genEd": [
+        "SCIS"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "n_of",
+      "label": "[GenEd] Diversity (DVUP/DVCC)",
+      "n": 2,
+      "genEd": [
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] At least one Understanding Plural Societies (DVUP)",
+      "genEd": [
+        "DVUP"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    }
+  ]
+}

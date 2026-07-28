@@ -15,7 +15,10 @@ export default defineConfig(({ command }) => ({
     },
   },
   test: {
+    // Node by default; the few tests that render a component opt into jsdom
+    // with a `@vitest-environment` comment rather than making everything pay
+    // for a DOM.
     environment: 'node',
-    include: ['lib/**/*.test.ts', 'fixtures/**/*.test.ts'],
+    include: ['lib/**/*.test.ts', 'fixtures/**/*.test.ts', 'app/**/*.test.tsx'],
   },
 }));

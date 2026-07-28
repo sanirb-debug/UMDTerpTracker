@@ -1,5 +1,5 @@
 {
-  "major": "Information Science",
+  "major": "Finance",
   "terms": [
     {
       "id": "2023-Fall",
@@ -7,31 +7,8 @@
       "year": 2023,
       "courses": [
         {
-          "courseId": "INST126",
-          "title": "INTRO PROGRAM INFO SCI",
-          "credits": 3,
-          "grade": "A-",
-          "gradePoints": 3.7,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3
-        },
-        {
-          "courseId": "ENGL101",
-          "title": "ACADEMIC WRITING",
-          "credits": 3,
-          "grade": "B",
-          "gradePoints": 3,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "FSAW"
-          ]
-        },
-        {
-          "courseId": "HIST200",
-          "title": "INTERPRET AMER HISTORY",
+          "courseId": "BMGT110",
+          "title": "INTRODUCTION TO THE BUSI",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -39,25 +16,12 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSSP"
           ]
         },
         {
-          "courseId": "SOCY100",
-          "title": "INTRO TO SOCIOLOGY",
-          "credits": 3,
-          "grade": "B+",
-          "gradePoints": 3.3,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSHS"
-          ]
-        },
-        {
-          "courseId": "AMST101",
-          "title": "INTRO AMERICAN STUDIES",
+          "courseId": "ECON200",
+          "title": "PRINCIPLES OF MICROECONO",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
@@ -65,7 +29,47 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POPULAR CULTURE IN AMERI",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION PRINC",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRODUCTION TO SOCIOLOG",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
           ]
         }
       ],
@@ -78,11 +82,21 @@
       "year": 2024,
       "courses": [
         {
-          "courseId": "INST201",
-          "title": "INTRO INFORMATION SCI",
+          "courseId": "BMGT220",
+          "title": "PRINCIPLES OF ACCOUNTING",
           "credits": 3,
           "grade": "A",
           "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ECON201",
+          "title": "PRINCIPLES OF MACROECONO",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
           "countsTowardGpa": true,
           "source": "institution",
           "creditsEarned": 3,
@@ -91,11 +105,11 @@
           ]
         },
         {
-          "courseId": "STAT100",
-          "title": "ELEMENTARY STATISTICS",
+          "courseId": "BMGT230",
+          "title": "BUSINESS STATISTICS",
           "credits": 3,
-          "grade": "B+",
-          "gradePoints": 3.3,
+          "grade": "A-",
+          "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
           "creditsEarned": 3,
@@ -104,35 +118,8 @@
           ]
         },
         {
-          "courseId": "COMM107",
-          "title": "ORAL COMMUNICATION",
-          "credits": 3,
-          "grade": "A",
-          "gradePoints": 4,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "FSOC"
-          ]
-        },
-        {
-          "courseId": "AMST203",
-          "title": "POP CULTURE IN AMER",
-          "credits": 3,
-          "grade": "A-",
-          "gradePoints": 3.7,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSHU",
-            "DVUP"
-          ]
-        },
-        {
-          "courseId": "ECON200",
-          "title": "PRIN MICROECONOMICS",
+          "courseId": "HIST200",
+          "title": "INTERPRETING AMERICAN HI",
           "credits": 3,
           "grade": "B",
           "gradePoints": 3,
@@ -140,11 +127,25 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSHS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "AMST205",
+          "title": "AMERICAN MATERIAL CULTUR",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
           ]
         }
       ],
-      "statedTermGpa": 3.6,
+      "statedTermGpa": 3.54,
       "statedTermCredits": 15
     }
   ],
@@ -163,8 +164,8 @@
       ]
     },
     {
-      "courseId": "PSYC100",
-      "title": "PSYCHOLOGY/SCR 5",
+      "courseId": "ENGL101",
+      "title": "ENG LANG/COMP/SCR 4",
       "credits": 3,
       "creditsEarned": 3,
       "grade": "P",
@@ -172,13 +173,13 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
-        "DSHS"
+        "FSAW"
       ]
     }
   ],
   "inProgress": [
     {
-      "courseId": "INST311",
+      "courseId": "BMGT221",
       "title": "",
       "credits": 3,
       "grade": "NG",
@@ -189,25 +190,14 @@
       "termId": "2024-Fall"
     },
     {
-      "courseId": "INST314",
+      "courseId": "BMGT301",
       "title": "",
       "credits": 3,
       "grade": "NG",
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0201",
-      "termId": "2024-Fall"
-    },
-    {
-      "courseId": "ENGL393",
-      "title": "",
-      "credits": 3,
-      "grade": "NG",
-      "gradePoints": null,
-      "countsTowardGpa": false,
-      "source": "institution",
-      "section": "0101",
+      "section": "0102",
       "termId": "2024-Fall"
     },
     {
@@ -218,7 +208,7 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0301",
+      "section": "0103",
       "termId": "2024-Fall"
     },
     {
@@ -229,11 +219,22 @@
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0401",
+      "section": "0104",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "ENGL393",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0105",
       "termId": "2024-Fall"
     }
   ],
-  "statedCumulativeGpa": 3.57,
+  "statedCumulativeGpa": 3.54,
   "statedCumulativeCredits": 36,
   "warnings": []
 }

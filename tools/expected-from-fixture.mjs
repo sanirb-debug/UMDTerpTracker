@@ -23,7 +23,10 @@ if (!dir) {
   process.exit(1);
 }
 
-const requirements = [JSON.parse(readFileSync('data/requirements/inst-bs-2026.json', 'utf8'))];
+import { readdirSync } from 'node:fs';
+const requirements = readdirSync('data/requirements')
+  .filter((name) => name.endsWith('.json'))
+  .map((name) => JSON.parse(readFileSync(join('data/requirements', name), 'utf8')));
 const transcript = parseTranscriptText(readFileSync(join(dir, 'transcript.txt'), 'utf8'));
 writeFileSync(join(dir, 'expected.json'), `${JSON.stringify(transcript, null, 2)}\n`);
 

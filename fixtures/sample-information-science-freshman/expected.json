@@ -1,0 +1,250 @@
+{
+  "major": "Information Science",
+  "terms": [
+    {
+      "id": "2023-Fall",
+      "season": "Fall",
+      "year": 2023,
+      "courses": [
+        {
+          "courseId": "INST126",
+          "title": "INTRODUCTION TO PROGRAMM",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENGL101",
+          "title": "ACADEMIC WRITING",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAW"
+          ]
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRETING AMERICAN HI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRODUCTION TO SOCIOLOG",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST101",
+          "title": "INTRODUCTION AMERICAN ST",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Spring",
+      "season": "Spring",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "INST201",
+          "title": "INTRODUCTION TO INFORMAT",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "STAT100",
+          "title": "ELEMENTARY STATISTICS AN",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR"
+          ]
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION PRINC",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POPULAR CULTURE IN AMERI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "ECON200",
+          "title": "PRINCIPLES OF MICROECONO",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.6,
+      "statedTermCredits": 15
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "MATH120",
+      "title": "CALCULUS AB/SCR 4",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSMA"
+      ]
+    },
+    {
+      "courseId": "PSYC100",
+      "title": "PSYCHOLOGY/SCR 5",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "DSHS"
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "INST311",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "INST314",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0102",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "ENGL393",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0103",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "BSCI170",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0104",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "BSCI171",
+      "title": "",
+      "credits": 1,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0105",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "MATH121",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0106",
+      "termId": "2024-Fall"
+    }
+  ],
+  "statedCumulativeGpa": 3.57,
+  "statedCumulativeCredits": 36,
+  "warnings": []
+}

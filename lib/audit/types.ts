@@ -15,6 +15,19 @@ export interface Selector {
   genEd?: string[];
   /** Where the credit came from. */
   source?: CreditSource;
+  /** Subject prefixes, e.g. `['BMGT']` for "business and management subjects". */
+  prefixes?: string[];
+  /** Subject prefixes to exclude, e.g. CMSC for "outside of CMSC". */
+  excludePrefixes?: string[];
+  /** Lowest course number that counts, e.g. 300 for "300- or 400-level". */
+  minLevel?: number;
+  /**
+   * Every counted course must share one subject prefix, though which one is the
+   * student's choice. Computer Science asks for "12 credits of 300-400 level
+   * courses from one discipline outside of CMSC" — a list of eligible courses
+   * cannot say that they all have to come from the same department.
+   */
+  sameDiscipline?: boolean;
 }
 
 interface Shared extends Selector {
@@ -51,6 +64,23 @@ export type Rule =
   | ({ type: 'one_of' } & Shared)
   /** A credit total over the matching courses. */
   | ({ type: 'credits'; credits: number } & Shared)
+  /**
+   * `n` courses drawn from named groups, spanning at least `minGroups` of them,
+   * with each group contributing at most its own `max`.
+   *
+   * Degree requirements say this constantly and none of the other types can.
+   * Computer Science: "Select five 400 level courses from at least three of the
+   * following areas with no more than three courses in a given area". Finance
+   * caps its special-topics list at one course; Information Systems asks for
+   * "two courses from list A, or one course from A and one course from B",
+   * which is the same shape with list B capped at one.
+   */
+  | ({
+      type: 'distribute';
+      n: number;
+      minGroups?: number;
+      groups: Array<{ label: string; courses: string[]; max?: number }>;
+    } & Shared)
   /**
    * A grade point average. With no selector it is the cumulative GPA;
    * with one it is computed over just those courses, which is how a major GPA
@@ -91,6 +121,9 @@ export interface RuleResult {
   have: number;
   pending: number;
   unit: 'courses' | 'credits' | 'gpa';
+  /** How many groups a `distribute` rule drew on, and how many it needed. */
+  groupsUsed?: number;
+  groupsNeeded?: number;
 }
 
 export interface AuditResult {

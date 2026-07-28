@@ -15,7 +15,8 @@
     "deploy": "npm run build && bash tools/deploy-pages.sh",
     "fetch:sections": "node tools/fetch-sections.mjs",
     "fetch:ratings": "node tools/fetch-ratings.mjs",
-    "generate:samples": "node tools/generate-samples.mjs"
+    "generate:samples": "node tools/generate-samples.mjs",
+    "generate:requirements": "node tools/generate-requirements.mjs"
   },
   "dependencies": {
     "pdfjs-dist": "^5.4.149",
@@ -23,11 +24,14 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.19",
+    "happy-dom": "^20.11.1",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.6",
     "typescript": "^5.5.3",

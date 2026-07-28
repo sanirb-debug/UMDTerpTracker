@@ -1,0 +1,560 @@
+{
+  "major": "Psychology",
+  "terms": [
+    {
+      "id": "2023-Fall",
+      "season": "Fall",
+      "year": 2023,
+      "courses": [
+        {
+          "courseId": "PSYC100",
+          "title": "INTRODUCTION TO PSYCHOLO",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRODUCTION TO SOCIOLOG",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POPULAR CULTURE IN AMERI",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION PRINC",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRETING AMERICAN HI",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.66,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Spring",
+      "season": "Spring",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "PSYC200",
+          "title": "STATISTICAL METHODS IN P",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR"
+          ]
+        },
+        {
+          "courseId": "PSYC221",
+          "title": "SOCIAL PSYCHOLOGY",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "BSCI170",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS"
+          ]
+        },
+        {
+          "courseId": "BSCI171",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 1,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 1,
+          "genEd": [
+            "DSNL"
+          ]
+        },
+        {
+          "courseId": "ENGL393",
+          "title": "TECHNICAL WRITING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSPW"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.515,
+      "statedTermCredits": 13
+    },
+    {
+      "id": "2024-Fall",
+      "season": "Fall",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "PSYC300",
+          "title": "RESEARCH METHODS IN PSYC",
+          "credits": 4,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 4
+        },
+        {
+          "courseId": "SOCY241",
+          "title": "INEQUALITY IN AMERICAN S",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVCC"
+          ]
+        },
+        {
+          "courseId": "AOSC200",
+          "title": "WEATHER AND CLIMATE",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "ENES210",
+          "title": "ENTREPRENEURIAL OPPORTUN",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "AMST205",
+          "title": "AMERICAN MATERIAL CULTUR",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.3,
+      "statedTermCredits": 16
+    },
+    {
+      "id": "2025-Spring",
+      "season": "Spring",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "PSYC336",
+          "title": "PSYCHOLOGY OF WOMEN",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "PSYC341",
+          "title": "INTRODUCTION TO MEMORY A",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT170",
+          "title": "AMERICAN GOVERNMENT",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "ECON200",
+          "title": "PRINCIPLES OF MICROECONO",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "ENGL222",
+          "title": "AMERICAN LITERATURES",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.4,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2025-Fall",
+      "season": "Fall",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "PSYC353",
+          "title": "ADULT PSYCHOPATHOLOGY",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "PSYC355",
+          "title": "DEVELOPMENTAL PSYCHOLOGY",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "SOCY105",
+          "title": "UNDERSTANDING CONTEMPORA",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "HIST111",
+          "title": "THE MEDIEVAL WORLD",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT200",
+          "title": "INTERNATIONAL POLITICAL",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.4,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Spring",
+      "season": "Spring",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "PSYC361",
+          "title": "SURVEY OF INDUSTRIAL AND",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "PSYC432",
+          "title": "COUNSELING PSYCHOLOGY TH",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "STAT100",
+          "title": "ELEMENTARY STATISTICS AN",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "AMST101",
+          "title": "INTRODUCTION AMERICAN ST",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ECON201",
+          "title": "PRINCIPLES OF MACROECONO",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.4,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Fall",
+      "season": "Fall",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "PSYC436",
+          "title": "INTRODUCTION TO CLINICAL",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "PSYC404",
+          "title": "INTRODUCTION TO BEHAVIOR",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "SOCY230",
+          "title": "SOCIOLOGICAL SOCIAL PSYC",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "COMM200",
+          "title": "CRITICAL THINKING AND SP",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT110",
+          "title": "INTRODUCTION TO THE BUSI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "ENGL101",
+      "title": "ENG LANG/COMP/SCR 5",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSAW"
+      ]
+    },
+    {
+      "courseId": "MATH120",
+      "title": "CALCULUS AB/SCR 3",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSMA"
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "PSYC413",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "PSYC330",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0102",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "HIST111",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0103",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "ENGL234",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0104",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "SOCY230",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0105",
+      "termId": "2027-Spring"
+    }
+  ],
+  "statedCumulativeGpa": 3.457,
+  "statedCumulativeCredits": 110,
+  "warnings": []
+}

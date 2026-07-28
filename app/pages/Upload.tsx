@@ -2,7 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { ScannedPdfError } from '../../lib/parser/errors.ts';
 import { parseTranscriptText } from '../../lib/parser/fixedWidth.ts';
-import { SAMPLES } from '../data/samples.ts';
+import { SAMPLE_MAJORS, SAMPLE_YEARS, sampleFor } from '../data/samples.ts';
 
 interface Props {
   transcript: Transcript | null;
@@ -97,39 +97,67 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
 
       </section>
 
-      <section className="card">
+      <section className="card overflow-x-auto">
         <h2 className="font-semibold">See how it works</h2>
         <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
           Rather not hand your transcript to a site you have never heard of? Reasonable. Pick a
-          point in one invented student&apos;s degree — no file, no upload.
+          major and a year — no file, no upload.
         </p>
 
-        <div className="mt-4 grid gap-2 sm:grid-cols-2">
-          {SAMPLES.map((sample) => (
-            <button
-              key={sample.id}
-              type="button"
-              onClick={() => loadSample(sample.id, sample.text)}
-              aria-current={sample.id === sampleId ? 'true' : undefined}
-              className={`rounded-lg border p-3 text-left transition-colors hover:border-terp-red ${
-                sample.id === sampleId
-                  ? 'border-terp-red bg-red-50 dark:bg-red-950/20'
-                  : 'border-neutral-300 dark:border-neutral-700'
-              }`}
-            >
-              <div className="flex items-baseline justify-between gap-2">
-                <span className="font-semibold">{sample.label}</span>
-                <span className="text-xs text-neutral-500">{sample.standing}</span>
-              </div>
-              <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-300">{sample.blurb}</p>
-            </button>
-          ))}
-        </div>
+        <table className="mt-4 w-full min-w-[40rem] border-separate border-spacing-1 text-sm">
+          <thead>
+            <tr>
+              <th className="w-20" />
+              {SAMPLE_MAJORS.map((major) => (
+                <th key={major.slug} scope="col" className="px-1 pb-1 text-center align-bottom">
+                  <span className="block font-semibold">{major.short}</span>
+                  {!major.hasRequirements && (
+                    <span className="block text-[10px] font-normal text-amber-600 dark:text-amber-400">
+                      no audit yet
+                    </span>
+                  )}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {SAMPLE_YEARS.map((year) => (
+              <tr key={year.slug}>
+                <th scope="row" className="pr-2 text-right text-xs font-medium text-neutral-500">
+                  {year.label}
+                </th>
+                {SAMPLE_MAJORS.map((major) => {
+                  const sample = sampleFor(major.slug, year.slug);
+                  if (!sample) return <td key={major.slug} />;
+                  const selected = sample.id === sampleId;
+                  return (
+                    <td key={major.slug} className="p-0">
+                      <button
+                        type="button"
+                        onClick={() => loadSample(sample.id, sample.text)}
+                        aria-current={selected ? 'true' : undefined}
+                        aria-label={`${major.name}, ${year.label}`}
+                        className={`w-full rounded-lg border px-2 py-2 text-xs transition-colors hover:border-terp-red ${
+                          selected
+                            ? 'border-terp-red bg-red-50 font-semibold dark:bg-red-950/20'
+                            : 'border-neutral-300 dark:border-neutral-700'
+                        }`}
+                      >
+                        {year.label}
+                      </button>
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         <p className="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
-          All four are the same made-up Information Science student at different points, so the
-          later ones contain everything the earlier ones do. Entirely invented — no real
-          transcript, redacted or otherwise, is in this repository.
+          Each column is one invented student followed across four years, so the later rows contain
+          everything the earlier ones do. Psychology has no requirements file yet, which is what the
+          audit looks like for a major nobody has transcribed — it is a real state, not a broken
+          one. Entirely synthetic; no real transcript, redacted or otherwise, is in this repository.
         </p>
       </section>
 

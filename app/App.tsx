@@ -3,7 +3,7 @@ import type { Transcript } from '../lib/types.ts';
 import { cumulativeTotals } from '../lib/planner/index.ts';
 import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { parseTranscriptText } from '../lib/parser/fixedWidth.ts';
-import { findSample } from './data/samples.ts';
+import { findSample, majorOf } from './data/samples.ts';
 import { UploadPage } from './pages/Upload.tsx';
 import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
 
@@ -132,9 +132,9 @@ export function App() {
 
       {sampleId && (
         <p className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200">
-          Sample data — <strong>{findSample(sampleId)?.label ?? 'demo'} year</strong> of a made-up
-          Information Science student, not your own record. Everything below is real behaviour on
-          invented data; load your own transcript from the Transcript tab whenever you like.
+          Sample data — an invented <strong>{majorOf(sampleId)?.name ?? 'demo'}</strong> student,
+          not your own record. Everything below is real behaviour on invented data; load your own
+          transcript from the Transcript tab whenever you like.
         </p>
       )}
 
