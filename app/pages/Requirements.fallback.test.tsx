@@ -44,12 +44,33 @@ function transcript(major: string | undefined): Transcript {
   };
 }
 
-describe('requirements page without a requirements file', () => {
-  it('renders the unavailable state instead of an empty audit', () => {
-    expect(() => render(<RequirementsPage transcript={transcript('Psychology')} />)).not.toThrow();
+/** Every major in the demo grid that has no requirements file. */
+const UNAUDITED = [
+  'Psychology',
+  'Criminology and Criminal Justice',
+  'Economics',
+  'Biological Sciences',
+  'Government and Politics',
+  'Mechanical Engineering',
+  'Communication',
+  'Kinesiology',
+];
+
+describe.each(UNAUDITED)('requirements page for %s', (major) => {
+  it('renders the unavailable state instead of an empty audit, and does not throw', () => {
+    expect(() => render(<RequirementsPage transcript={transcript(major)} />)).not.toThrow();
     expect(screen.getByText(/Degree audit not yet available for this major/i)).toBeTruthy();
-    expect(screen.getByText(/Psychology requirements yet/i)).toBeTruthy();
+    expect(screen.getByText(new RegExp(`${major} requirements yet`, 'i'))).toBeTruthy();
   });
+
+  it('shows no audit tally it cannot compute', () => {
+    render(<RequirementsPage transcript={transcript(major)} />);
+    expect(screen.queryByText(/requirements met/i)).toBeNull();
+    expect(screen.queryByText(/Still to take/i)).toBeNull();
+  });
+});
+
+describe('requirements page without a requirements file', () => {
 
   it('never shows a requirements-met tally it cannot compute', () => {
     render(<RequirementsPage transcript={transcript('Psychology')} />);

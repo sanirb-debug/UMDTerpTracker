@@ -1,0 +1,525 @@
+{
+  "major": "Government and Politics",
+  "terms": [
+    {
+      "id": "2023-Fall",
+      "season": "Fall",
+      "year": 2023,
+      "courses": [
+        {
+          "courseId": "GVPT200",
+          "title": "INTERNATIONAL POLITICAL",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRETING AMERICAN HI",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DSHU"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRODUCTION TO SOCIOLOG",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "MATH120",
+          "title": "ELEMENTARY CALCULUS I",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR",
+            "FSMA"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POPULAR CULTURE IN AMERI",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.46,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Spring",
+      "season": "Spring",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "GVPT241",
+          "title": "THE STUDY OF POLITICAL P",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "GVPT273",
+          "title": "INTRODUCTION TO ENVIRONM",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION PRINC",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "ECON200",
+          "title": "PRINCIPLES OF MICROECONO",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST205",
+          "title": "AMERICAN MATERIAL CULTUR",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.46,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Fall",
+      "season": "Fall",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "GVPT201",
+          "title": "SCOPE AND METHODS FOR PO",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "GVPT280",
+          "title": "THE STUDY OF COMPARATIVE",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "STAT100",
+          "title": "ELEMENTARY STATISTICS AN",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR",
+            "FSMA"
+          ]
+        },
+        {
+          "courseId": "BSCI170",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNL",
+            "DSNS"
+          ]
+        },
+        {
+          "courseId": "BSCI171",
+          "title": "PRINCIPLES OF MOLECULAR",
+          "credits": 1,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 1
+        }
+      ],
+      "statedTermGpa": 3.285,
+      "statedTermCredits": 13
+    },
+    {
+      "id": "2025-Spring",
+      "season": "Spring",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "GVPT202",
+          "title": "LAW OR POLITICS THE US S",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "GVPT217",
+          "title": "MOCK TRIAL",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENGL393",
+          "title": "TECHNICAL WRITING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSPW"
+          ]
+        },
+        {
+          "courseId": "AOSC200",
+          "title": "WEATHER AND CLIMATE",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "ECON201",
+          "title": "PRINCIPLES OF MACROECONO",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.46,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2025-Fall",
+      "season": "Fall",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "GVPT306",
+          "title": "GLOBAL ENVIRONMENTAL POL",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT354",
+          "title": "INTERNATIONAL DEVELOPMEN",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "HIST111",
+          "title": "THE MEDIEVAL WORLD",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "SOCY241",
+          "title": "INEQUALITY IN AMERICAN S",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "PSYC100",
+          "title": "INTRODUCTION TO PSYCHOLO",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DSNS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.4,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Spring",
+      "season": "Spring",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "GVPT390",
+          "title": "GAME THEORY",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT404",
+          "title": "POLITICAL ECONOMY OF FOR",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT411",
+          "title": "CONFLICT IN THE INTERNAT",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENGL222",
+          "title": "AMERICAN LITERATURES",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        },
+        {
+          "courseId": "SOCY105",
+          "title": "UNDERSTANDING CONTEMPORA",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.34,
+      "statedTermCredits": 15
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "GVPT170",
+      "title": "US GOVERNMENT/SCR 5",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "DSHS"
+      ]
+    },
+    {
+      "courseId": "ENGL101",
+      "title": "ENG LANG/COMP/SCR 4",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSAW"
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "GVPT410",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "GVPT412",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0102",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "GVPT356",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0103",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "COMM200",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0104",
+      "termId": "2026-Fall"
+    },
+    {
+      "courseId": "AMST101",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0105",
+      "termId": "2026-Fall"
+    }
+  ],
+  "statedCumulativeGpa": 3.403,
+  "statedCumulativeCredits": 94,
+  "warnings": []
+}

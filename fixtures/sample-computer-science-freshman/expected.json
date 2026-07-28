@@ -14,10 +14,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 4,
-          "genEd": [
-            "FSAR"
-          ]
+          "creditsEarned": 4
         },
         {
           "courseId": "MATH141",
@@ -39,7 +36,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSHS",
+            "DSHU"
           ]
         },
         {
@@ -131,7 +129,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -150,6 +149,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     },

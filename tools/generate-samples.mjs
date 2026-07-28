@@ -67,8 +67,33 @@ const row = (cells) => {
 const money = (n) => n.toFixed(2);
 const gpaStr = (n) => n.toFixed(3);
 
-/** `['CMSC131', 'A-', 'FSAR']` → a course row. */
-const parseSpec = ([id, grade, genEd]) => ({ id, grade, genEd, credits: creditsFor(id) });
+/**
+ * Gen Ed codes come from the cached catalog, never from this file.
+ *
+ * umd.io records what UMD actually credits a course for, including the
+ * conditional form `DSNL|BSCI171`, which grants the lab category only when the
+ * paired course is also taken. Writing these by hand would be inventing
+ * academic facts; reading them means the samples can only claim what the
+ * catalog claims.
+ */
+function genEdFor(id, taken) {
+  const raw = CATALOG[id]?.genEd ?? [];
+  const codes = [];
+  for (const tag of raw) {
+    const [code, requires] = tag.split('|');
+    if (requires && !taken.has(requires)) continue;
+    if (!codes.includes(code)) codes.push(code);
+  }
+  return codes.length > 0 ? codes.join(', ') : undefined;
+}
+
+/** `['CMSC131', 'A-']` → a course row. Gen Ed is looked up, not declared. */
+const parseSpec = (taken) => ([id, grade]) => ({
+  id,
+  grade,
+  genEd: genEdFor(id, taken),
+  credits: creditsFor(id),
+});
 
 // --- the students ----------------------------------------------------------
 //
@@ -83,16 +108,16 @@ const PLANS = {
   'information-science': {
     major: 'Information Science',
     transfer: [
-      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH120', 'FSMA'],
-      ['', 'PSYCHOLOGY/SCR 5', 'P', 'PSYC100', 'DSHS'],
+      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH120'],
+      ['', 'PSYCHOLOGY/SCR 5', 'P', 'PSYC100'],
     ],
     semesters: [
-      [['INST126', 'A-'], ['ENGL101', 'B', 'FSAW'], ['HIST200', 'A-', 'DSHS'], ['SOCY100', 'B+', 'DSHS'], ['AMST101', 'A', 'DSHU']],
-      [['INST201', 'A', 'DSHS'], ['STAT100', 'B+', 'FSAR'], ['COMM107', 'A', 'FSOC'], ['AMST203', 'A-', 'DSHU, DVUP'], ['ECON200', 'B', 'DSHS']],
-      [['INST311', 'B+'], ['INST314', 'B'], ['ENGL393', 'A', 'FSPW'], ['BSCI170', 'B+', 'DSNS'], ['BSCI171', 'A', 'DSNL'], ['MATH121', 'W']],
-      [['INST326', 'A-'], ['INST327', 'A', 'DSSP'], ['GVPT170', 'B+', 'DSHS'], ['AMST205', 'A-', 'DSHU'], ['SOCY241', 'B', 'DSHS, DVCC']],
-      [['INST335', 'A-'], ['INST346', 'B+'], ['INST366', 'A', 'SCIS'], ['AOSC200', 'B+', 'DSNS, SCIS'], ['ENES210', 'A-', 'DSSP']],
-      [['INST352', 'A'], ['INST362', 'A-'], ['INST354', 'B+'], ['INST341', 'A-'], ['ECON201', 'B', 'DSHS']],
+      [['INST126', 'A-'], ['ENGL101', 'B'], ['HIST200', 'A-'], ['SOCY100', 'B+'], ['AMST101', 'A']],
+      [['INST201', 'A'], ['STAT100', 'B+'], ['COMM107', 'A'], ['AMST203', 'A-'], ['ECON200', 'B']],
+      [['INST311', 'B+'], ['INST314', 'B'], ['ENGL393', 'A'], ['BSCI170', 'B+'], ['BSCI171', 'A'], ['MATH121', 'W']],
+      [['INST326', 'A-'], ['INST327', 'A'], ['GVPT170', 'B+'], ['AMST205', 'A-'], ['SOCY241', 'B']],
+      [['INST335', 'A-'], ['INST346', 'B+'], ['INST366', 'A'], ['AOSC200', 'B+'], ['ENES210', 'A-']],
+      [['INST352', 'A'], ['INST362', 'A-'], ['INST354', 'B+'], ['INST341', 'A-'], ['ECON201', 'B']],
       [['INST466', 'A-'], ['INST377', 'B+'], ['BMGT220', 'A'], ['PSYC221', 'A-'], ['ENGL222', 'B+'], ['GVPT200', 'A-']],
       [['INST490', 'B+'], ['BMGT230', 'A-'], ['SOCY230', 'B+'], ['HIST111', 'A'], ['MATH121', 'B']],
     ],
@@ -100,32 +125,32 @@ const PLANS = {
   'computer-science': {
     major: 'Computer Science',
     transfer: [
-      ['2308', 'CALCULUS AB/SCR 5', 'P', 'MATH140', 'FSMA'],
-      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101', 'FSAW'],
+      ['2308', 'CALCULUS AB/SCR 5', 'P', 'MATH140'],
+      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
     ],
     semesters: [
-      [['CMSC131', 'A-', 'FSAR'], ['MATH141', 'B+'], ['HIST200', 'A-', 'DSHS'], ['SOCY100', 'B', 'DSHS'], ['AMST203', 'A', 'DSHU, DVUP']],
-      [['CMSC132', 'A'], ['CMSC250', 'B+'], ['MATH240', 'B'], ['COMM107', 'A', 'FSOC'], ['AMST205', 'A-', 'DSHU']],
-      [['CMSC216', 'B+'], ['MATH241', 'B'], ['BSCI170', 'B+', 'DSNS'], ['BSCI171', 'A', 'DSNL'], ['ENGL393', 'A', 'FSPW']],
-      [['CMSC330', 'A-'], ['CMSC351', 'B'], ['STAT400', 'B+'], ['AOSC200', 'B+', 'DSNS, SCIS'], ['SOCY241', 'B', 'DSHS, DVCC']],
-      [['CMSC411', 'B+'], ['CMSC420', 'A-'], ['ENES210', 'A', 'DSSP, SCIS'], ['ECON300', 'B'], ['GVPT170', 'A-', 'DSHS']],
-      [['CMSC421', 'B'], ['CMSC451', 'B+'], ['CMSC434', 'A-', 'DSSP'], ['ECON305', 'B+'], ['ECON306', 'B']],
-      [['CMSC430', 'A-'], ['ECON330', 'B+'], ['PSYC100', 'A', 'DSHS'], ['ENGL222', 'B+'], ['GVPT200', 'A-']],
+      [['CMSC131', 'A-'], ['MATH141', 'B+'], ['HIST200', 'A-'], ['SOCY100', 'B'], ['AMST203', 'A']],
+      [['CMSC132', 'A'], ['CMSC250', 'B+'], ['MATH240', 'B'], ['COMM107', 'A'], ['AMST205', 'A-']],
+      [['CMSC216', 'B+'], ['MATH241', 'B'], ['BSCI170', 'B+'], ['BSCI171', 'A'], ['ENGL393', 'A']],
+      [['CMSC330', 'A-'], ['CMSC351', 'B'], ['STAT400', 'B+'], ['AOSC200', 'B+'], ['SOCY241', 'B']],
+      [['CMSC411', 'B+'], ['CMSC420', 'A-'], ['ENES210', 'A'], ['ECON300', 'B'], ['GVPT170', 'A-']],
+      [['CMSC421', 'B'], ['CMSC451', 'B+'], ['CMSC434', 'A-'], ['ECON305', 'B+'], ['ECON306', 'B']],
+      [['CMSC430', 'A-'], ['ECON330', 'B+'], ['PSYC100', 'A'], ['ENGL222', 'B+'], ['GVPT200', 'A-']],
       [['CMSC417', 'A'], ['MATH246', 'B'], ['HIST111', 'A-'], ['SOCY105', 'B+'], ['BMGT110', 'A']],
     ],
   },
   management: {
     major: 'Management',
     transfer: [
-      ['2308', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101', 'FSAW'],
-      ['', 'PSYCHOLOGY/SCR 4', 'P', 'PSYC100', 'DSHS'],
+      ['2308', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
+      ['', 'PSYCHOLOGY/SCR 4', 'P', 'PSYC100'],
     ],
     semesters: [
-      [['BMGT110', 'A', 'DSSP'], ['MATH120', 'B+', 'FSMA'], ['ECON200', 'B', 'DSHS'], ['AMST203', 'A-', 'DSHU, DVUP'], ['COMM107', 'A', 'FSOC']],
-      [['BMGT220', 'B+'], ['ECON201', 'B', 'DSHS'], ['BMGT230', 'A-', 'FSAR'], ['HIST200', 'B+', 'DSHS, SCIS'], ['AMST205', 'A', 'DSHU']],
-      [['BMGT221', 'B'], ['BMGT301', 'B+'], ['BSCI170', 'B', 'DSNS'], ['BSCI171', 'A-', 'DSNL'], ['ENGL393', 'A', 'FSPW']],
-      [['BMGT340', 'B+'], ['BMGT350', 'A-'], ['AOSC200', 'B+', 'DSNS, SCIS'], ['SOCY241', 'B', 'DSHS, DVCC'], ['BMGT364', 'A', 'DSSP']],
-      [['BMGT363', 'A-'], ['BMGT380', 'B+'], ['BMGT360', 'A'], ['GVPT170', 'B+', 'DSHS'], ['SOCY100', 'A-', 'DSHS']],
+      [['BMGT110', 'A'], ['MATH120', 'B+'], ['ECON200', 'B'], ['AMST203', 'A-'], ['COMM107', 'A']],
+      [['BMGT220', 'B+'], ['ECON201', 'B'], ['BMGT230', 'A-'], ['HIST200', 'B+'], ['AMST205', 'A']],
+      [['BMGT221', 'B'], ['BMGT301', 'B+'], ['BSCI170', 'B'], ['BSCI171', 'A-'], ['ENGL393', 'A']],
+      [['BMGT340', 'B+'], ['BMGT350', 'A-'], ['AOSC200', 'B+'], ['SOCY241', 'B'], ['BMGT364', 'A']],
+      [['BMGT363', 'A-'], ['BMGT380', 'B+'], ['BMGT360', 'A'], ['GVPT170', 'B+'], ['SOCY100', 'A-']],
       [['BMGT362', 'B+'], ['BMGT366', 'A-'], ['BMGT461', 'B'], ['ENGL222', 'B+'], ['HIST111', 'A-']],
       [['BMGT463', 'A-'], ['BMGT495', 'B+'], ['BMGT466', 'B'], ['PSYC221', 'A-'], ['GVPT200', 'B+']],
       [['BMGT332', 'A'], ['ECON230', 'B+'], ['SOCY105', 'A-'], ['AMST101', 'B+'], ['COMM200', 'A']],
@@ -134,15 +159,15 @@ const PLANS = {
   finance: {
     major: 'Finance',
     transfer: [
-      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH120', 'FSMA'],
-      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101', 'FSAW'],
+      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH120'],
+      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
     ],
     semesters: [
-      [['BMGT110', 'A-', 'DSSP'], ['ECON200', 'A', 'DSHS'], ['AMST203', 'B+', 'DSHU, DVUP'], ['COMM107', 'A-', 'FSOC'], ['SOCY100', 'B', 'DSHS']],
-      [['BMGT220', 'A'], ['ECON201', 'B+', 'DSHS'], ['BMGT230', 'A-', 'FSAR'], ['HIST200', 'B', 'DSHS, SCIS'], ['AMST205', 'A-', 'DSHU']],
-      [['BMGT221', 'B+'], ['BMGT301', 'A-'], ['BSCI170', 'B', 'DSNS'], ['BSCI171', 'A', 'DSNL'], ['ENGL393', 'A-', 'FSPW']],
-      [['BMGT340', 'A-'], ['ECON305', 'B+'], ['AOSC200', 'B', 'DSNS, SCIS'], ['SOCY241', 'B+', 'DSHS, DVCC'], ['BMGT364', 'A-', 'DSSP']],
-      [['BMGT343', 'B+'], ['BMGT310', 'A-'], ['BMGT341', 'B'], ['GVPT170', 'A-', 'DSHS'], ['ENGL234', 'B+']],
+      [['BMGT110', 'A-'], ['ECON200', 'A'], ['AMST203', 'B+'], ['COMM107', 'A-'], ['SOCY100', 'B']],
+      [['BMGT220', 'A'], ['ECON201', 'B+'], ['BMGT230', 'A-'], ['HIST200', 'B'], ['AMST205', 'A-']],
+      [['BMGT221', 'B+'], ['BMGT301', 'A-'], ['BSCI170', 'B'], ['BSCI171', 'A'], ['ENGL393', 'A-']],
+      [['BMGT340', 'A-'], ['ECON305', 'B+'], ['AOSC200', 'B'], ['SOCY241', 'B+'], ['BMGT364', 'A-']],
+      [['BMGT343', 'B+'], ['BMGT310', 'A-'], ['BMGT341', 'B'], ['GVPT170', 'A-'], ['ENGL234', 'B+']],
       [['BMGT440', 'B'], ['BMGT347', 'B+'], ['BMGT441', 'A-'], ['ECON230', 'B'], ['HIST111', 'A-']],
       [['BMGT444', 'B+'], ['BMGT446', 'A-'], ['BMGT350', 'B'], ['SOCY230', 'A-'], ['GVPT200', 'B+']],
       [['BMGT495', 'A-'], ['ECON330', 'B+'], ['AMST101', 'A-'], ['SOCY105', 'B+'], ['COMM200', 'A']],
@@ -151,32 +176,151 @@ const PLANS = {
   'information-systems': {
     major: 'Information Systems',
     transfer: [
-      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH120', 'FSMA'],
-      ['', 'PSYCHOLOGY/SCR 5', 'P', 'PSYC100', 'DSHS'],
+      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH120'],
+      ['', 'PSYCHOLOGY/SCR 5', 'P', 'PSYC100'],
     ],
     semesters: [
-      [['BMGT110', 'A', 'DSSP'], ['ENGL101', 'B+', 'FSAW'], ['ECON200', 'A-', 'DSHS'], ['AMST203', 'B+', 'DSHU, DVUP'], ['COMM107', 'A', 'FSOC']],
-      [['BMGT220', 'A-'], ['ECON201', 'B+', 'DSHS'], ['BMGT230', 'A', 'FSAR'], ['HIST200', 'B+', 'DSHS, SCIS'], ['AMST101', 'B', 'DSHU']],
-      [['BMGT221', 'B+'], ['BMGT302', 'A'], ['BSCI170', 'B+', 'DSNS'], ['BSCI171', 'A-', 'DSNL'], ['ENGL393', 'A', 'FSPW']],
-      [['BMGT301', 'A-'], ['BMGT403', 'B+'], ['AOSC200', 'B', 'DSNS, SCIS'], ['SOCY241', 'A-', 'DSHS, DVCC'], ['BMGT364', 'B+', 'DSSP']],
-      [['BMGT402', 'A-'], ['BMGT430', 'B+'], ['BMGT340', 'B'], ['GVPT170', 'A-', 'DSHS'], ['SOCY105', 'B+', 'DSHS']],
+      [['BMGT110', 'A'], ['ENGL101', 'B+'], ['ECON200', 'A-'], ['AMST203', 'B+'], ['COMM107', 'A']],
+      [['BMGT220', 'A-'], ['ECON201', 'B+'], ['BMGT230', 'A'], ['HIST200', 'B+'], ['AMST101', 'B']],
+      [['BMGT221', 'B+'], ['BMGT302', 'A'], ['BSCI170', 'B+'], ['BSCI171', 'A-'], ['ENGL393', 'A']],
+      [['BMGT301', 'A-'], ['BMGT403', 'B+'], ['AOSC200', 'B'], ['SOCY241', 'A-'], ['BMGT364', 'B+']],
+      [['BMGT402', 'A-'], ['BMGT430', 'B+'], ['BMGT340', 'B'], ['GVPT170', 'A-'], ['SOCY105', 'B+']],
       [['BMGT407', 'A'], ['BMGT401', 'B+'], ['BMGT350', 'A-'], ['ENGL234', 'B'], ['HIST111', 'B+']],
       [['BMGT484', 'A-'], ['BMGT495', 'B+'], ['BMGT380', 'A-'], ['SOCY230', 'B+'], ['GVPT200', 'A-']],
       [['BMGT485', 'A'], ['ECON230', 'B+'], ['AMST205', 'A-'], ['PSYC221', 'B'], ['COMM200', 'A-']],
     ],
   },
+  criminology: {
+    major: 'Criminology and Criminal Justice',
+    transfer: [
+      ['2308', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
+      ['', 'PSYCHOLOGY/SCR 4', 'P', 'PSYC100'],
+    ],
+    semesters: [
+      [['CCJS100', 'A-'], ['SOCY100', 'B+'], ['MATH120', 'B'], ['HIST200', 'A'], ['AMST203', 'A-']],
+      [['CCJS105', 'B+'], ['GVPT170', 'A-'], ['COMM107', 'A'], ['SOCY105', 'B'], ['AMST205', 'B+']],
+      [['CCJS200', 'B'], ['CCJS230', 'B+'], ['STAT100', 'A-'], ['BSCI170', 'B'], ['BSCI171', 'A-']],
+      [['CCJS300', 'A-'], ['PSYC221', 'B+'], ['ENGL393', 'A'], ['AOSC200', 'B'], ['ECON200', 'B+']],
+      [['CCJS320', 'B+'], ['CCJS340', 'A-'], ['GVPT200', 'B'], ['SOCY241', 'B+'], ['HIST111', 'A-']],
+      [['CCJS352', 'A-'], ['CCJS360', 'B'], ['CCJS370', 'B+'], ['ENGL222', 'A-'], ['SOCY230', 'B']],
+      [['CCJS310', 'B+'], ['CCJS325', 'A-'], ['CCJS345', 'B'], ['GVPT201', 'B+'], ['COMM200', 'A-']],
+      [['CCJS321', 'A-'], ['CCJS330', 'B+'], ['PSYC300', 'B'], ['AMST101', 'A-'], ['SOCY105', 'B+']],
+    ],
+  },
+  economics: {
+    major: 'Economics',
+    transfer: [
+      ['2308', 'CALCULUS AB/SCR 5', 'P', 'MATH140'],
+      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
+    ],
+    semesters: [
+      [['ECON200', 'A'], ['MATH141', 'B+'], ['HIST200', 'B'], ['AMST203', 'A-'], ['SOCY100', 'B+']],
+      [['ECON201', 'A-'], ['MATH240', 'B'], ['COMM107', 'A'], ['AMST205', 'B+'], ['GVPT170', 'B']],
+      [['ECON230', 'B+'], ['MATH241', 'B'], ['BSCI170', 'B+'], ['BSCI171', 'A'], ['ENGL393', 'A-']],
+      [['ECON305', 'B'], ['ECON306', 'B+'], ['STAT400', 'A-'], ['AOSC200', 'B'], ['HIST111', 'B+']],
+      [['ECON300', 'A-'], ['ECON317', 'B+'], ['ECON321', 'B'], ['SOCY241', 'B+'], ['ENGL222', 'A-']],
+      [['ECON330', 'B+'], ['ECON312', 'A-'], ['ECON315', 'B'], ['PSYC100', 'A-'], ['GVPT200', 'B+']],
+      [['ECON327', 'B'], ['ECON326', 'B+'], ['ECON401', 'A-'], ['SOCY105', 'B+'], ['COMM200', 'A-']],
+      [['ECON386', 'A-'], ['ECON396', 'B+'], ['BMGT110', 'A'], ['AMST101', 'B+'], ['SOCY230', 'B']],
+    ],
+  },
+  biology: {
+    major: 'Biological Sciences',
+    transfer: [
+      ['2308', 'CALCULUS AB/SCR 4', 'P', 'MATH140'],
+      ['', 'ENG LANG/COMP/SCR 5', 'P', 'ENGL101'],
+    ],
+    semesters: [
+      [['BSCI170', 'A-'], ['BSCI171', 'A'], ['CHEM131', 'B+'], ['CHEM132', 'A-'], ['MATH141', 'B']],
+      [['BSCI160', 'B+'], ['BSCI161', 'A-'], ['CHEM231', 'B'], ['CHEM232', 'B+'], ['COMM107', 'A']],
+      [['BSCI201', 'B+'], ['PHYS121', 'B'], ['ENGL393', 'A-'], ['AMST203', 'B+'], ['HIST200', 'A-']],
+      [['BSCI202', 'A-'], ['PHYS122', 'B+'], ['STAT100', 'B'], ['SOCY100', 'B+'], ['AMST205', 'A-']],
+      [['BSCI222', 'B+'], ['BSCI207', 'A-'], ['PSYC100', 'A'], ['GVPT170', 'B'], ['HIST111', 'B+']],
+      [['BSCI331', 'B'], ['BSCI353', 'B+'], ['BSCI363', 'A-'], ['SOCY241', 'B'], ['ENGL222', 'B+']],
+      [['BSCI361', 'B+'], ['BSCI370', 'A-'], ['BSCI333', 'B'], ['GVPT200', 'B+']],
+      [['BSCI403', 'A-'], ['BSCI366', 'B+'], ['BSCI355', 'B'], ['COMM200', 'A-'], ['AMST101', 'B+']],
+    ],
+  },
+  government: {
+    major: 'Government and Politics',
+    transfer: [
+      ['2308', 'US GOVERNMENT/SCR 5', 'P', 'GVPT170'],
+      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
+    ],
+    semesters: [
+      [['GVPT200', 'A-'], ['HIST200', 'B+'], ['SOCY100', 'B'], ['MATH120', 'B+'], ['AMST203', 'A']],
+      [['GVPT241', 'B+'], ['GVPT273', 'A-'], ['COMM107', 'A'], ['ECON200', 'B'], ['AMST205', 'B+']],
+      [['GVPT201', 'B'], ['GVPT280', 'B+'], ['STAT100', 'A-'], ['BSCI170', 'B'], ['BSCI171', 'A-']],
+      [['GVPT202', 'A-'], ['GVPT217', 'B+'], ['ENGL393', 'A'], ['AOSC200', 'B'], ['ECON201', 'B+']],
+      [['GVPT306', 'B+'], ['GVPT354', 'A-'], ['HIST111', 'B'], ['SOCY241', 'B+'], ['PSYC100', 'A-']],
+      [['GVPT390', 'A-'], ['GVPT404', 'B'], ['GVPT411', 'B+'], ['ENGL222', 'A-'], ['SOCY105', 'B']],
+      [['GVPT410', 'B+'], ['GVPT412', 'A-'], ['GVPT356', 'B'], ['COMM200', 'B+'], ['AMST101', 'A-']],
+      [['GVPT413', 'A-'], ['GVPT377', 'B+'], ['GVPT221', 'B'], ['SOCY230', 'B+'], ['HIST200', 'A-']],
+    ],
+  },
+  'mechanical-engineering': {
+    major: 'Mechanical Engineering',
+    transfer: [
+      ['2308', 'CALCULUS AB/SCR 5', 'P', 'MATH140'],
+      ['', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
+    ],
+    semesters: [
+      [['ENES100', 'A-'], ['MATH141', 'B+'], ['CHEM135', 'B'], ['HIST200', 'A-'], ['AMST203', 'B+']],
+      [['ENME202', 'B+'], ['MATH241', 'B'], ['PHYS161', 'B+'], ['COMM107', 'A-'], ['AMST205', 'B']],
+      [['ENME272', 'A-'], ['MATH246', 'B'], ['PHYS260', 'B+'], ['PHYS261', 'A-'], ['ENGL393', 'A']],
+      [['ENME331', 'B'], ['ENME350', 'B+'], ['ENES220', 'B'], ['SOCY100', 'B+'], ['HIST111', 'A-']],
+      [['ENME361', 'B+'], ['ENME382', 'B'], ['ENME392', 'A-'], ['GVPT170', 'B+'], ['ENGL222', 'B']],
+      [['ENME400', 'A-'], ['ENME423', 'B+'], ['ENME332', 'B'], ['SOCY241', 'B+'], ['PSYC100', 'A-']],
+      [['ENME425', 'B+'], ['ENME408', 'A-'], ['ENME416', 'B'], ['AMST101', 'B+']],
+      [['ENME401', 'A-'], ['ENME405', 'B+'], ['ENME422', 'B'], ['COMM200', 'A-'], ['SOCY105', 'B+']],
+    ],
+  },
+  communication: {
+    major: 'Communication',
+    transfer: [
+      ['2308', 'ENG LANG/COMP/SCR 5', 'P', 'ENGL101'],
+      ['', 'PSYCHOLOGY/SCR 4', 'P', 'PSYC100'],
+    ],
+    semesters: [
+      [['COMM107', 'A'], ['SOCY100', 'B+'], ['MATH120', 'B'], ['AMST203', 'A-'], ['HIST200', 'B+']],
+      [['COMM200', 'A-'], ['COMM201', 'B+'], ['GVPT170', 'B'], ['AMST205', 'A-'], ['SOCY105', 'B+']],
+      [['COMM230', 'B+'], ['COMM250', 'A-'], ['STAT100', 'B'], ['BSCI170', 'B+'], ['BSCI171', 'A']],
+      [['COMM301', 'A-'], ['COMM302', 'B+'], ['ENGL393', 'A'], ['AOSC200', 'B'], ['ECON200', 'B+']],
+      [['COMM324', 'B+'], ['COMM330', 'A-'], ['COMM351', 'B'], ['PSYC221', 'B+'], ['HIST111', 'A-']],
+      [['COMM353', 'A-'], ['COMM311', 'B+'], ['COMM312', 'B'], ['SOCY241', 'B+'], ['ENGL222', 'A-']],
+      [['COMM320', 'B+'], ['COMM331', 'A-'], ['COMM345', 'B'], ['GVPT200', 'B+'], ['AMST101', 'A-']],
+      [['COMM303', 'A-'], ['COMM304', 'B+'], ['COMM305', 'B'], ['SOCY230', 'B+'], ['COMM306', 'A-']],
+    ],
+  },
+  kinesiology: {
+    major: 'Kinesiology',
+    transfer: [
+      ['2308', 'ENG LANG/COMP/SCR 4', 'P', 'ENGL101'],
+      ['', 'PSYCHOLOGY/SCR 5', 'P', 'PSYC100'],
+    ],
+    semesters: [
+      [['KNES200', 'A-'], ['MATH120', 'B+'], ['BSCI170', 'B'], ['BSCI171', 'A-'], ['AMST203', 'B+']],
+      [['KNES225', 'B+'], ['BSCI201', 'B'], ['COMM107', 'A-'], ['HIST200', 'B+'], ['SOCY100', 'A-']],
+      [['KNES260', 'A-'], ['BSCI202', 'B+'], ['CHEM131', 'B'], ['CHEM132', 'B+'], ['ENGL393', 'A-']],
+      [['KNES285', 'B+'], ['KNES286', 'A-'], ['STAT100', 'B'], ['AMST205', 'B+'], ['GVPT170', 'A-']],
+      [['KNES300', 'B'], ['KNES320', 'B+'], ['PSYC221', 'A-'], ['HIST111', 'B+']],
+      [['KNES350', 'A-'], ['KNES360', 'B'], ['KNES355', 'B+'], ['SOCY241', 'B'], ['ENGL222', 'A-']],
+      [['KNES370', 'B+'], ['KNES385', 'A-'], ['KNES386', 'B'], ['SOCY105', 'B+']],
+      [['KNES305', 'A-'], ['KNES306', 'B+'], ['KNES340', 'B'], ['COMM200', 'A-'], ['AMST101', 'B+']],
+    ],
+  },
   psychology: {
     major: 'Psychology',
     transfer: [
-      ['2308', 'ENG LANG/COMP/SCR 5', 'P', 'ENGL101', 'FSAW'],
-      ['', 'CALCULUS AB/SCR 3', 'P', 'MATH120', 'FSMA'],
+      ['2308', 'ENG LANG/COMP/SCR 5', 'P', 'ENGL101'],
+      ['', 'CALCULUS AB/SCR 3', 'P', 'MATH120'],
     ],
     semesters: [
-      [['PSYC100', 'A', 'DSHS'], ['SOCY100', 'A-', 'DSHS'], ['AMST203', 'B+', 'DSHU, DVUP'], ['COMM107', 'A', 'FSOC'], ['HIST200', 'B+', 'DSHU']],
-      [['PSYC200', 'B+', 'FSAR'], ['PSYC221', 'A-', 'SCIS'], ['BSCI170', 'B', 'DSNS'], ['BSCI171', 'A-', 'DSNL'], ['ENGL393', 'A', 'FSPW']],
-      [['PSYC300', 'B'], ['SOCY241', 'B+', 'DSHS, DVCC'], ['AOSC200', 'B+', 'DSNS, SCIS'], ['ENES210', 'A-', 'DSSP'], ['AMST205', 'B+', 'DSHU']],
-      [['PSYC336', 'A-'], ['PSYC341', 'B+'], ['GVPT170', 'B', 'DSHS'], ['ECON200', 'B+', 'DSHS'], ['ENGL222', 'A-']],
-      [['PSYC353', 'A-', 'DSSP'], ['PSYC355', 'B+'], ['SOCY105', 'A-'], ['HIST111', 'B+'], ['GVPT200', 'B']],
+      [['PSYC100', 'A'], ['SOCY100', 'A-'], ['AMST203', 'B+'], ['COMM107', 'A'], ['HIST200', 'B+']],
+      [['PSYC200', 'B+'], ['PSYC221', 'A-'], ['BSCI170', 'B'], ['BSCI171', 'A-'], ['ENGL393', 'A']],
+      [['PSYC300', 'B'], ['SOCY241', 'B+'], ['AOSC200', 'B+'], ['ENES210', 'A-'], ['AMST205', 'B+']],
+      [['PSYC336', 'A-'], ['PSYC341', 'B+'], ['GVPT170', 'B'], ['ECON200', 'B+'], ['ENGL222', 'A-']],
+      [['PSYC353', 'A-'], ['PSYC355', 'B+'], ['SOCY105', 'A-'], ['HIST111', 'B+'], ['GVPT200', 'B']],
       [['PSYC361', 'B+'], ['PSYC432', 'A-'], ['STAT100', 'B+'], ['AMST101', 'A-'], ['ECON201', 'B']],
       [['PSYC436', 'A-'], ['PSYC404', 'B+'], ['SOCY230', 'A-'], ['COMM200', 'B+'], ['BMGT110', 'A-']],
       [['PSYC413', 'A'], ['PSYC330', 'B+'], ['HIST111', 'A-'], ['ENGL234', 'B+'], ['SOCY230', 'A-']],
@@ -217,8 +361,11 @@ function courseRow(course) {
 }
 
 function build(plan, snapshot) {
-  const semesters = plan.semesters.slice(0, snapshot.through + 1).map((spec) => spec.map(parseSpec));
-  const registered = plan.semesters[snapshot.registered].map(parseSpec);
+  // Conditional Gen Ed tags depend on what else the student took.
+  const taken = new Set(plan.semesters.flat().map(([id]) => id));
+  const spec = parseSpec(taken);
+  const semesters = plan.semesters.slice(0, snapshot.through + 1).map((s) => s.map(spec));
+  const registered = plan.semesters[snapshot.registered].map(spec);
   const transferCredits = plan.transfer.reduce((sum, [, , , equiv]) => sum + creditsFor(equiv), 0);
 
   const lines = [
@@ -232,9 +379,10 @@ function build(plan, snapshot) {
     row([[0, 'Advanced Placement Exam'], [30, 'on 08/15/23']]), '',
     row([[0, '** Transfer Credit Information **'], [45, '** Equivalences **']]),
     'Advanced Placement Exam',
-    ...plan.transfer.map(([term, title, grade, equiv, genEd]) =>
+    ...plan.transfer.map(([term, title, grade, equiv]) =>
       row([[XFER.term, term], [XFER.title, title], [XFER.grade, grade],
-        [XFER.credits, money(creditsFor(equiv))], [XFER.equiv, equiv], [XFER.gened, genEd]]),
+        [XFER.credits, money(creditsFor(equiv))], [XFER.equiv, equiv],
+        [XFER.gened, genEdFor(equiv, taken)]]),
     ),
     row([[0, 'Acceptable UG Inst. Credits:'], [34, money(transferCredits)]]),
     row([[0, 'Total UG Credits Applicable:'], [34, money(transferCredits)]]), '',

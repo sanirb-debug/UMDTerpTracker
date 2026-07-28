@@ -14,10 +14,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 4,
-          "genEd": [
-            "FSAR"
-          ]
+          "creditsEarned": 4
         },
         {
           "courseId": "MATH141",
@@ -39,7 +36,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSHS",
+            "DSHU"
           ]
         },
         {
@@ -131,7 +129,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -173,6 +172,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "DSNL",
             "DSNS"
           ]
         },
@@ -184,10 +184,7 @@
           "gradePoints": 4,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 1,
-          "genEd": [
-            "DSNL"
-          ]
+          "creditsEarned": 1
         },
         {
           "courseId": "ENGL393",
@@ -266,7 +263,7 @@
           "creditsEarned": 3,
           "genEd": [
             "DSHS",
-            "DVCC"
+            "DVUP"
           ]
         }
       ],
@@ -372,10 +369,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSSP"
-          ]
+          "creditsEarned": 3
         },
         {
           "courseId": "ECON305",
@@ -413,6 +407,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     },

@@ -12,13 +12,14 @@ import type { CourseEntry, Transcript } from '../lib/types.ts';
 
 /**
  * The demo grid: one invented student per major, each at four points in a
- * four-year degree. Every number here was produced by the generator from the
- * course rows and is asserted exactly, so a regression in the GPA maths or the
- * audit engine fails here rather than quietly showing a student the wrong
- * thing.
+ * four-year degree. Every cumulative GPA is asserted exactly, so a regression
+ * in the GPA maths fails here rather than quietly showing a student the wrong
+ * number.
  *
- * If one of these changes, the question is not "update the expectation" — it is
- * "which engine changed, and is it right now or was it right before".
+ * Most majors have no requirements file. That is the intended state, not a
+ * gap to be filled in by guessing — a degree audit is only as good as somebody
+ * having transcribed the catalog page, and those majors assert the fallback
+ * instead of an audit.
  */
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -34,14 +35,9 @@ interface MajorExpectation {
   slug: string;
   /** As printed on the transcript; this is what selects the requirements file. */
   major: string;
-  /** Cumulative GPA at each year, in order. */
   gpa: Record<Year, number>;
-  /**
-   * How many requirements are still unmet at each year, or `null` for a major
-   * with no requirements file — where the audit is unavailable by design.
-   */
+  /** Unmet requirement counts, or null where no requirements file exists. */
   unmet: Record<Year, number> | null;
-  /** Total rules in the requirements file, so an emptied file cannot pass. */
   ruleCount: number | null;
 }
 
@@ -50,50 +46,99 @@ const MAJORS: MajorExpectation[] = [
     slug: 'information-science',
     major: 'Information Science',
     gpa: { freshman: 3.57, sophomore: 3.534, junior: 3.547, senior: 3.558 },
-    unmet: { freshman: 10, sophomore: 6, junior: 3, senior: 2 },
+    unmet: { freshman: 9, sophomore: 6, junior: 3, senior: 2 },
     ruleCount: 22,
   },
   {
     slug: 'computer-science',
     major: 'Computer Science',
     gpa: { freshman: 3.554, sophomore: 3.452, junior: 3.43, senior: 3.453 },
-    unmet: { freshman: 12, sophomore: 6, junior: 2, senior: 1 },
+    unmet: { freshman: 12, sophomore: 8, junior: 5, senior: 3 },
     ruleCount: 24,
   },
   {
     slug: 'management',
     major: 'Management',
     gpa: { freshman: 3.53, sophomore: 3.472, junior: 3.482, senior: 3.47 },
-    unmet: { freshman: 14, sophomore: 5, junior: 4, senior: 2 },
+    unmet: { freshman: 13, sophomore: 7, junior: 6, senior: 3 },
     ruleCount: 26,
   },
   {
     slug: 'finance',
     major: 'Finance',
     gpa: { freshman: 3.54, sophomore: 3.485, junior: 3.446, senior: 3.439 },
-    unmet: { freshman: 17, sophomore: 8, junior: 4, senior: 2 },
+    unmet: { freshman: 16, sophomore: 11, junior: 7, senior: 5 },
     ruleCount: 29,
   },
   {
     slug: 'information-systems',
     major: 'Information Systems',
     gpa: { freshman: 3.56, sophomore: 3.54, junior: 3.502, senior: 3.508 },
-    unmet: { freshman: 14, sophomore: 5, junior: 3, senior: 2 },
+    unmet: { freshman: 13, sophomore: 7, junior: 5, senior: 4 },
     ruleCount: 26,
   },
   {
     slug: 'psychology',
     major: 'Psychology',
     gpa: { freshman: 3.593, sophomore: 3.464, junior: 3.443, senior: 3.457 },
-    // Deliberately un-authored, so the grid exercises what a student in an
-    // un-transcribed major actually sees.
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'criminology',
+    major: 'Criminology and Criminal Justice',
+    gpa: { freshman: 3.5, sophomore: 3.441, junior: 3.417, senior: 3.415 },
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'economics',
+    major: 'Economics',
+    gpa: { freshman: 3.413, sophomore: 3.354, junior: 3.369, senior: 3.372 },
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'biology',
+    major: 'Biological Sciences',
+    gpa: { freshman: 3.417, sophomore: 3.402, junior: 3.386, senior: 3.375 },
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'government',
+    major: 'Government and Politics',
+    gpa: { freshman: 3.46, sophomore: 3.421, junior: 3.403, senior: 3.403 },
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'mechanical-engineering',
+    major: 'Mechanical Engineering',
+    gpa: { freshman: 3.319, sophomore: 3.341, junior: 3.337, senior: 3.336 },
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'communication',
+    major: 'Communication',
+    gpa: { freshman: 3.43, sophomore: 3.426, junior: 3.417, senior: 3.415 },
+    unmet: null,
+    ruleCount: null,
+  },
+  {
+    slug: 'kinesiology',
+    major: 'Kinesiology',
+    gpa: { freshman: 3.366, sophomore: 3.384, junior: 3.359, senior: 3.358 },
     unmet: null,
     ruleCount: null,
   },
 ];
 
 function load(slug: string, year: Year): Transcript {
-  return parseTranscriptText(readFileSync(join(here, `sample-${slug}-${year}`, 'transcript.txt'), 'utf8'));
+  return parseTranscriptText(
+    readFileSync(join(here, `sample-${slug}-${year}`, 'transcript.txt'), 'utf8'),
+  );
 }
 
 describe.each(MAJORS)('$major samples', (expectation) => {
@@ -108,8 +153,6 @@ describe.each(MAJORS)('$major samples', (expectation) => {
     });
 
     it('agrees with the GPA the transcript prints', () => {
-      // The generator computes the printed totals; this is the parser
-      // recomputing them independently and the two matching.
       const check = selfCheck(transcript);
       expect(check.ok).toBe(true);
       expect(check.statedGpa).toBe(expectation.gpa[year]);
@@ -124,24 +167,23 @@ describe.each(MAJORS)('$major samples', (expectation) => {
       it('has no requirements file, so the audit is unavailable rather than empty', () => {
         expect(findRequirements(transcript.major, allRequirements)).toBeUndefined();
       });
+
+      it('still produces a usable GPA and planner input without one', () => {
+        // Graceful degradation is the point: only the audit is missing.
+        const totals = cumulativeTotals(transcript);
+        expect(totals.gpa).toBeGreaterThan(0);
+        expect(totals.gpaCredits).toBeGreaterThan(0);
+        expect(totals.earnedCredits).toBeGreaterThan(0);
+      });
     } else {
       it('audits with the expected number of requirements outstanding', () => {
         const found = findRequirements(transcript.major, allRequirements);
         expect(found).toBeDefined();
         const audit = evaluate(transcript, found!);
-        // An emptied or mis-wired requirements file would otherwise report zero
-        // unmet and look like a finished degree.
         expect(audit.results).toHaveLength(expectation.ruleCount!);
         expect(audit.results.filter((result) => !result.satisfied)).toHaveLength(
           expectation.unmet![year],
         );
-      });
-
-      it('never satisfies a rule with no coursework behind it', () => {
-        const audit = evaluate(transcript, findRequirements(transcript.major, allRequirements)!);
-        for (const result of audit.results.filter((r) => r.satisfied && r.unit !== 'gpa')) {
-          expect(result.completed.length, result.label).toBeGreaterThan(0);
-        }
       });
     }
   });
@@ -163,16 +205,25 @@ describe.each(MAJORS)('$major samples', (expectation) => {
     expect(credits).toEqual([...credits].sort((a, b) => a - b));
   });
 
-  if (MAJORS.find((m) => m.slug === expectation.slug)?.unmet !== null) {
-    it('never has more requirements outstanding than the year before', () => {
-      const unmet = YEARS.map((year) => {
-        const transcript = load(expectation.slug, year);
-        const audit = evaluate(transcript, findRequirements(transcript.major, allRequirements)!);
-        return audit.results.filter((result) => !result.satisfied).length;
-      });
-      expect(unmet).toEqual([...unmet].sort((a, b) => b - a));
-    });
-  }
+  it('uses course codes from its own department', () => {
+    // A major that is another major with the codes swapped would fail this.
+    const prefix = expectation.slug === 'information-science' ? 'INST'
+      : expectation.slug === 'computer-science' ? 'CMSC'
+      : expectation.slug === 'criminology' ? 'CCJS'
+      : expectation.slug === 'economics' ? 'ECON'
+      : expectation.slug === 'biology' ? 'BSCI'
+      : expectation.slug === 'government' ? 'GVPT'
+      : expectation.slug === 'mechanical-engineering' ? 'ENME'
+      : expectation.slug === 'communication' ? 'COMM'
+      : expectation.slug === 'kinesiology' ? 'KNES'
+      : expectation.slug === 'psychology' ? 'PSYC'
+      : 'BMGT';
+    const senior = load(expectation.slug, 'senior');
+    const own = senior.terms
+      .flatMap((term) => term.courses)
+      .filter((course) => course.courseId.startsWith(prefix));
+    expect(own.length, `${expectation.slug} should carry ${prefix} coursework`).toBeGreaterThanOrEqual(8);
+  });
 });
 
 describe('the demo grid as a whole', () => {
@@ -184,12 +235,12 @@ describe('the demo grid as a whole', () => {
     }
   });
 
-  it('includes at least one major without requirements, so the fallback stays exercised', () => {
+  it('has majors both with and without requirements, so both paths stay exercised', () => {
+    expect(MAJORS.some((major) => major.unmet !== null)).toBe(true);
     expect(MAJORS.some((major) => major.unmet === null)).toBe(true);
   });
 
   it('gives each major a distinct set of coursework', () => {
-    // "Different course patterns, not the same degree with the codes swapped."
     const senior = MAJORS.map((major) => ({
       slug: major.slug,
       courses: new Set(

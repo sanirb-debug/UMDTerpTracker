@@ -14,10 +14,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSSP"
-          ]
+          "creditsEarned": 3
         },
         {
           "courseId": "ECON200",
@@ -128,7 +125,7 @@
           "creditsEarned": 3,
           "genEd": [
             "DSHS",
-            "SCIS"
+            "DSHU"
           ]
         },
         {
@@ -141,7 +138,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -160,6 +158,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     },

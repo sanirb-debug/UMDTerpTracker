@@ -14,10 +14,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSSP"
-          ]
+          "creditsEarned": 3
         },
         {
           "courseId": "ECON200",
@@ -128,7 +125,7 @@
           "creditsEarned": 3,
           "genEd": [
             "DSHS",
-            "SCIS"
+            "DSHU"
           ]
         },
         {
@@ -141,7 +138,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -183,6 +181,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "DSNL",
             "DSNS"
           ]
         },
@@ -194,10 +193,7 @@
           "gradePoints": 4,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 1,
-          "genEd": [
-            "DSNL"
-          ]
+          "creditsEarned": 1
         },
         {
           "courseId": "ENGL393",
@@ -266,7 +262,7 @@
           "creditsEarned": 3,
           "genEd": [
             "DSHS",
-            "DVCC"
+            "DVUP"
           ]
         },
         {
@@ -277,10 +273,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSSP"
-          ]
+          "creditsEarned": 3
         }
       ],
       "statedTermGpa": 3.394,
@@ -342,7 +335,11 @@
           "gradePoints": 3.3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
         }
       ],
       "statedTermGpa": 3.4,
@@ -391,7 +388,10 @@
           "gradePoints": 3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR"
+          ]
         },
         {
           "courseId": "HIST111",
@@ -401,7 +401,11 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVUP"
+          ]
         }
       ],
       "statedTermGpa": 3.34,
@@ -450,7 +454,10 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
         },
         {
           "courseId": "GVPT200",
@@ -460,7 +467,11 @@
           "gradePoints": 3.3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVUP"
+          ]
         }
       ],
       "statedTermGpa": 3.4,
@@ -478,6 +489,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     },

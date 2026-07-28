@@ -16,7 +16,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSHS",
+            "DSNS"
           ]
         },
         {
@@ -69,6 +70,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "DSHS",
             "DSHU"
           ]
         }
@@ -104,7 +106,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "SCIS"
+            "DSHS",
+            "DSSP"
           ]
         },
         {
@@ -117,6 +120,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "DSNL",
             "DSNS"
           ]
         },
@@ -128,10 +132,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 1,
-          "genEd": [
-            "DSNL"
-          ]
+          "creditsEarned": 1
         },
         {
           "courseId": "ENGL393",
@@ -175,6 +176,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     }

@@ -14,10 +14,7 @@
           "gradePoints": 4,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSSP"
-          ]
+          "creditsEarned": 3
         },
         {
           "courseId": "MATH120",
@@ -29,6 +26,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "FSAR",
             "FSMA"
           ]
         },
@@ -128,7 +126,7 @@
           "creditsEarned": 3,
           "genEd": [
             "DSHS",
-            "SCIS"
+            "DSHU"
           ]
         },
         {
@@ -141,7 +139,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -173,7 +172,8 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
-        "DSHS"
+        "DSHS",
+        "DSNS"
       ]
     }
   ],

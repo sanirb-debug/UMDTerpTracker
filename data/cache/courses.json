@@ -17,7 +17,12 @@
     "GVPT",
     "HIST",
     "BSCI",
-    "AOSC"
+    "AOSC",
+    "CCJS",
+    "ENME",
+    "KNES",
+    "CHEM",
+    "PHYS"
   ],
   "courses": {
     "AMST101": {
@@ -2056,6 +2061,716 @@
       "credits": 1,
       "genEd": [],
       "dept": "BSCI"
+    },
+    "CCJS100": {
+      "title": "Introduction to Criminal Justice",
+      "credits": 3,
+      "genEd": [
+        "DSHS"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS105": {
+      "title": "Introduction to Criminology",
+      "credits": 3,
+      "genEd": [
+        "DSHS"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS200": {
+      "title": "Statistics for Criminology and Criminal Justice",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS225": {
+      "title": "Responses to Violence",
+      "credits": 3,
+      "genEd": [
+        "DSHS",
+        "DSSP",
+        "SCIS"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS230": {
+      "title": "Criminal Law in Action",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS278B": {
+      "title": "Special Topics in Criminology and Criminal Justice; Lynching, Race, and the Law",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS300": {
+      "title": "Criminological and Criminal Justice Research Methods",
+      "credits": 3,
+      "genEd": [
+        "DSSP"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS301": {
+      "title": "Fundamentals in Criminal Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS310": {
+      "title": "Criminal Investigations",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS315": {
+      "title": "Ethics in Criminal Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS318G": {
+      "title": "Special Topics in Criminology & Criminal Justice; Introduction to Forensic Science",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS320": {
+      "title": "Introduction to Criminalistics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS321": {
+      "title": "Computer and Digital Forensics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS325": {
+      "title": "Slavery in the Twenty First Century: Combating Human Trafficking",
+      "credits": 3,
+      "genEd": [
+        "DSHS",
+        "SCIS"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS330": {
+      "title": "Contemporary Criminological Issues",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS332": {
+      "title": "Major Transitions: From Undergraduate to Professional",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS340": {
+      "title": "Policing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS342": {
+      "title": "Corrections",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS345": {
+      "title": "Courts and Sentencing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS352": {
+      "title": "Drugs and Crime",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS359": {
+      "title": "Field Training in Criminology and Corrections",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS360": {
+      "title": "Victimology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS370": {
+      "title": "Race, Crime and Criminal Justice",
+      "credits": 3,
+      "genEd": [
+        "DVUP"
+      ],
+      "dept": "CCJS"
+    },
+    "CCJS386": {
+      "title": "Experiential Learning",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS388H": {
+      "title": "Independent Reading Course in Criminology and Criminal Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS389H": {
+      "title": "Independent Research in Criminology and Criminal Justice",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS398": {
+      "title": "Law Enforcement Field Training",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS399": {
+      "title": "Independent Study in Criminology and Criminal Justice",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS405": {
+      "title": "Gangs",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS418E": {
+      "title": "Seminar in Criminology and Criminal Justice; Coding for Criminology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS418M": {
+      "title": "Seminar in Criminology and Criminal Justice; A Critical Examination of Contemporary Debates in Crime, Law, and Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS418P": {
+      "title": "Seminar in Criminology and Criminal Justice; Marijuana, Law, and Society",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS418R": {
+      "title": "Seminar in Criminology and Criminal Justice; Politics of American Criminal Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS418V": {
+      "title": "Seminar in Criminology and Criminal Justice; Offenders of Violent Crime",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS440": {
+      "title": "Security Administration",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS450": {
+      "title": "Advanced Juvenile Delinquency",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS451": {
+      "title": "Crime and Delinquency Prevention",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS453": {
+      "title": "White Collar and Organized Crime",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS454": {
+      "title": "Contemporary Criminological Theory",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS461": {
+      "title": "Psychology of Criminal Behavior",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS498D": {
+      "title": "Selected Topics in Criminology and Criminal Justice; Open Source Intelligence Investigations",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS498K": {
+      "title": "Selected Topics in Criminology and Criminal Justice; Child Abuse Investigations",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS498O": {
+      "title": "Selected Topics in Criminology and Criminal Justice; Crossover Youth: The Intersection of the Child Welfare System and Criminal Justice Systems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS498P": {
+      "title": "Selected Topics in Criminology and Criminal Justice; Truth and Justice in the Disinformation Era",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS498V": {
+      "title": "Selected Topics in Criminology and Criminal Justice; Use of Force",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS498Z": {
+      "title": "Selected Topics in Criminology and Criminal Justice; A Matter of Life and Death: Criminal Sentencing Issues",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS600": {
+      "title": "Criminal Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS604": {
+      "title": "Policy Analysis Project",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS620": {
+      "title": "Fundamentals of Criminological Research",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS650": {
+      "title": "Research Practicum",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS654": {
+      "title": "History of Criminological Thought",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS670": {
+      "title": "Race, Crime, and Criminal Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS699": {
+      "title": "Special Criminological Problems",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS699D": {
+      "title": "Special Criminological Problems; Professional Development",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS699I": {
+      "title": "Special Criminological Problems; Communities and Crime",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS699J": {
+      "title": "Special Criminological Problems; Emerging Adulthood",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS699U": {
+      "title": "Special Criminological Problems; Publication Practicum",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS710": {
+      "title": "Advanced Statistics Methods - Limited Dependent Variables",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS720": {
+      "title": "Criminal Justice System Planning: Policy Analysis for Crime Control",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS799": {
+      "title": "Master's Thesis Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS898": {
+      "title": "Pre-Candidacy Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CCJS899": {
+      "title": "Doctoral Dissertation Research",
+      "credits": 6,
+      "genEd": [],
+      "dept": "CCJS"
+    },
+    "CHEM131": {
+      "title": "Chemistry I - Fundamentals of General Chemistry",
+      "credits": 3,
+      "genEd": [
+        "DSNL|CHEM132",
+        "DSNS"
+      ],
+      "dept": "CHEM"
+    },
+    "CHEM132": {
+      "title": "General Chemistry I Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM132C": {
+      "title": "General Chemistry I Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM132S": {
+      "title": "General Chemistry I Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM134": {
+      "title": "Chemical Principles for Engineering",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM135": {
+      "title": "General Chemistry for Engineers",
+      "credits": 3,
+      "genEd": [
+        "DSNL|CHEM136",
+        "DSNS"
+      ],
+      "dept": "CHEM"
+    },
+    "CHEM136": {
+      "title": "General Chemistry Laboratory for Engineers",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM146": {
+      "title": "Principles of General Chemistry",
+      "credits": 3,
+      "genEd": [
+        "DSNL|CHEM177",
+        "DSNS"
+      ],
+      "dept": "CHEM"
+    },
+    "CHEM177": {
+      "title": "Introduction to Laboratory Practices and Research in the Chemical Sciences",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM231": {
+      "title": "Organic Chemistry I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM232": {
+      "title": "Organic Chemistry Laboratory I",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM241": {
+      "title": "Organic Chemistry II",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM242": {
+      "title": "Organic Chemistry Laboratory II",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM247": {
+      "title": "Principles of Organic Chemistry II",
+      "credits": 4,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM271": {
+      "title": "General Chemistry and Energetics",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM272": {
+      "title": "General Bioanalytical Chemistry Laboratory",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM277": {
+      "title": "Fundamentals of Analytical and Bioanalytical Chemistry Laboratory",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM398": {
+      "title": "Special Projects",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM399A": {
+      "title": "Introduction to Chemical Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM399B": {
+      "title": "Introduction to Chemical Research",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM399C": {
+      "title": "Introduction to Chemical Research",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM399X": {
+      "title": "Introduction to Chemical Research; Chemistry Instruction",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM403": {
+      "title": "Radiochemistry",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM425": {
+      "title": "Instrumental Methods of Analysis",
+      "credits": 4,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM434": {
+      "title": "Air Pollution and Environmental Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM441": {
+      "title": "Advanced Organic Chemistry",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM460": {
+      "title": "Structure Determination Using Spectroscopic Methods",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM480": {
+      "title": "Principles of Physical Chemistry",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM481": {
+      "title": "Physical Chemistry I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM482": {
+      "title": "Physical Chemistry II",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM483": {
+      "title": "Physical Chemistry Laboratory I",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM484": {
+      "title": "Physical Chemistry Laboratory II",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM601": {
+      "title": "Structure and Bonding of Molecules and Materials",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM608K": {
+      "title": "Selected Topics in Inorganic Chemistry; Chemistry Teaching and Learning in Higher Education",
+      "credits": 2,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM611": {
+      "title": "Professional Skills for New Graduate Students",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM624": {
+      "title": "Electrical Methods of Quantitative Analysis",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM625": {
+      "title": "Separation Methods in Quantitative Analysis",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM640": {
+      "title": "Problems in Organic Reaction Mechanisms",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM641": {
+      "title": "Organic Reaction Mechanisms",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM684": {
+      "title": "Chemical Thermodynamics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM689N": {
+      "title": "Special Topics in Physical Chemistry; Fundamentals and Applications of Nanochemistry",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM690": {
+      "title": "Quantum Chemistry I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM699": {
+      "title": "Special Problems in Chemistry",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM799": {
+      "title": "Master's Thesis Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM889A": {
+      "title": "Seminar; Analytical, Nuclear and Environmental Chemistry",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM889C": {
+      "title": "Seminar; Inorganic Chemistry",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM889D": {
+      "title": "Seminar; Organic Chemistry",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM889E": {
+      "title": "Seminar; Physical Chemistry",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM889F": {
+      "title": "Seminar; Chemical Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM889M": {
+      "title": "Seminar; Materials Chemistry",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM898": {
+      "title": "Pre-Candidacy Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "CHEM"
+    },
+    "CHEM899": {
+      "title": "Doctoral Dissertation Research",
+      "credits": 6,
+      "genEd": [],
+      "dept": "CHEM"
     },
     "CMSC100": {
       "title": "Bits and Bytes of Computer and Information Sciences",
@@ -4796,6 +5511,396 @@
       "genEd": [],
       "dept": "ENGL"
     },
+    "ENME201": {
+      "title": "Careers in Mechanical Engineering",
+      "credits": 1,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME202": {
+      "title": "Computing Fundamentals for Engineers",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME208": {
+      "title": "Introduction to Automotive Engineering and Design",
+      "credits": 2,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME272": {
+      "title": "Introduction to Computer Aided Design",
+      "credits": 2,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME299Z": {
+      "title": "Topics in Mechanical Engineering; The Legend of Zelda: A Link to Machine Design",
+      "credits": 1,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME331": {
+      "title": "Fluid Mechanics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME332": {
+      "title": "Transfer Processes",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME350": {
+      "title": "Electronics and Instrumentation I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME351": {
+      "title": "Electronics and Instrumentation II",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME361": {
+      "title": "Vibration, Controls and Optimization I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME371": {
+      "title": "Product Engineering and Manufacturing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME382": {
+      "title": "Introduction to Materials Engineering",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME392": {
+      "title": "Statistical Methods for Product and Processes Development",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME400": {
+      "title": "Machine Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME401": {
+      "title": "Entrepreneurial Design Realization",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME405": {
+      "title": "Nano/Microscale Energy Transport",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME408": {
+      "title": "Selected Topics in Engineering Design; Automotive Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME416": {
+      "title": "Additive Manufacturing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME422": {
+      "title": "Indoor Environment and Mechanical Systems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME423": {
+      "title": "Modern Climate Control and Building Energy Design/Analysis",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME425": {
+      "title": "Energy Conversion Systems for Sustianability",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME430": {
+      "title": "Fundamentals of Nuclear Reactor Engineering",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME432": {
+      "title": "Reactor and Radiation Measurements Laboratory",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME440": {
+      "title": "Applied Machine Learning for Engineering and Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME441": {
+      "title": "Mechatronics and the Internet of Things",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME444": {
+      "title": "Assistive Robotics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME460": {
+      "title": "Smart Metal Additive Manufacturing: Processes, Modeling, and Intelligent Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME462": {
+      "title": "Vibrations, Controls, and Optimization II",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME465": {
+      "title": "Probability-Based Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME467": {
+      "title": "Engineering for Social Change",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME470": {
+      "title": "Finite Element Analysis",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME472": {
+      "title": "Integrated Product and Process Development",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME473": {
+      "title": "Mechanical Fundamentals of Electronic Systems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME480": {
+      "title": "Introduction to Robotics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME485": {
+      "title": "Industrial Artificial Intelligence",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME488": {
+      "title": "Special Problems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME488G": {
+      "title": "Special Problems; Combustion: Fundamentals and Applications",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME489": {
+      "title": "Special Topics in Mechanical Engineering",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME489F": {
+      "title": "Special Topics in Mechanical Engineering; Dynamics of Atmospheric Flight",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME489O": {
+      "title": "Special Topics in Mechanical Engineering; Design for Manufacturing and Assembly",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME489U": {
+      "title": "Special Topics in Mechanical Engineering; Fluid Structure Interactions",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME489V": {
+      "title": "Special Topics in Mechanical Engineering; Mechanical Contracting",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME489Z": {
+      "title": "Special Topics in Mechanical Engineering; Structural Mechanics - Aerospace Applications",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME605": {
+      "title": "Advanced Systems Control",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME610": {
+      "title": "Engineering Optimization",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME631": {
+      "title": "Advanced Conduction and Radiation Heat Transfer",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME640": {
+      "title": "Fundamentals of Fluid Mechanics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME645": {
+      "title": "Fluid-Structure Interactions",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME662": {
+      "title": "Linear Vibrations",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME663": {
+      "title": "Nano/Microscale Energy Transport",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME690": {
+      "title": "Mechanical Fundamentals of Electronic Systems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME691": {
+      "title": "Industrial Artificial Intelligence",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME702": {
+      "title": "Smart Metal Additive Manufacturing: Processes, Modeling, and Intelligent Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME714": {
+      "title": "Unsteady Flows",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME725": {
+      "title": "Probabilistic Optimization",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME737": {
+      "title": "Application of AI in Reliability: Prognostics and Systems Health Management (PHM)",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME743": {
+      "title": "Applied Machine Learning for Engineering and Design",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME744": {
+      "title": "Additive Manufacturing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME753": {
+      "title": "Indoor Environment and Mechanical Systems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME799": {
+      "title": "Master's Thesis Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME808": {
+      "title": "Advanced Topics in Mechanical Engineering",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME808Q": {
+      "title": "Advanced Topics in Mechanical Engineering; Modern Climate Control and Building Energy Design/Analysis",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME808X": {
+      "title": "Advanced Topics in Mechanical Engineering; Energy Conversion Systems for Sustainability",
+      "credits": 3,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME898": {
+      "title": "Pre-Candidacy Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "ENME"
+    },
+    "ENME899": {
+      "title": "Doctoral Dissertation Research",
+      "credits": 6,
+      "genEd": [],
+      "dept": "ENME"
+    },
     "GVPT170": {
       "title": "American Government",
       "credits": 3,
@@ -6962,6 +8067,577 @@
       "genEd": [],
       "dept": "INST"
     },
+    "KNES110": {
+      "title": "Strength Training",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES120": {
+      "title": "Fitness Walking",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES122": {
+      "title": "Jogging",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES136": {
+      "title": "Beginning Golf",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES137": {
+      "title": "Intermediate Golf",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES141": {
+      "title": "Tumbling and Balance",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES142": {
+      "title": "Trampoline",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES154": {
+      "title": "Beginning Swimming",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES156": {
+      "title": "Pickleball",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES165": {
+      "title": "Pilates",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES166": {
+      "title": "Barre",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES170": {
+      "title": "Beginner Martial Arts",
+      "credits": 2,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES172": {
+      "title": "Self Defense",
+      "credits": 2,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES173": {
+      "title": "Beginner BJJ & Martial Arts",
+      "credits": 2,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES190": {
+      "title": "Flag Football",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES192": {
+      "title": "Ultimate Frisbee",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES200": {
+      "title": "Introduction to Kinesiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES225": {
+      "title": "Hoop Dreams: Black Masculinity and Sport",
+      "credits": 3,
+      "genEd": [
+        "DSHS",
+        "SCIS"
+      ],
+      "dept": "KNES"
+    },
+    "KNES226": {
+      "title": "The Cybernetic Human",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "KNES"
+    },
+    "KNES260": {
+      "title": "Science of Physical Activity and Cardiovascular Health",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "DSSP"
+      ],
+      "dept": "KNES"
+    },
+    "KNES265": {
+      "title": "Mathematical, Physical, & Statistical Basis of Kinesiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES282": {
+      "title": "Basic Care and Prevention of Athletic Injuries",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES285": {
+      "title": "History of Physical Culture, Sport, & Science in America",
+      "credits": 3,
+      "genEd": [
+        "DSHU",
+        "DVUP"
+      ],
+      "dept": "KNES"
+    },
+    "KNES286": {
+      "title": "Empowering Healthy Physical Activity",
+      "credits": 3,
+      "genEd": [
+        "DSSP"
+      ],
+      "dept": "KNES"
+    },
+    "KNES287": {
+      "title": "Sport and American Society",
+      "credits": 3,
+      "genEd": [
+        "DSHS",
+        "DVUP"
+      ],
+      "dept": "KNES"
+    },
+    "KNES289": {
+      "title": "Topical Investigations",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES289Z": {
+      "title": "Topical Investigations; The Kinesiology Major",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES300": {
+      "title": "Biomechanics of Human Motion",
+      "credits": 4,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES305": {
+      "title": "Principles & Application of Exercise Rehabilitation",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES305H": {
+      "title": "Principles & Application of Exercise Rehabilitation",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES306": {
+      "title": "Prosthetics for Limb Amputations",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES306H": {
+      "title": "Prosthetics for Limb Amputations",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES320": {
+      "title": "Physiological Basis of Physical Activity and Human Health",
+      "credits": 4,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES332": {
+      "title": "Exercise Testing & Prescription for Fitness Professionals",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES332H": {
+      "title": "Exercise Testing & Prescription for Fitness Professionals",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES340": {
+      "title": "The Foundations of Public Health in Kinesiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES345": {
+      "title": "Building International Sport-for-Development Capacities within Jamaican and American Physical Culture & Commerce",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES347": {
+      "title": "Sport Economics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES350": {
+      "title": "The Psychology of Sports & Exercise",
+      "credits": 3,
+      "genEd": [
+        "DSHS"
+      ],
+      "dept": "KNES"
+    },
+    "KNES350H": {
+      "title": "The Psychology of Sports & Exercise",
+      "credits": 3,
+      "genEd": [
+        "DSHS"
+      ],
+      "dept": "KNES"
+    },
+    "KNES354": {
+      "title": "Sports Finance & Business Intelligence",
+      "credits": 3,
+      "genEd": [
+        "DSSP"
+      ],
+      "dept": "KNES"
+    },
+    "KNES355": {
+      "title": "Sport Management",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES360": {
+      "title": "Physiology of Exercise",
+      "credits": 4,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES370": {
+      "title": "Motor Development",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES385": {
+      "title": "Motor Control and Learning",
+      "credits": 4,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES385H": {
+      "title": "Motor Control and Learning",
+      "credits": 4,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES386": {
+      "title": "Service Learning in Kinesiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES389": {
+      "title": "Topical Investigations",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES389K": {
+      "title": "Topical Investigations; Kinesiology Internship",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES401": {
+      "title": "Zip Code: Prediction of Physical Activity & Health",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES401H": {
+      "title": "Zip Code: Prediction of Physical Activity & Health",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES405": {
+      "title": "Principles & Techniques of Manual Muscle Testing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES405H": {
+      "title": "Principles & Techniques of Manual Muscle Testing",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES406": {
+      "title": "Clinical Biomechanics: Musculoskeletal Injury",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES440": {
+      "title": "Psychology of Athletic Performance",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES440H": {
+      "title": "Psychology of Athletic Performance",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES441": {
+      "title": "The Kinesiological and Scientific Basis of Human Movement and Sport: Golf",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES450": {
+      "title": "From the Olympics to the Rehabilitation Clinic: Mental Skills Training Applications",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES451": {
+      "title": "Children and Sport: A Psychosocial Perspective",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES451H": {
+      "title": "Children and Sport: A Psychosocial Perspective",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES457": {
+      "title": "Managing Youth Programs: Educational, Fitness and Sport",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES460": {
+      "title": "Physiology of Aging and the Impact of Physical Activity",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES460H": {
+      "title": "Physiology of Aging and the Impact of Physical Activity",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES464": {
+      "title": "Exercise Metabolism: Role in Health and Disease",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES464H": {
+      "title": "Exercise Metabolism: Role in Health and Disease",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES465": {
+      "title": "Physical Activity and Disease Prevention and Treatment",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES465H": {
+      "title": "Physical Activity and Disease Prevention and Treatment",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES467": {
+      "title": "Physical Activity & the Treatment & Prevention of Obesity",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES476": {
+      "title": "Honors Thesis Proposal",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES478": {
+      "title": "Honors Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES484": {
+      "title": "Sporting Hollywood",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES486": {
+      "title": "Social Justice in Kinesiology",
+      "credits": 3,
+      "genEd": [
+        "DVUP"
+      ],
+      "dept": "KNES"
+    },
+    "KNES498": {
+      "title": "Special Topics in Kinesiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES498A": {
+      "title": "Special Topics in Kinesiology; The Kinesiological & Scientific Bases of Human Movement & Sport: Golf",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES609": {
+      "title": "Research Issues in Kinesiology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES613": {
+      "title": "Theories Physical Culture",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES616": {
+      "title": "Physical Cultural Studies",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES618": {
+      "title": "Current Readings in Exercise and Applied Physiology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES619": {
+      "title": "Current Readings in Physical Cultural Studies",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES622": {
+      "title": "Teaching Secondary Physical Education",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES660": {
+      "title": "Psychology of Athletic Performances",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES678": {
+      "title": "Professional Seminar for Teacher Development in Physical Education",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES689": {
+      "title": "Special Problems in Kinesiology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES691": {
+      "title": "Muscular Aspects of Exercise Physiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES692": {
+      "title": "Cardiovascular Aspects of Exercise Physiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES780": {
+      "title": "Preparation for Capstone Project in Physical Activity and Public Health",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES789": {
+      "title": "Advanced Projects in Kinesiology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES789M": {
+      "title": "Advanced Projects in Kinesiology; Optimal Control Modeling",
+      "credits": 3,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES799": {
+      "title": "Master's Thesis Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES898": {
+      "title": "Pre-Candidacy Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "KNES"
+    },
+    "KNES899": {
+      "title": "Doctoral Dissertation Research",
+      "credits": 6,
+      "genEd": [],
+      "dept": "KNES"
+    },
     "MATH003": {
       "title": "Developmental Mathematics",
       "credits": 3,
@@ -7498,6 +9174,572 @@
       "credits": 6,
       "genEd": [],
       "dept": "MATH"
+    },
+    "PHYS102": {
+      "title": "Physics of Music",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS103"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS103": {
+      "title": "Physics of Music Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS105": {
+      "title": "A Global Challenge: Energy and Climate Change",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS115": {
+      "title": "Inquiry into Physics",
+      "credits": 4,
+      "genEd": [
+        "DSNL"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS121": {
+      "title": "Fundamentals of Physics I",
+      "credits": 4,
+      "genEd": [
+        "DSNL"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS122": {
+      "title": "Fundamentals of Physics II",
+      "credits": 4,
+      "genEd": [
+        "DSNL"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS131": {
+      "title": "Fundamentals of Physics for Life Sciences I",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS132": {
+      "title": "Fundamentals of Physics for Life Sciences II",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS161": {
+      "title": "General Physics: Mechanics and Particle Dynamics",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS275",
+        "DSNS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS170": {
+      "title": "Professional Physics Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS171": {
+      "title": "Introductory Physics: Mechanics",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS275",
+        "DSNS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS171H": {
+      "title": "Introductory Physics: Mechanics",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS275",
+        "DSNS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS172": {
+      "title": "Succeeding in Physics: Applications, Resources and Concepts",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS174": {
+      "title": "Physics Laboratory Introduction",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS235": {
+      "title": "The Manhattan Project",
+      "credits": 3,
+      "genEd": [
+        "DSHS",
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS260": {
+      "title": "General Physics: Electricity, Magnetism and Thermodynamics",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS261"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS260H": {
+      "title": "General Physics: Electricity, Magnetism and Thermodynamics",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS261"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS261": {
+      "title": "General Physics: Mechanics, Vibrations, Waves, Heat (Laboratory)",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS265": {
+      "title": "Introduction to Scientific Programming",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS270": {
+      "title": "General Physics: Waves, Optics, Relativity and Modern Physics",
+      "credits": 3,
+      "genEd": [
+        "DSNL|PHYS271"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS271": {
+      "title": "General Physics: Electrodynamics, Light, Relativity and Modern Physics (Laboratory)",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS272": {
+      "title": "Introductory Physics: Electricity and Magnetism",
+      "credits": 3,
+      "genEd": [
+        "DSNS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS272H": {
+      "title": "Introductory Physics: Electricity and Magnetism",
+      "credits": 3,
+      "genEd": [
+        "DSNS"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS273": {
+      "title": "Intermediate Oscillations and Waves",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS273H": {
+      "title": "Intermediate Oscillations and Waves",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS275": {
+      "title": "Experimental Physics I: Mechanics and Waves",
+      "credits": 2,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS276": {
+      "title": "Experimental Physics II:  Analog Circuits",
+      "credits": 2,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS282": {
+      "title": "Succeeding in Physics II: Applications, Resources, and Concepts",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS299": {
+      "title": "Special Problems in Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS313": {
+      "title": "Electricity and Magnetism I",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS331": {
+      "title": "Physics for Life Sciences I",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS360": {
+      "title": "Introduction to Quantum Mechanics: a Linear Algebra Approach",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS371": {
+      "title": "Modern Physics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS375": {
+      "title": "Experimental Physics III: Experimental Optics",
+      "credits": 3,
+      "genEd": [
+        "DSSP"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS386": {
+      "title": "Experiential Learning",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS389": {
+      "title": "Undergraduate Thesis Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS398": {
+      "title": "Independent Studies Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS399": {
+      "title": "Special Problems in Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS399Z": {
+      "title": "Special Problems in Physics; From Physics Major to Professional: Workforce Preparation for Physicists",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS401": {
+      "title": "Quantum Physics I",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS402": {
+      "title": "Quantum Physics II",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS404": {
+      "title": "Introduction to Statistical Thermodynamics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS405": {
+      "title": "Advanced Experiments",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS406": {
+      "title": "Experimental Research Development",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS407": {
+      "title": "Undergraduate Experimental Research",
+      "credits": 3,
+      "genEd": [
+        "DSSP"
+      ],
+      "dept": "PHYS"
+    },
+    "PHYS410": {
+      "title": "Classical Mechanics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS413": {
+      "title": "Electricity and Magnetism II",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS417": {
+      "title": "Symmetry Problems in Physics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS431": {
+      "title": "Introduction to Solid State Physics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS456": {
+      "title": "Making Physics Experiments",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS467": {
+      "title": "Introduction to Quantum Technology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS485": {
+      "title": "Electronic Circuits",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS488P": {
+      "title": "Science and Global Security",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS499A": {
+      "title": "Special Problems in Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS499B": {
+      "title": "Special Problems in Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS499P": {
+      "title": "Special Problems in Physics; Particle Astrophysics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS499U": {
+      "title": "Special Problems in Physics; Quantum Physics and Art: Metaphor, Meaning, and Creative Practice",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS499V": {
+      "title": "Special Problems in Physics; Colloquium for Undergraduate Physics Majors",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS610": {
+      "title": "Mathematical Methods and Their Applications in Classical Mechanics and Electrodynamics I",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS612": {
+      "title": "Quantum and Statistical Physics I",
+      "credits": 4,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS624": {
+      "title": "Introduction to Quantum Field Theory",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS675": {
+      "title": "Introduction to Relativity, Gravitation and Cosmology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS685": {
+      "title": "Research Electronics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS688P": {
+      "title": "Interdisciplinary Topics in Physics; Science, Technology, and National Security",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS709": {
+      "title": "Seminar in General Physics; Statistical Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS711": {
+      "title": "Symmetry Problems in Physics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS728J": {
+      "title": "Seminar in Atomic and Molecular Physics; JQI Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS738": {
+      "title": "Seminar in Experimental Solid State Physics; Quantum Mechanical Many-Body Problems",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS739": {
+      "title": "Seminar in Theoretical Solid State Physics; Quantum Mechanical Many-Body Problems",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS749": {
+      "title": "Seminar in Theoretical Nuclear Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS758E": {
+      "title": "Seminar in Elementary Particles and Quantum Field Theory; Seminar in Elementary Particles and Quantum Field Theory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS759": {
+      "title": "Seminar in Elementary Particles and Quantum Field Theory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS761": {
+      "title": "Plasma Physics I: Survey",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS769": {
+      "title": "Seminar in Plasma Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS778": {
+      "title": "Seminar in Space and Cosmic Ray Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS798": {
+      "title": "Special Problems in Advanced Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS798B": {
+      "title": "Special Problems in Advanced Physics; Physics Colloquium",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS798C": {
+      "title": "Special Problems in Advanced Physics; Superconductivity: An Introduction to the Phenomenology and Theory of Superconductivity",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS798L": {
+      "title": "Special Problems in Advanced Physics; Biophysics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS798Q": {
+      "title": "Special Problems in Advanced Physics; Seminar in Quantum Physics, Information, and Technology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS798Z": {
+      "title": "Special Problems in Advanced Physics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS799": {
+      "title": "Master's Thesis Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS838C": {
+      "title": "Special Topics in Experimental Solid State Physics; Superconductivity, Quantum Materials and Nanoscience Seminar",
+      "credits": 2,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS839A": {
+      "title": "Special Topics in Theoretical Solid State Physics; Theory of Low Dimensional Systems",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS859B": {
+      "title": "Special Topics in Elementary Particles and Quantum Field Theory; Advanced Topics in Particle Physics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS879G": {
+      "title": "Special Topics in General Relativity",
+      "credits": 3,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS898": {
+      "title": "Pre-Candidacy Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "PHYS"
+    },
+    "PHYS899": {
+      "title": "Doctoral Dissertation Research",
+      "credits": 6,
+      "genEd": [],
+      "dept": "PHYS"
     },
     "PSYC100": {
       "title": "Introduction to Psychology",

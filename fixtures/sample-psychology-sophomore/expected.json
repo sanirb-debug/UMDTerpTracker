@@ -16,7 +16,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSHS",
+            "DSNS"
           ]
         },
         {
@@ -69,6 +70,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "DSHS",
             "DSHU"
           ]
         }
@@ -104,7 +106,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "SCIS"
+            "DSHS",
+            "DSSP"
           ]
         },
         {
@@ -117,6 +120,7 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
+            "DSNL",
             "DSNS"
           ]
         },
@@ -128,10 +132,7 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 1,
-          "genEd": [
-            "DSNL"
-          ]
+          "creditsEarned": 1
         },
         {
           "courseId": "ENGL393",
@@ -163,7 +164,10 @@
           "gradePoints": 3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 4
+          "creditsEarned": 4,
+          "genEd": [
+            "DSSP"
+          ]
         },
         {
           "courseId": "SOCY241",
@@ -176,7 +180,7 @@
           "creditsEarned": 3,
           "genEd": [
             "DSHS",
-            "DVCC"
+            "DVUP"
           ]
         },
         {
@@ -203,7 +207,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSSP"
+            "DSSP",
+            "SCIS"
           ]
         },
         {
@@ -216,7 +221,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -236,7 +242,10 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
         },
         {
           "courseId": "PSYC341",
@@ -282,7 +291,10 @@
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
         }
       ],
       "statedTermGpa": 3.4,
@@ -313,6 +325,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     }

@@ -39,7 +39,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHS"
+            "DSHS",
+            "DSHU"
           ]
         },
         {
@@ -65,7 +66,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSHU"
+            "DSHU",
+            "DVUP"
           ]
         }
       ],
@@ -100,7 +102,8 @@
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "FSAR"
+            "FSAR",
+            "FSMA"
           ]
         },
         {
@@ -159,6 +162,7 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
+        "FSAR",
         "FSMA"
       ]
     },
@@ -172,7 +176,8 @@
       "countsTowardGpa": false,
       "source": "exam",
       "genEd": [
-        "DSHS"
+        "DSHS",
+        "DSNS"
       ]
     }
   ],
