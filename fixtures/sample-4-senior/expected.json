@@ -1,0 +1,589 @@
+{
+  "major": "Information Science",
+  "terms": [
+    {
+      "id": "2023-Fall",
+      "season": "Fall",
+      "year": 2023,
+      "courses": [
+        {
+          "courseId": "INST126",
+          "title": "INTRO PROGRAM INFO SCI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENGL101",
+          "title": "ACADEMIC WRITING",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAW"
+          ]
+        },
+        {
+          "courseId": "HIST200",
+          "title": "INTERPRET AMER HISTORY",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRO TO SOCIOLOGY",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST101",
+          "title": "INTRO AMERICAN STUDIES",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Spring",
+      "season": "Spring",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "INST201",
+          "title": "INTRO INFORMATION SCI",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "STAT100",
+          "title": "ELEMENTARY STATISTICS",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR"
+          ]
+        },
+        {
+          "courseId": "COMM107",
+          "title": "ORAL COMMUNICATION",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSOC"
+          ]
+        },
+        {
+          "courseId": "AMST203",
+          "title": "POP CULTURE IN AMER",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU",
+            "DVUP"
+          ]
+        },
+        {
+          "courseId": "ECON200",
+          "title": "PRIN MICROECONOMICS",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.6,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2024-Fall",
+      "season": "Fall",
+      "year": 2024,
+      "courses": [
+        {
+          "courseId": "INST311",
+          "title": "INFORMATION ORGANIZATION",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST314",
+          "title": "STATISTICS FOR INFO SCI",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENGL393",
+          "title": "TECHNICAL WRITING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "FSPW"
+          ]
+        },
+        {
+          "courseId": "BSCI170",
+          "title": "PRIN MOLECULAR BIOLOGY",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS"
+          ]
+        },
+        {
+          "courseId": "BSCI171",
+          "title": "MOLECULAR BIOLOGY LAB",
+          "credits": 1,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 1,
+          "genEd": [
+            "DSNL"
+          ]
+        },
+        {
+          "courseId": "MATH121",
+          "title": "ELEMENTARY CALCULUS II",
+          "credits": 3,
+          "grade": "W",
+          "gradePoints": null,
+          "countsTowardGpa": false,
+          "source": "institution",
+          "creditsEarned": 0
+        }
+      ],
+      "statedTermGpa": 3.446,
+      "statedTermCredits": 13
+    },
+    {
+      "id": "2025-Spring",
+      "season": "Spring",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "INST326",
+          "title": "OBJ-ORIENT PROG INFO SCI",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST327",
+          "title": "DATABASE DESIGN MODELING",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        },
+        {
+          "courseId": "GVPT170",
+          "title": "AMERICAN GOVERNMENT",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST205",
+          "title": "MATERIAL ASPECTS AMER",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
+          ]
+        },
+        {
+          "courseId": "SOCY241",
+          "title": "INEQUALITY AMER SOCIETY",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS",
+            "DVCC"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2025-Fall",
+      "season": "Fall",
+      "year": 2025,
+      "courses": [
+        {
+          "courseId": "INST335",
+          "title": "ORG MANAGEMENT TEAMWORK",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST346",
+          "title": "TECH INFRASTRUCTURE ARCH",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST366",
+          "title": "PRIV SEC ETHICS BIG DATA",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "AOSC200",
+          "title": "WEATHER AND CLIMATE",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSNS",
+            "SCIS"
+          ]
+        },
+        {
+          "courseId": "ENES210",
+          "title": "ENTREPRENEURIAL OPPS",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSSP"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.6,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Spring",
+      "season": "Spring",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "INST352",
+          "title": "INFO USER NEEDS ASSESS",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST362",
+          "title": "USER-CENTERED DESIGN",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST354",
+          "title": "DECISION-MAKING INFO SCI",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST341",
+          "title": "LEGAL ETHICAL ISSUES",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ECON201",
+          "title": "PRIN MACROECONOMICS",
+          "credits": 3,
+          "grade": "B",
+          "gradePoints": 3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        }
+      ],
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
+    },
+    {
+      "id": "2026-Fall",
+      "season": "Fall",
+      "year": 2026,
+      "courses": [
+        {
+          "courseId": "INST466",
+          "title": "TECHNOLOGY CULTURE SOC",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "INST377",
+          "title": "DYNAMIC WEB APPLICATIONS",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "BMGT220",
+          "title": "PRIN OF ACCOUNTING I",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "PSYC221",
+          "title": "SOCIAL PSYCHOLOGY",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "ENGL222",
+          "title": "AMERICAN LITERATURE",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        },
+        {
+          "courseId": "GVPT200",
+          "title": "INTL POLITICAL RELATIONS",
+          "credits": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3
+        }
+      ],
+      "statedTermGpa": 3.617,
+      "statedTermCredits": 18
+    }
+  ],
+  "nonGpaCredits": [
+    {
+      "courseId": "MATH120",
+      "title": "CALCULUS AB/SCR 4",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "FSMA"
+      ]
+    },
+    {
+      "courseId": "PSYC100",
+      "title": "PSYCHOLOGY/SCR 5",
+      "credits": 3,
+      "creditsEarned": 3,
+      "grade": "P",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "exam",
+      "genEd": [
+        "DSHS"
+      ]
+    }
+  ],
+  "inProgress": [
+    {
+      "courseId": "INST490",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "BMGT230",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "SOCY230",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "HIST111",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0101",
+      "termId": "2027-Spring"
+    },
+    {
+      "courseId": "MATH121",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0201",
+      "termId": "2027-Spring"
+    }
+  ],
+  "statedCumulativeGpa": 3.558,
+  "statedCumulativeCredits": 112,
+  "warnings": []
+}

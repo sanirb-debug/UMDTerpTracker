@@ -1,6 +1,6 @@
 {
   "source": "https://api.umd.io/v1/courses",
-  "fetchedAt": "2026-07-27",
+  "fetchedAt": "2026-07-28",
   "departments": [
     "INST",
     "CMSC",
@@ -15,7 +15,9 @@
     "SOCY",
     "ENES",
     "GVPT",
-    "HIST"
+    "HIST",
+    "BSCI",
+    "AOSC"
   ],
   "courses": {
     "AMST101": {
@@ -304,6 +306,153 @@
       "credits": 6,
       "genEd": [],
       "dept": "AMST"
+    },
+    "AOSC123": {
+      "title": "Causes and Consequences of Global Change",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "AOSC"
+    },
+    "AOSC200": {
+      "title": "Weather and Climate",
+      "credits": 3,
+      "genEd": [
+        "DSNL|AOSC201",
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "AOSC"
+    },
+    "AOSC201": {
+      "title": "Weather and Climate Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC365": {
+      "title": "Climate Change - Cutting through the Noise",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC375": {
+      "title": "Introduction to the Blue Ocean",
+      "credits": 3,
+      "genEd": [
+        "DSNS"
+      ],
+      "dept": "AOSC"
+    },
+    "AOSC400": {
+      "title": "Physical Meteorology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC420": {
+      "title": "Physical Oceanography",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC431": {
+      "title": "Atmospheric Thermodynamics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC434": {
+      "title": "Air Pollution and Environmental Justice",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC436": {
+      "title": "Principles of Biogeochemistry",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC470": {
+      "title": "Synoptic Meteorology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC493": {
+      "title": "Senior Research Project I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC494": {
+      "title": "Atmospheric and Oceanic Science Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC499": {
+      "title": "Special Problems in Atmospheric Science",
+      "credits": 1,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC600": {
+      "title": "Synoptic Meteorology I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC610": {
+      "title": "Dynamics of the Atmosphere and Ocean I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC620": {
+      "title": "Physics and Chemistry of the Atmosphere I",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC652": {
+      "title": "Analysis Methods in Atmospheric and Oceanic Science",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC670": {
+      "title": "Physical Oceanography",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC680": {
+      "title": "Introduction to Earth System Science",
+      "credits": 3,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC798": {
+      "title": "Directed Graduate Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC898": {
+      "title": "Pre-Candidacy Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "AOSC"
+    },
+    "AOSC899": {
+      "title": "Doctoral Dissertation Research",
+      "credits": 6,
+      "genEd": [],
+      "dept": "AOSC"
     },
     "BMGT110": {
       "title": "Introduction to the Business Value Chain",
@@ -1355,6 +1504,558 @@
       "credits": 6,
       "genEd": [],
       "dept": "BMGT"
+    },
+    "BSCI126": {
+      "title": "Pollinators in Crisis",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI135": {
+      "title": "Amazing Green: Plants that Transformed the World",
+      "credits": 4,
+      "genEd": [
+        "DSNL",
+        "SCIS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI151": {
+      "title": "Beyond Race: Human Biological Diversity",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "DSSP",
+        "DVUP",
+        "SCIS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI155": {
+      "title": "Learning to Learn biology",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI160": {
+      "title": "Principles of Ecology and Evolution",
+      "credits": 3,
+      "genEd": [
+        "DSNL|BSCI161",
+        "DSNS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI161": {
+      "title": "Principles of Ecology and Evolution Lab",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI161C": {
+      "title": "Principles of Ecology and Evolution Lab",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI161S": {
+      "title": "Principles of Ecology and Evolution Lab",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI170": {
+      "title": "Principles of Molecular & Cellular Biology",
+      "credits": 3,
+      "genEd": [
+        "DSNL|BSCI171",
+        "DSNS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI171": {
+      "title": "Principles of Molecular & Cellular Biology Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI180": {
+      "title": "Principles Biology Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI180S": {
+      "title": "Principles Biology Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI201": {
+      "title": "Human Anatomy and Physiology I",
+      "credits": 4,
+      "genEd": [
+        "DSNL"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI202": {
+      "title": "Human Anatomy and Physiology II",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI207": {
+      "title": "Principles of Biology III - Organismal Biology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI213": {
+      "title": "The Public Microbe",
+      "credits": 3,
+      "genEd": [
+        "DSNS",
+        "SCIS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI222": {
+      "title": "Principles of Genetics",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI223": {
+      "title": "General Microbiology",
+      "credits": 4,
+      "genEd": [
+        "DSNL",
+        "SCIS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI238I": {
+      "title": "Special Topics in Biology Student Initiated Courses; Machine Learning for the Life Sciences",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI238J": {
+      "title": "Special Topics in Biology Student Initiated Courses; Network Science in Biological Systems",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI279": {
+      "title": "Supplemental Study; Supplemental Study in Biology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI279P": {
+      "title": "Supplemental Study; Undergraduate Teaching Fellows Professional Development Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI279Q": {
+      "title": "Supplemental Study; Readings in Neurophysiology",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI279R": {
+      "title": "Supplemental Study; Undergraduate Research Rotation",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI279T": {
+      "title": "Supplemental Study; BSCI Learning Assistants",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI283": {
+      "title": "Principles of Microbiology",
+      "credits": 4,
+      "genEd": [
+        "DSNL",
+        "SCIS"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI300": {
+      "title": "Strategies for Success",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI329": {
+      "title": "Instructional Assistance Practicum",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI331": {
+      "title": "Cell Biology and Physiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI331H": {
+      "title": "Cell Biology and Physiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI332": {
+      "title": "Cell Biology and Physiology Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI333": {
+      "title": "Principles of Paleontology",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI338A": {
+      "title": "Special Topics in Biology; Cell Biology and Physiology Lectures",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI338Z": {
+      "title": "Special Topics in Biology; Field Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI339Z": {
+      "title": "Selected Topics in Biology; Cell Death and Cancer Research Seminar",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI348": {
+      "title": "Special Topics in Cell Biology and Molecular Genetics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI348A": {
+      "title": "Special Topics in Cell Biology and Molecular Genetics; Microbiology Undergraduate Teaching Practicum",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI348B": {
+      "title": "Special Topics in Cell Biology and Molecular Genetics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI348R": {
+      "title": "Special Topics in Cell Biology and Molecular Genetics; Microbiology Internship",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI349": {
+      "title": "Biological Sciences Research Internship",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI353": {
+      "title": "Cellular and Molecular Neuroscience",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI355": {
+      "title": " Neurobiology of Extraordinary Senses",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI358C": {
+      "title": "Special Topics in Biological Sciences at Shady Grove; Bioethics of Biotechnology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI361": {
+      "title": "Principles of Ecology",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI363": {
+      "title": "The Biology of Conservation and Extinction",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI366": {
+      "title": "Environmental Physiology of Animals",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI370": {
+      "title": "Principles of Evolution",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI378H": {
+      "title": "Cell Biology and Molecular Genetics Department Honors Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI379G": {
+      "title": "Cell Biology and Molecular Genetics Department Research; Research in Cell Biology and Molecular Genetics",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI379H": {
+      "title": "Cell Biology and Molecular Genetics Department Honors Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI379L": {
+      "title": "Cell Biology and Molecular Genetics Department Research; Lab Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI389": {
+      "title": "Entomology Department Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI389H": {
+      "title": "Entomology Department Research; Honors Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI389L": {
+      "title": "Entomology Department Research; Lab Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI398H": {
+      "title": "Biology Department Honors Seminar",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI399": {
+      "title": "Biology Department Research; Biology Department Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI399H": {
+      "title": "Biology Department Honors Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI399L": {
+      "title": "Biology Department Research; Biology Lab Research",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI403": {
+      "title": "Biology of Vision",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI404": {
+      "title": "Cell Biology from a Biophysical Perspective",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI405": {
+      "title": "Population and Evolutionary Genetics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI410": {
+      "title": "Molecular Genetics",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI411": {
+      "title": "Bioinformatics and Integrated Genomics",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI411H": {
+      "title": "Bioinformatics and Integrated Genomics",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI414": {
+      "title": "Recombinant DNA Laboratory",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI420": {
+      "title": "Cell Biology Lectures",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI422": {
+      "title": "Principles of Immunology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI424": {
+      "title": "Pathogenic Microbiology",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI431": {
+      "title": "The Origin and Evolution of Nervous Systems",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI432": {
+      "title": "Systems View of Cell Biology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI437": {
+      "title": "General Virology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI439E": {
+      "title": "Undergraduate Advanced Selected Topics in Biology; Tissue Engineering",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI439I": {
+      "title": "Undergraduate Advanced Selected Topics in Biology; Therapeutic Development and Delivery",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI439J": {
+      "title": "Undergraduate Advanced Selected Topics in Biology; Synthetic Biology and Biological Engineering",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI439N": {
+      "title": "Undergraduate Advanced Selected Topics in Biology; Quantitative Analysis of Biological Data",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI443": {
+      "title": "Microbial Physiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI446": {
+      "title": "Advanced Systems Neuroscience",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI447": {
+      "title": "General Endocrinology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI450": {
+      "title": "Mammalian Systems Physiology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI451": {
+      "title": "Mammalian Systems Physiology Laboratory",
+      "credits": 2,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI452": {
+      "title": "Diseases of the Nervous System",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI455": {
+      "title": "Neuroscience Laboratory",
+      "credits": 3,
+      "genEd": [
+        "DSSP"
+      ],
+      "dept": "BSCI"
+    },
+    "BSCI464": {
+      "title": "Microbial Ecology",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI467": {
+      "title": "Freshwater Biology",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI481": {
+      "title": "Insect Diversity and Classification",
+      "credits": 4,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI483": {
+      "title": "Insects, Pathogens, and Public Health",
+      "credits": 3,
+      "genEd": [],
+      "dept": "BSCI"
+    },
+    "BSCI484": {
+      "title": "Insects, Pathogens, and Public Health: Laboratory",
+      "credits": 1,
+      "genEd": [],
+      "dept": "BSCI"
     },
     "CMSC100": {
       "title": "Bits and Bytes of Computer and Information Sciences",

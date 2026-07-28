@@ -2,40 +2,26 @@
   "major": "Information Science",
   "terms": [
     {
-      "id": "2024-Fall",
+      "id": "2023-Fall",
       "season": "Fall",
-      "year": 2024,
+      "year": 2023,
       "courses": [
         {
           "courseId": "INST126",
-          "title": "INTRO TO PROGAM INFO SCI",
-          "credits": 3,
-          "grade": "A",
-          "gradePoints": 4,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3
-        },
-        {
-          "courseId": "PSYC100",
-          "title": "INTRO PSYCHOLOGY",
+          "title": "INTRO PROGRAM INFO SCI",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "DSHS",
-            "DSNS"
-          ]
+          "creditsEarned": 3
         },
         {
           "courseId": "ENGL101",
           "title": "ACADEMIC WRITING",
           "credits": 3,
-          "grade": "B+",
-          "gradePoints": 3.3,
+          "grade": "B",
+          "gradePoints": 3,
           "countsTowardGpa": true,
           "source": "institution",
           "creditsEarned": 3,
@@ -44,27 +30,52 @@
           ]
         },
         {
-          "courseId": "STAT100",
-          "title": "ELEMENTARY STATISTICS",
+          "courseId": "HIST200",
+          "title": "INTERPRET AMER HISTORY",
           "credits": 3,
-          "grade": "B",
-          "gradePoints": 3,
+          "grade": "A-",
+          "gradePoints": 3.7,
           "countsTowardGpa": true,
           "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "FSAR",
-            "FSMA"
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "SOCY100",
+          "title": "INTRO TO SOCIOLOGY",
+          "credits": 3,
+          "grade": "B+",
+          "gradePoints": 3.3,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
+        },
+        {
+          "courseId": "AMST101",
+          "title": "INTRO AMERICAN STUDIES",
+          "credits": 3,
+          "grade": "A",
+          "gradePoints": 4,
+          "countsTowardGpa": true,
+          "source": "institution",
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHU"
           ]
         }
       ],
-      "statedTermGpa": 3.5,
-      "statedTermCredits": 12
+      "statedTermGpa": 3.54,
+      "statedTermCredits": 15
     },
     {
-      "id": "2025-Spring",
+      "id": "2024-Spring",
       "season": "Spring",
-      "year": 2025,
+      "year": 2024,
       "courses": [
         {
           "courseId": "INST201",
@@ -80,14 +91,17 @@
           ]
         },
         {
-          "courseId": "INST311",
-          "title": "INFORMATION ORGANIZATION",
+          "courseId": "STAT100",
+          "title": "ELEMENTARY STATISTICS",
           "credits": 3,
           "grade": "B+",
           "gradePoints": 3.3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "FSAR"
+          ]
         },
         {
           "courseId": "COMM107",
@@ -104,7 +118,7 @@
         },
         {
           "courseId": "AMST203",
-          "title": "POP CULTUR IN AMER",
+          "title": "POP CULTURE IN AMER",
           "credits": 3,
           "grade": "A-",
           "gradePoints": 3.7,
@@ -115,76 +129,31 @@
             "DSHU",
             "DVUP"
           ]
-        }
-      ],
-      "statedTermGpa": 3.75,
-      "statedTermCredits": 12
-    },
-    {
-      "id": "2025-Fall",
-      "season": "Fall",
-      "year": 2025,
-      "courses": [
+        },
         {
-          "courseId": "INST326",
-          "title": "OBJ-ORIENT PROG INFO SCI",
+          "courseId": "ECON200",
+          "title": "PRIN MICROECONOMICS",
           "credits": 3,
           "grade": "B",
           "gradePoints": 3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
-        },
-        {
-          "courseId": "INST327",
-          "title": "DATABASE DESIGN MODELING",
-          "credits": 3,
-          "grade": "A-",
-          "gradePoints": 3.7,
-          "countsTowardGpa": true,
-          "source": "institution",
           "creditsEarned": 3,
           "genEd": [
-            "DSSP"
-          ]
-        },
-        {
-          "courseId": "ENGL393",
-          "title": "TECHNICAL WRITING",
-          "credits": 3,
-          "grade": "A",
-          "gradePoints": 4,
-          "countsTowardGpa": true,
-          "source": "institution",
-          "creditsEarned": 3,
-          "genEd": [
-            "FSPW"
-          ]
-        },
-        {
-          "courseId": "BSCI170",
-          "title": "PRINCIPLES OF BIOLOGY",
-          "credits": 4,
-          "grade": "W",
-          "gradePoints": null,
-          "countsTowardGpa": false,
-          "source": "institution",
-          "creditsEarned": 0,
-          "genEd": [
-            "DSNL"
+            "DSHS"
           ]
         }
       ],
-      "statedTermGpa": 3.567,
-      "statedTermCredits": 9
+      "statedTermGpa": 3.6,
+      "statedTermCredits": 15
     }
   ],
   "nonGpaCredits": [
     {
       "courseId": "MATH120",
       "title": "CALCULUS AB/SCR 4",
-      "credits": 4,
-      "creditsEarned": 4,
+      "credits": 3,
+      "creditsEarned": 3,
       "grade": "P",
       "gradePoints": null,
       "countsTowardGpa": false,
@@ -194,8 +163,8 @@
       ]
     },
     {
-      "courseId": "GVPT170",
-      "title": "U.S. GVPT/SCR 4",
+      "courseId": "PSYC100",
+      "title": "PSYCHOLOGY/SCR 5",
       "credits": 3,
       "creditsEarned": 3,
       "grade": "P",
@@ -209,7 +178,7 @@
   ],
   "inProgress": [
     {
-      "courseId": "INST314",
+      "courseId": "INST311",
       "title": "",
       "credits": 3,
       "grade": "NG",
@@ -217,21 +186,10 @@
       "countsTowardGpa": false,
       "source": "institution",
       "section": "0101",
-      "termId": "2026-Fall"
+      "termId": "2024-Fall"
     },
     {
-      "courseId": "INST335",
-      "title": "",
-      "credits": 3,
-      "grade": "NG",
-      "gradePoints": null,
-      "countsTowardGpa": false,
-      "source": "institution",
-      "section": "0102",
-      "termId": "2026-Fall"
-    },
-    {
-      "courseId": "INST352",
+      "courseId": "INST314",
       "title": "",
       "credits": 3,
       "grade": "NG",
@@ -239,21 +197,43 @@
       "countsTowardGpa": false,
       "source": "institution",
       "section": "0201",
-      "termId": "2026-Fall"
+      "termId": "2024-Fall"
     },
     {
-      "courseId": "INST362",
+      "courseId": "ENGL393",
       "title": "",
       "credits": 3,
       "grade": "NG",
       "gradePoints": null,
       "countsTowardGpa": false,
       "source": "institution",
-      "section": "0103",
-      "termId": "2026-Fall"
+      "section": "0101",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "BSCI170",
+      "title": "",
+      "credits": 3,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0301",
+      "termId": "2024-Fall"
+    },
+    {
+      "courseId": "BSCI171",
+      "title": "",
+      "credits": 1,
+      "grade": "NG",
+      "gradePoints": null,
+      "countsTowardGpa": false,
+      "source": "institution",
+      "section": "0401",
+      "termId": "2024-Fall"
     }
   ],
-  "statedCumulativeGpa": 3.609,
-  "statedCumulativeCredits": 40,
+  "statedCumulativeGpa": 3.57,
+  "statedCumulativeCredits": 36,
   "warnings": []
 }

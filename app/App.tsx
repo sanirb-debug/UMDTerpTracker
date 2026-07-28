@@ -3,7 +3,7 @@ import type { Transcript } from '../lib/types.ts';
 import { cumulativeTotals } from '../lib/planner/index.ts';
 import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { parseTranscriptText } from '../lib/parser/fixedWidth.ts';
-import sampleTranscript from '../fixtures/sample-infosci/transcript.txt?raw';
+import { findSample } from './data/samples.ts';
 import { UploadPage } from './pages/Upload.tsx';
 import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
 
@@ -34,7 +34,7 @@ const TABS: Array<{ id: Tab; label: string }> = [
 
 export function App() {
   const [transcript, setTranscript] = useState<Transcript | null>(null);
-  const [isSample, setIsSample] = useState(false);
+  const [sampleId, setSampleId] = useState<string | undefined>(undefined);
   const [staleParse, setStaleParse] = useState(false);
   const [tab, setTab] = useState<Tab>('upload');
 
@@ -42,18 +42,19 @@ export function App() {
     const stored = loadTranscript();
     if (stored.transcript) {
       setTranscript(stored.transcript);
-      setIsSample(stored.isSample);
+      setSampleId(stored.sampleId);
       setTab('dashboard');
       return;
     }
     if (!stored.stale) return;
-    if (stored.isSample) {
-      // The sample can be rebuilt from the text we ship, so there is nothing
-      // to ask the user about.
-      const parsed = parseTranscriptText(sampleTranscript);
+    const sample = findSample(stored.sampleId);
+    if (sample) {
+      // A sample can be rebuilt from the text we ship, so there is nothing to
+      // ask the user about.
+      const parsed = parseTranscriptText(sample.text);
       setTranscript(parsed);
-      setIsSample(true);
-      saveTranscript(parsed, true);
+      setSampleId(sample.id);
+      saveTranscript(parsed, sample.id);
       setTab('dashboard');
       return;
     }
@@ -61,9 +62,9 @@ export function App() {
     setStaleParse(true);
   }, []);
 
-  const onParsed = useCallback((parsed: Transcript, sample: boolean) => {
+  const onParsed = useCallback((parsed: Transcript, sample?: string) => {
     setTranscript(parsed);
-    setIsSample(sample);
+    setSampleId(sample);
     setStaleParse(false);
     saveTranscript(parsed, sample);
     setTab('dashboard');
@@ -72,7 +73,7 @@ export function App() {
   const onForget = useCallback(() => {
     clearEverything();
     setTranscript(null);
-    setIsSample(false);
+    setSampleId(undefined);
     setTab('upload');
   }, []);
 
@@ -129,11 +130,11 @@ export function App() {
         </p>
       )}
 
-      {isSample && (
+      {sampleId && (
         <p className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200">
-          You are looking at a <strong>made-up sample student</strong>, not your own record.
-          Everything below is real behaviour on invented data — load your own transcript from the
-          Transcript tab whenever you like.
+          Sample data — <strong>{findSample(sampleId)?.label ?? 'demo'} year</strong> of a made-up
+          Information Science student, not your own record. Everything below is real behaviour on
+          invented data; load your own transcript from the Transcript tab whenever you like.
         </p>
       )}
 
@@ -173,7 +174,7 @@ export function App() {
           {tab === 'upload' && (
             <UploadPage
               transcript={transcript}
-              isSample={isSample}
+              sampleId={sampleId}
               onParsed={onParsed}
               onForget={onForget}
             />

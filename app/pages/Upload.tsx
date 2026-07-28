@@ -2,16 +2,16 @@ import { useCallback, useRef, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { ScannedPdfError } from '../../lib/parser/errors.ts';
 import { parseTranscriptText } from '../../lib/parser/fixedWidth.ts';
-import sampleTranscript from '../../fixtures/sample-infosci/transcript.txt?raw';
+import { SAMPLES } from '../data/samples.ts';
 
 interface Props {
   transcript: Transcript | null;
-  isSample: boolean;
-  onParsed: (transcript: Transcript, isSample: boolean) => void;
+  sampleId?: string;
+  onParsed: (transcript: Transcript, sampleId?: string) => void;
   onForget: () => void;
 }
 
-export function UploadPage({ transcript, isSample, onParsed, onForget }: Props) {
+export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -32,7 +32,7 @@ export function UploadPage({ transcript, isSample, onParsed, onForget }: Props) 
           );
           return;
         }
-        onParsed(parsed, false);
+        onParsed(parsed);
       } catch (cause) {
         setError(
           cause instanceof ScannedPdfError
@@ -46,12 +46,15 @@ export function UploadPage({ transcript, isSample, onParsed, onForget }: Props) 
     [onParsed],
   );
 
-  const loadSample = useCallback(() => {
-    setError(null);
-    // Runs the same parser and self-check a real upload does, so what you see
-    // here is what the app will do with yours.
-    onParsed(parseTranscriptText(sampleTranscript), true);
-  }, [onParsed]);
+  const loadSample = useCallback(
+    (id: string, text: string) => {
+      setError(null);
+      // Runs the same parser and self-check a real upload does, so what you see
+      // here is what the app will do with yours.
+      onParsed(parseTranscriptText(text), id);
+    },
+    [onParsed],
+  );
 
   return (
     <div className="space-y-6">
@@ -92,17 +95,42 @@ export function UploadPage({ transcript, isSample, onParsed, onForget }: Props) 
           {busy ? 'Reading…' : 'Choose a PDF'}
         </button>
 
-        <div className="mt-6 border-t border-neutral-200 pt-5 dark:border-neutral-800">
-          <p className="mb-3 text-sm text-neutral-600 dark:text-neutral-300">
-            Rather not hand your transcript to a site you have never heard of? Reasonable.
-          </p>
-          <button type="button" className="button-quiet px-4 py-2" onClick={loadSample}>
-            Try it with a sample transcript
-          </button>
-          <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
-            Made-up student, no file needed. Everything works exactly as it would with yours.
-          </p>
+      </section>
+
+      <section className="card">
+        <h2 className="font-semibold">See how it works</h2>
+        <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-300">
+          Rather not hand your transcript to a site you have never heard of? Reasonable. Pick a
+          point in one invented student&apos;s degree — no file, no upload.
+        </p>
+
+        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+          {SAMPLES.map((sample) => (
+            <button
+              key={sample.id}
+              type="button"
+              onClick={() => loadSample(sample.id, sample.text)}
+              aria-current={sample.id === sampleId ? 'true' : undefined}
+              className={`rounded-lg border p-3 text-left transition-colors hover:border-terp-red ${
+                sample.id === sampleId
+                  ? 'border-terp-red bg-red-50 dark:bg-red-950/20'
+                  : 'border-neutral-300 dark:border-neutral-700'
+              }`}
+            >
+              <div className="flex items-baseline justify-between gap-2">
+                <span className="font-semibold">{sample.label}</span>
+                <span className="text-xs text-neutral-500">{sample.standing}</span>
+              </div>
+              <p className="mt-1 text-xs text-neutral-600 dark:text-neutral-300">{sample.blurb}</p>
+            </button>
+          ))}
         </div>
+
+        <p className="mt-3 text-xs text-neutral-500 dark:text-neutral-400">
+          All four are the same made-up Information Science student at different points, so the
+          later ones contain everything the earlier ones do. Entirely invented — no real
+          transcript, redacted or otherwise, is in this repository.
+        </p>
       </section>
 
       {error && (
@@ -124,7 +152,7 @@ export function UploadPage({ transcript, isSample, onParsed, onForget }: Props) 
         </p>
         {transcript && (
           <button type="button" className="button-quiet mt-2" onClick={onForget}>
-            {isSample ? 'Clear the sample' : 'Clear my transcript'}
+            {sampleId ? 'Clear the sample' : 'Clear my transcript'}
           </button>
         )}
       </section>

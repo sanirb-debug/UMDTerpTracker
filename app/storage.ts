@@ -17,13 +17,17 @@ interface StoredTranscript {
   /** Parser version that produced this. See `lib/parser/version.ts`. */
   version: number;
   transcript: Transcript;
-  /** Whether this is the demo rather than somebody's real record. */
-  isSample: boolean;
+  /**
+   * Which demo sample this is, or absent for somebody's real upload. Storing
+   * the id rather than a flag means a sample cleared by a parser upgrade can
+   * be rebuilt as the same sample.
+   */
+  sampleId?: string;
 }
 
 export interface LoadedTranscript {
   transcript: Transcript | null;
-  isSample: boolean;
+  sampleId?: string;
   /**
    * Something was stored, but an older parser produced it and it has been
    * thrown away. The UI owes the user an explanation — silently showing an
@@ -52,24 +56,21 @@ function write(key: string, value: unknown): void {
 
 export function loadTranscript(): LoadedTranscript {
   const stored = read<StoredTranscript | Transcript>(TRANSCRIPT_KEY);
-  if (!stored) return { transcript: null, isSample: false, stale: false };
+  if (!stored) return { transcript: null, stale: false };
 
   // Anything without a version is from before versioning existed, which by
   // definition predates the current parser.
   const versioned = stored as StoredTranscript;
   if (typeof versioned.version !== 'number' || versioned.version !== PARSER_VERSION) {
-    return { transcript: null, isSample: isSampleOf(versioned), stale: true };
+    return { transcript: null, sampleId: versioned.sampleId, stale: true };
   }
 
-  return { transcript: versioned.transcript, isSample: versioned.isSample === true, stale: false };
+  return { transcript: versioned.transcript, sampleId: versioned.sampleId, stale: false };
 }
 
-function isSampleOf(stored: Partial<StoredTranscript>): boolean {
-  return stored.isSample === true;
-}
-
-export function saveTranscript(transcript: Transcript, isSample = false): void {
-  const payload: StoredTranscript = { version: PARSER_VERSION, transcript, isSample };
+export function saveTranscript(transcript: Transcript, sampleId?: string): void {
+  const payload: StoredTranscript = { version: PARSER_VERSION, transcript };
+  if (sampleId) payload.sampleId = sampleId;
   write(TRANSCRIPT_KEY, payload);
 }
 
