@@ -2,8 +2,10 @@ import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react
 import type { Transcript } from '../lib/types.ts';
 import { cumulativeTotals } from '../lib/planner/index.ts';
 import { selfCheck } from '../lib/parser/selfCheck.ts';
+import { parseTranscriptText } from '../lib/parser/fixedWidth.ts';
+import sampleTranscript from '../fixtures/sample-infosci/transcript.txt?raw';
 import { UploadPage } from './pages/Upload.tsx';
-import { clearEverything, loadIsSample, loadTranscript, saveTranscript } from './storage.ts';
+import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
 
 // These pull in the cached catalog, grade and section data — well over a
 // megabyte between them. Nobody who has not loaded a transcript yet needs it.
@@ -33,20 +35,36 @@ const TABS: Array<{ id: Tab; label: string }> = [
 export function App() {
   const [transcript, setTranscript] = useState<Transcript | null>(null);
   const [isSample, setIsSample] = useState(false);
+  const [staleParse, setStaleParse] = useState(false);
   const [tab, setTab] = useState<Tab>('upload');
 
   useEffect(() => {
     const stored = loadTranscript();
-    if (stored) {
-      setTranscript(stored);
-      setIsSample(loadIsSample());
+    if (stored.transcript) {
+      setTranscript(stored.transcript);
+      setIsSample(stored.isSample);
       setTab('dashboard');
+      return;
     }
+    if (!stored.stale) return;
+    if (stored.isSample) {
+      // The sample can be rebuilt from the text we ship, so there is nothing
+      // to ask the user about.
+      const parsed = parseTranscriptText(sampleTranscript);
+      setTranscript(parsed);
+      setIsSample(true);
+      saveTranscript(parsed, true);
+      setTab('dashboard');
+      return;
+    }
+    // A real transcript cannot be re-derived — the PDF was never kept.
+    setStaleParse(true);
   }, []);
 
   const onParsed = useCallback((parsed: Transcript, sample: boolean) => {
     setTranscript(parsed);
     setIsSample(sample);
+    setStaleParse(false);
     saveTranscript(parsed, sample);
     setTab('dashboard');
   }, []);
@@ -98,6 +116,18 @@ export function App() {
         <strong>Unofficial.</strong> Not affiliated with the University of Maryland. Confirm
         anything here with your advisor and your official degree audit before you register.
       </p>
+
+      {staleParse && (
+        <p
+          role="alert"
+          className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200"
+        >
+          <strong>TerpTracker got better at reading transcripts since you last used it.</strong>{' '}
+          Your saved copy was read by the older version and would have shown requirements as unmet
+          that you have actually finished, so it has been cleared. Drop your PDF in again to pick
+          up the new checks — it only ever lived in this browser, so there is nothing to recover.
+        </p>
+      )}
 
       {isSample && (
         <p className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200">
