@@ -15,11 +15,15 @@ const PlannerPage = lazy(() =>
 const SchedulePage = lazy(() =>
   import('./pages/Schedule.tsx').then((module) => ({ default: module.SchedulePage })),
 );
+const RequirementsPage = lazy(() =>
+  import('./pages/Requirements.tsx').then((module) => ({ default: module.RequirementsPage })),
+);
 
-type Tab = 'upload' | 'dashboard' | 'schedule' | 'planner';
+type Tab = 'upload' | 'dashboard' | 'requirements' | 'schedule' | 'planner';
 
 const TABS: Array<{ id: Tab; label: string }> = [
   { id: 'dashboard', label: 'Dashboard' },
+  { id: 'requirements', label: 'Requirements' },
   { id: 'schedule', label: 'Schedule' },
   { id: 'planner', label: 'Planner' },
   { id: 'upload', label: 'Transcript' },
@@ -58,8 +62,10 @@ export function App() {
           <h1 className="text-2xl font-bold tracking-tight">
             Terp<span className="text-terp-red">Tracker</span>
           </h1>
+          {/* The major comes off the transcript itself, so it is right without asking. */}
           <p className="text-sm text-neutral-500 dark:text-neutral-400">
-            Your transcript, your GPA, and what you need next — all in this tab.
+            {transcript?.major ?? 'Your transcript, your GPA, and what you need next'} — all in
+            this tab.
           </p>
         </div>
         {totals?.gpa != null && (
@@ -97,6 +103,7 @@ export function App() {
             <UploadPage transcript={transcript} onParsed={onParsed} onForget={onForget} />
           )}
           {tab === 'dashboard' && transcript && <DashboardPage transcript={transcript} />}
+          {tab === 'requirements' && transcript && <RequirementsPage transcript={transcript} />}
           {tab === 'schedule' && transcript && <SchedulePage transcript={transcript} />}
           {tab === 'planner' && transcript && <PlannerPage transcript={transcript} />}
         </Suspense>

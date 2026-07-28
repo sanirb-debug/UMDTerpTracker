@@ -41,8 +41,8 @@ tables.
 |---|---|---|
 | 1 | Transcript parser, GPA dashboard, GPA planner with reverse solver | **done** |
 | 1b | Weekly schedule from registered sections, professor recommendations, credits-to-degree | **done** |
+| 3 | One hand-authored major (InfoSci BS), audit engine over the rule schema | **done** |
 | 2 | Gen Ed progress from Gen Ed codes the transcript already prints | not started |
-| 3 | One hand-authored major, audit engine over the rule schema | not started |
 | 4 | Second major, catalog-year switching | not started |
 
 Phase 2 should read Gen Ed codes off the **transcript**, not off umd.io. The
@@ -128,6 +128,28 @@ Every file carries `source` (catalog URL) and `lastVerified` (date).
 Only these four rule types. If a real requirement does not fit, ask before
 extending the schema — the schema staying small is what keeps the evaluator
 sane.
+
+### The one extension so far: `credits.from`
+
+`credits` takes an optional `from` array scoping it to a pool of courses.
+InfoSci needs "15 credits of upper-level INST", and that cannot be an `n_of`:
+8 of the 65 eligible courses are 1-credit seminars, so a five-course rule would
+be satisfied by 5 credits of them. It stays a `credits` rule rather than a
+fifth rule type, and the evaluator change is one filter.
+
+### How a course gets spent
+
+Two behaviours the evaluator has to get right, both learned from real data:
+
+- **Named rules can share a course.** INST201 is listed under both Benchmark II
+  and the InfoSci core, and passing it satisfies both. A first version let the
+  first rule consume it and reported the core short by a course the student had
+  an A in.
+- **Credit pools cannot.** A scoped `credits` rule draws only on courses no
+  named rule claimed, or the ten core courses would also pay for the fifteen
+  elective credits. An unscoped `credits` rule measures the whole transcript
+  and consumes nothing — otherwise "total degree credits" reads low by whatever
+  the named rules already took.
 
 ## Non-goals
 
