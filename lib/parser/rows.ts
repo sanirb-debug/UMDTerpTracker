@@ -77,6 +77,23 @@ function normalizeId(courseId: string): string {
   return courseId.replace(/\s+/g, '').toUpperCase();
 }
 
+/**
+ * Gen Ed category codes, pulled out of whatever trails a course row.
+ *
+ * The tail is free text — `DSHU, DVUP`, `FSAR, FSMA`, `DSHS or DSNS` — so this
+ * matches the code shapes rather than trying to parse the punctuation. A course
+ * carrying two codes really can count for either, which is why `DSHS or DSNS`
+ * yields both.
+ */
+const GEN_ED_CODE = /\b(FS[A-Z]{2}|DS[A-Z]{2}|DV[A-Z]{2}|SCIS)\b/g;
+
+function readGenEd(tail: string | undefined): string[] | undefined {
+  if (!tail) return undefined;
+  const codes = [...tail.matchAll(GEN_ED_CODE)].map((match) => match[1]!);
+  const unique = [...new Set(codes)];
+  return unique.length > 0 ? unique : undefined;
+}
+
 function toNumber(value: string | undefined): number | undefined {
   if (value === undefined) return undefined;
   const parsed = Number(value.replace(/,/g, ''));
@@ -106,6 +123,8 @@ export function readHistoricCourse(text: string): CourseEntry | null {
     source: 'institution',
   };
   if (earned !== undefined) entry.creditsEarned = earned;
+  const genEd = readGenEd(match[7]);
+  if (genEd) entry.genEd = genEd;
   return entry;
 }
 
@@ -119,7 +138,7 @@ export function readTransferCourse(text: string, source: CreditSource): CourseEn
   if (!grade || credits === undefined || credits > 24) return null;
 
   const equivalent = match[5];
-  return {
+  const entry: CourseEntry = {
     // Without a UMD equivalent there is no course id to give — the credit is
     // real but generic. The title is what identifies it.
     courseId: equivalent ? normalizeId(equivalent) : '',
@@ -132,6 +151,9 @@ export function readTransferCourse(text: string, source: CreditSource): CourseEn
     countsTowardGpa: false,
     source,
   };
+  const genEd = readGenEd(match[6]);
+  if (genEd) entry.genEd = genEd;
+  return entry;
 }
 
 export interface RegisteredCourse {

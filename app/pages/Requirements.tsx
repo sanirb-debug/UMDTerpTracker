@@ -77,7 +77,7 @@ export function RequirementsPage({ transcript }: Props) {
               {audit.remainingCredits.map((item) => (
                 <li key={item.label}>
                   <strong>{item.credits} more credits</strong>
-                  <span className="text-neutral-500"> — {item.label.toLowerCase()}</span>
+                  <span className="text-neutral-500"> — {stripPrefix(item.label)}</span>
                 </li>
               ))}
             </ul>
@@ -85,11 +85,19 @@ export function RequirementsPage({ transcript }: Props) {
         )}
       </section>
 
-      <section className="space-y-3">
-        {audit.results.map((result) => (
-          <RequirementCard key={result.label} result={result} />
-        ))}
-      </section>
+      {groupResults(audit.results).map((group) => (
+        <section key={group.label} className="space-y-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wide text-neutral-500">
+            {group.label}
+            <span className="ml-2 font-normal normal-case">
+              {group.results.filter((r) => r.satisfied).length}/{group.results.length}
+            </span>
+          </h2>
+          {group.results.map((result) => (
+            <RequirementCard key={result.label} result={result} />
+          ))}
+        </section>
+      ))}
 
       {audit.remainingCourses.length > 0 && (
         <section className="space-y-3">
@@ -140,6 +148,33 @@ export function RequirementsPage({ transcript }: Props) {
   );
 }
 
+/** `[UNIV] UMD Degree Requirements` reads better as `UMD degree requirements`. */
+function stripPrefix(label: string): string {
+  const bare = label.replace(/^\[[^\]]+\]\s*/, '');
+  return bare.charAt(0) + bare.slice(1).toLowerCase();
+}
+
+/**
+ * Group by the bracketed prefix the audit itself uses — `[UNIV]`, `[GenEd]` —
+ * so the page reads the way the official one does. Anything unprefixed is
+ * major work.
+ */
+function groupResults(results: RuleResult[]): Array<{ label: string; results: RuleResult[] }> {
+  const groups = new Map<string, RuleResult[]>();
+  for (const result of results) {
+    const prefix = /^\[([^\]]+)\]/.exec(result.label)?.[1];
+    const label = prefix === undefined ? 'Major' : prefix === 'UNIV' ? 'University' : 'General Education';
+    const bucket = groups.get(label) ?? [];
+    bucket.push(result);
+    groups.set(label, bucket);
+  }
+  // Major first: it is the part that actually changes term to term.
+  const order = ['Major', 'General Education', 'University'];
+  return order
+    .filter((label) => groups.has(label))
+    .map((label) => ({ label, results: groups.get(label)! }));
+}
+
 function RequirementCard({ result }: { result: RuleResult }) {
   const covered = result.have + result.pending >= result.needed;
   const tone = result.satisfied
@@ -153,9 +188,17 @@ function RequirementCard({ result }: { result: RuleResult }) {
       <header className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
         <h3 className="font-semibold">{result.label}</h3>
         <p className="text-sm tabular-nums text-neutral-500">
-          {result.have}
-          {result.pending > 0 && ` (+${result.pending} in progress)`} of {result.needed}{' '}
-          {result.unit}
+          {result.unit === 'gpa' ? (
+            <>
+              {result.have.toFixed(3)} · needs {result.needed.toFixed(1)}
+            </>
+          ) : (
+            <>
+              {result.have}
+              {result.pending > 0 && ` (+${result.pending} in progress)`} of {result.needed}{' '}
+              {result.unit}
+            </>
+          )}
         </p>
       </header>
 

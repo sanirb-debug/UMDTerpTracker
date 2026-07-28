@@ -34,7 +34,10 @@
           "gradePoints": 3,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "DSHS"
+          ]
         },
         {
           "courseId": "UNIV100",
@@ -93,7 +96,10 @@
           "gradePoints": 4,
           "countsTowardGpa": true,
           "source": "institution",
-          "creditsEarned": 3
+          "creditsEarned": 3,
+          "genEd": [
+            "FSPW"
+          ]
         }
       ],
       "statedTermGpa": 3.164,
@@ -109,7 +115,10 @@
       "grade": "P",
       "gradePoints": null,
       "countsTowardGpa": false,
-      "source": "exam"
+      "source": "exam",
+      "genEd": [
+        "FSMA"
+      ]
     },
     {
       "courseId": "ENGL101",
@@ -119,7 +128,10 @@
       "grade": "P",
       "gradePoints": null,
       "countsTowardGpa": false,
-      "source": "exam"
+      "source": "exam",
+      "genEd": [
+        "FSAW"
+      ]
     },
     {
       "courseId": "",

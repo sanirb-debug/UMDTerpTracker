@@ -15,9 +15,20 @@ describe('readHistoricCourse', () => {
     });
   });
 
-  it('ignores trailing Gen Ed tags', () => {
+  it('keeps trailing Gen Ed tags out of the title and records them', () => {
     const entry = readHistoricCourse('AMST203 POP CULTURE IN AMER A+ 3.00 3.00 12.00 DSHU, DVUP');
     expect(entry).toMatchObject({ courseId: 'AMST203', title: 'POP CULTURE IN AMER', grade: 'A+' });
+    expect(entry?.genEd).toEqual(['DSHU', 'DVUP']);
+  });
+
+  it('reads both codes when a course can count for either', () => {
+    // The transcript writes this as prose, not a list.
+    const entry = readHistoricCourse('PSYC100 INTRO PSYCHOLOGY A 3.00 3.00 12.00 DSHS or DSNS');
+    expect(entry?.genEd).toEqual(['DSHS', 'DSNS']);
+  });
+
+  it('leaves genEd unset when the row carries no codes', () => {
+    expect(readHistoricCourse('INST126 INTRO TO PROGAM A 3.00 3.00 12.00')?.genEd).toBeUndefined();
   });
 
   it('does not read a title ending in a roman numeral as the grade', () => {
@@ -77,6 +88,13 @@ describe('readTransferCourse', () => {
   it('never counts transfer credit toward the GPA, whatever grade it carries', () => {
     const entry = readTransferCourse('ELEMENTS STATISTICS C 3.00 STAT100 FSAR, FSMA', 'transfer');
     expect(entry).toMatchObject({ grade: 'C', gradePoints: null, countsTowardGpa: false });
+  });
+
+  it('records Gen Ed credit granted for transfer work', () => {
+    // The catalog knows nothing about a course taken elsewhere; the transcript
+    // is the only record of what UMD credited it as.
+    const entry = readTransferCourse('ELEMENTS STATISTICS C 3.00 STAT100 FSAR, FSMA', 'transfer');
+    expect(entry?.genEd).toEqual(['FSAR', 'FSMA']);
   });
 
   it('handles credit with no UMD equivalent', () => {

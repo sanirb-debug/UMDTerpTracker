@@ -68,6 +68,15 @@ export interface CourseEntry {
   termId?: string;
   /** Section number, e.g. `0101` or `WB21`. Only on courses you are registered for. */
   section?: string;
+  /**
+   * Gen Ed categories the transcript credits this course with, e.g.
+   * `['DSHU', 'DVUP']`.
+   *
+   * Read off the transcript rather than looked up in the catalog: this is what
+   * UMD actually granted you, it covers transfer work the catalog knows
+   * nothing about, and umd.io only tags about a sixth of its courses.
+   */
+  genEd?: string[];
   /** Set when the transcript marks the attempt as excluded by the repeat policy. */
   repeatExcluded?: boolean;
 }

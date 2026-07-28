@@ -1,27 +1,62 @@
-import type { CourseEntry, Grade } from '../types.ts';
+import type { CourseEntry, CreditSource, Grade } from '../types.ts';
 
 /**
- * The four rule types, and only these four. A real requirement that does not
- * fit one of them is a reason to talk about the schema, not to add a fifth —
- * every rule type is a permanent branch in the evaluator.
+ * How a rule picks the courses it cares about.
+ *
+ * A real audit selects courses three ways: by name (`INST311`), by the Gen Ed
+ * category UMD credited them with (`DSHU`), and by where the credit came from
+ * (residency rules count only work done at UMD). All three live here so the
+ * rule types stay at five rather than multiplying per selector.
  */
+export interface Selector {
+  /** Explicit course ids. */
+  courses?: string[];
+  /** Gen Ed codes; a course matches if it carries any of them. */
+  genEd?: string[];
+  /** Where the credit came from. */
+  source?: CreditSource;
+}
+
+interface Shared extends Selector {
+  label: string;
+  /**
+   * Whether courses this rule uses are spent and unavailable to later rules.
+   *
+   * Defaults are what a UMD audit actually does, so most rules set nothing:
+   * named rules share (INST201 satisfies both Benchmark II and the core), a
+   * `credits` rule with a selector spends (the core cannot also pay for the
+   * electives), and an unscoped `credits` rule measures everything and spends
+   * nothing. Override it where a category deliberately double-counts —
+   * Diversity and I-Series both do.
+   */
+  consumes?: boolean;
+  /**
+   * Which budget this rule draws on. Rules in the same pool compete for a
+   * course; rules in different pools do not see each other.
+   *
+   * UMD lets a major course also satisfy a Gen Ed category, so those are two
+   * separate budgets. With one global pool, INST201 counting toward the core
+   * would stop it counting for DSHS, and the audit would report Gen Ed
+   * categories unmet that the registrar shows complete.
+   */
+  pool?: string;
+}
+
 export type Rule =
   /** Every listed course. */
-  | { type: 'all_of'; label: string; courses: string[] }
-  /** Any `n` of the listed courses. */
-  | { type: 'n_of'; label: string; n: number; courses: string[] }
-  /** Exactly one of the listed courses. */
-  | { type: 'one_of'; label: string; courses: string[] }
+  | ({ type: 'all_of'; courses: string[] } & Shared)
+  /** Any `n` matching courses. */
+  | ({ type: 'n_of'; n: number } & Shared)
+  /** Exactly one matching course. */
+  | ({ type: 'one_of' } & Shared)
+  /** A credit total over the matching courses. */
+  | ({ type: 'credits'; credits: number } & Shared)
   /**
-   * A credit total. `from` scopes it to a pool of courses; without it the rule
-   * counts every credit on the transcript.
-   *
-   * The scoping is the one addition to the schema as SPEC.md originally wrote
-   * it, and it is load-bearing: "15 credits of upper-level INST" cannot be an
-   * `n_of` because 8 of the 65 eligible courses are 1-credit seminars, so five
-   * of those would satisfy a five-course rule with a third of the credits.
+   * A grade point average. With no selector it is the cumulative GPA;
+   * with one it is computed over just those courses, which is how a major GPA
+   * differs from an overall one.
    */
-  | { type: 'credits'; label: string; credits: number; from?: string[] };
+  | ({ type: 'gpa'; minimum: number } & Shared);
 
 export interface Requirements {
   id: string;
@@ -36,6 +71,8 @@ export interface Requirements {
   lastVerified: string;
   /** Lowest grade that counts toward the major, e.g. `C-`. */
   minGrade?: Grade;
+  /** Optional grouping for display, e.g. `Gen Ed`. */
+  sections?: Array<{ label: string; rules: number[] }>;
   rules: Rule[];
 }
 
@@ -47,13 +84,13 @@ export interface RuleResult {
   completed: CourseEntry[];
   /** Would satisfy it, but you are still taking it. */
   inProgress: CourseEntry[];
-  /** Course ids still outstanding. Empty for open-ended credit rules. */
+  /** Course ids still outstanding. Empty for open-ended rules. */
   missing: string[];
-  /** Units the rule asks for — courses for the list rules, credits for `credits`. */
+  /** Units the rule asks for. */
   needed: number;
   have: number;
   pending: number;
-  unit: 'courses' | 'credits';
+  unit: 'courses' | 'credits' | 'gpa';
 }
 
 export interface AuditResult {
@@ -64,6 +101,6 @@ export interface AuditResult {
   satisfiedIfInProgressPass: boolean;
   /** Named courses you still have to take, across every rule. */
   remainingCourses: string[];
-  /** Credits still to find where the rule names no specific course. */
+  /** Shortfalls where the rule names no specific course. */
   remainingCredits: Array<{ label: string; credits: number }>;
 }

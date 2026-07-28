@@ -4,42 +4,31 @@
   "degree": "BS",
   "catalogYear": 2026,
   "source": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/information/information-science-major/",
-  "crossChecked": "https://info.umd.edu/academics/bachelors-programs/bachelor-of-science-in-information-science-college-park/curriculum-cognate-areas/",
+  "crossChecked": "https://gened.umd.edu/node/35",
   "lastVerified": "2026-07-27",
   "minGrade": "C-",
   "rules": [
     {
-      "type": "one_of",
-      "label": "Benchmark I: MATH115 or higher",
-      "courses": [
-        "MATH115",
-        "MATH120",
-        "MATH121",
-        "MATH130",
-        "MATH131",
-        "MATH136",
-        "MATH140",
-        "MATH141",
-        "MATH220",
-        "MATH221",
-        "MATH240",
-        "MATH241",
-        "MATH246"
-      ]
+      "type": "gpa",
+      "label": "[UNIV] Cumulative GPA Requirement",
+      "minimum": 2
     },
     {
-      "type": "all_of",
-      "label": "Benchmark I and II",
-      "courses": [
-        "PSYC100",
-        "STAT100",
-        "INST126",
-        "INST201"
-      ]
+      "type": "credits",
+      "label": "[UNIV] UMD Degree Requirements",
+      "credits": 120
     },
     {
-      "type": "all_of",
-      "label": "Information Science core",
+      "type": "credits",
+      "label": "[UNIV] Credits in residence at UMD",
+      "credits": 30,
+      "source": "institution",
+      "pool": "residency"
+    },
+    {
+      "type": "gpa",
+      "label": "Major GPA",
+      "minimum": 2,
       "courses": [
         "INST201",
         "INST311",
@@ -50,14 +39,7 @@
         "INST346",
         "INST352",
         "INST362",
-        "INST490"
-      ]
-    },
-    {
-      "type": "credits",
-      "label": "Upper-level INST electives",
-      "credits": 15,
-      "from": [
+        "INST490",
         "INST301",
         "INST309",
         "INST330",
@@ -117,9 +99,259 @@
       ]
     },
     {
+      "type": "one_of",
+      "label": "Benchmark I: MATH115 or higher",
+      "courses": [
+        "MATH115",
+        "MATH120",
+        "MATH121",
+        "MATH130",
+        "MATH131",
+        "MATH136",
+        "MATH140",
+        "MATH141",
+        "MATH220",
+        "MATH221",
+        "MATH240",
+        "MATH241",
+        "MATH246"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Benchmark Requirement I and II",
+      "courses": [
+        "PSYC100",
+        "STAT100",
+        "INST126",
+        "INST201"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Major Core Courses",
+      "courses": [
+        "INST201",
+        "INST311",
+        "INST314",
+        "INST326",
+        "INST327",
+        "INST335",
+        "INST346",
+        "INST352",
+        "INST362",
+        "INST490"
+      ],
+      "pool": "major"
+    },
+    {
       "type": "credits",
-      "label": "Total degree credits",
-      "credits": 120
+      "label": "Major Electives",
+      "credits": 15,
+      "courses": [
+        "INST301",
+        "INST309",
+        "INST330",
+        "INST341",
+        "INST347",
+        "INST354",
+        "INST363",
+        "INST364",
+        "INST366",
+        "INST367",
+        "INST372",
+        "INST377",
+        "INST380",
+        "INST381",
+        "INST388E",
+        "INST388L",
+        "INST388Q",
+        "INST388R",
+        "INST388U",
+        "INST388V",
+        "INST398F",
+        "INST398K",
+        "INST398N",
+        "INST402",
+        "INST406",
+        "INST407",
+        "INST408B",
+        "INST408C",
+        "INST408G",
+        "INST408I",
+        "INST408V",
+        "INST408Z",
+        "INST410",
+        "INST414",
+        "INST420",
+        "INST423",
+        "INST424",
+        "INST425",
+        "INST427",
+        "INST437",
+        "INST441",
+        "INST442",
+        "INST446",
+        "INST447",
+        "INST451",
+        "INST453",
+        "INST454",
+        "INST455",
+        "INST461",
+        "INST462",
+        "INST462H",
+        "INST463",
+        "INST464",
+        "INST466",
+        "INST480",
+        "INST491"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "[CORE/GenEd] General Education Required Credits",
+      "credits": 40,
+      "genEd": [
+        "FSAW",
+        "FSPW",
+        "FSOC",
+        "FSMA",
+        "FSAR",
+        "DSHS",
+        "DSHU",
+        "DSNS",
+        "DSNL",
+        "DSSP",
+        "SCIS",
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Academic Writing (FSAW)",
+      "credits": 3,
+      "genEd": [
+        "FSAW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Professional Writing (FSPW)",
+      "credits": 3,
+      "genEd": [
+        "FSPW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Oral Communication (FSOC)",
+      "credits": 3,
+      "genEd": [
+        "FSOC"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Mathematics (FSMA)",
+      "credits": 3,
+      "genEd": [
+        "FSMA"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Analytic Reasoning (FSAR)",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] History and Social Sciences (DSHS)",
+      "credits": 6,
+      "genEd": [
+        "DSHS"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Humanities (DSHU)",
+      "credits": 6,
+      "genEd": [
+        "DSHU"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Natural Sciences (DSNS/DSNL)",
+      "credits": 7,
+      "genEd": [
+        "DSNS",
+        "DSNL"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] Natural Science with a lab (DSNL)",
+      "genEd": [
+        "DSNL"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Scholarship in Practice (DSSP)",
+      "credits": 6,
+      "genEd": [
+        "DSSP"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] The Big Question / I-Series (SCIS)",
+      "credits": 6,
+      "genEd": [
+        "SCIS"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "n_of",
+      "label": "[GenEd] Diversity (DVUP/DVCC)",
+      "n": 2,
+      "genEd": [
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] At least one Understanding Plural Societies (DVUP)",
+      "genEd": [
+        "DVUP"
+      ],
+      "consumes": false,
+      "pool": "gened"
     }
   ]
 }
