@@ -19,6 +19,11 @@ export default defineConfig(({ command }) => ({
     // with a `@vitest-environment` comment rather than making everything pay
     // for a DOM.
     environment: 'node',
-    include: ['lib/**/*.test.ts', 'fixtures/**/*.test.ts', 'app/**/*.test.tsx'],
+    include: [
+      'lib/**/*.test.ts',
+      'fixtures/**/*.test.ts',
+      'app/**/*.test.ts',
+      'app/**/*.test.tsx',
+    ],
   },
 }));

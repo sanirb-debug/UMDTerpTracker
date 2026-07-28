@@ -28,13 +28,24 @@ export interface TextPage {
 const MIN_TEXT_ITEMS = 25;
 
 /**
+ * Called after each page comes out. Synchronous, and nothing is awaited on it —
+ * a caller that wants to put a number on screen can, and one that does not pays
+ * nothing. This is the whole extent of the parser's interest in progress: it
+ * knows about pages, not about spinners.
+ */
+export type PageProgress = (page: number, total: number) => void;
+
+/**
  * Pull positioned text out of a transcript PDF.
  *
  * This is the only module in `lib/` that touches pdfjs. Everything downstream
  * works on `TextPage[]`, which is what makes the parser testable without
  * shipping binary PDFs into the test suite.
  */
-export async function extractTextPages(data: ArrayBuffer): Promise<TextPage[]> {
+export async function extractTextPages(
+  data: ArrayBuffer,
+  onPage?: PageProgress,
+): Promise<TextPage[]> {
   const doc = await pdfjs.getDocument({
     data,
     // The transcript never leaves the browser, and neither should any fetch
@@ -69,6 +80,7 @@ export async function extractTextPages(data: ArrayBuffer): Promise<TextPage[]> {
       itemCount += items.length;
       pages.push({ pageNumber, items });
       page.cleanup();
+      onPage?.(pageNumber, doc.numPages);
     }
   } finally {
     await doc.destroy();

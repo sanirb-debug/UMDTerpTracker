@@ -1,10 +1,11 @@
 import type { Transcript } from '../types.ts';
 import { extractTextPages } from './textItems.ts';
+import type { PageProgress } from './textItems.ts';
 import { parseTranscriptPages } from './parseTranscript.ts';
 import { withSelfCheck } from './selfCheck.ts';
 
 export { ScannedPdfError, extractTextPages } from './textItems.ts';
-export type { PositionedText, TextPage } from './textItems.ts';
+export type { PageProgress, PositionedText, TextPage } from './textItems.ts';
 export { DEFAULT_LINE_OPTIONS, allLines, groupIntoLines } from './lines.ts';
 export type { Cell, Line, LineOptions } from './lines.ts';
 export { parseTranscriptLines, parseTranscriptPages } from './parseTranscript.ts';
@@ -17,7 +18,10 @@ export type { SelfCheckResult } from './selfCheck.ts';
  *
  * The bytes stay in this tab. Nothing here uploads, fetches, or persists.
  */
-export async function parseTranscriptPdf(data: ArrayBuffer): Promise<Transcript> {
-  const pages = await extractTextPages(data);
+export async function parseTranscriptPdf(
+  data: ArrayBuffer,
+  onPage?: PageProgress,
+): Promise<Transcript> {
+  const pages = await extractTextPages(data, onPage);
   return withSelfCheck(parseTranscriptPages(pages));
 }

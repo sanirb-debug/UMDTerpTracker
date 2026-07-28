@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { ScannedPdfError } from '../../lib/parser/errors.ts';
+import type { ParsePhase } from '../parsing/client.ts';
 import { parseTranscriptText } from '../../lib/parser/fixedWidth.ts';
 import { SAMPLE_MAJORS, SAMPLE_YEARS, sampleFor } from '../data/samples.ts';
 
@@ -14,6 +15,7 @@ interface Props {
 export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [progress, setProgress] = useState<ParsePhase | null>(null);
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -21,11 +23,12 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
     async (file: File) => {
       setError(null);
       setBusy(true);
+      setProgress({ phase: 'reading' });
       try {
-        // pdf.js is a megabyte of worker. Nobody should download it until
-        // there is actually a PDF to read.
-        const { parseTranscriptPdf } = await import('../../lib/parser/index.ts');
-        const parsed = await parseTranscriptPdf(await file.arrayBuffer());
+        // The parse runs in a worker, so this await no longer blocks the page
+        // — the spinner below actually spins while it happens.
+        const { parseTranscriptFile } = await import('../parsing/client.ts');
+        const parsed = await parseTranscriptFile(file, setProgress);
         if (parsed.terms.length === 0) {
           setError(
             'No semesters turned up in that PDF. Make sure it is the unofficial transcript from Testudo.',
@@ -41,6 +44,7 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
         );
       } finally {
         setBusy(false);
+        setProgress(null);
       }
     },
     [onParsed],
@@ -114,9 +118,7 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           }}
         />
         {busy ? (
-          <span className="button w-full cursor-wait sm:w-auto" aria-live="polite">
-            Reading…
-          </span>
+          <ParsingStatus progress={progress} />
         ) : (
           <label
             htmlFor="transcript-file"
@@ -234,9 +236,17 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
       </section>
 
       {error && (
-        <p role="alert" className="rounded-lg bg-red-50 p-4 text-sm text-red-800 dark:bg-red-950/40 dark:text-red-200">
-          {error}
-        </p>
+        <section
+          role="alert"
+          className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200"
+        >
+          <h2 className="font-semibold">That did not work</h2>
+          <p className="mt-1">{error}</p>
+          <p className="mt-2 text-xs text-red-700 dark:text-red-300">
+            Nothing was kept and nothing was sent anywhere. Pick another file and try again, or use
+            a sample above to see what the app does.
+          </p>
+        </section>
       )}
 
       <section className="card space-y-2 text-sm">
@@ -256,6 +266,36 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           </button>
         )}
       </section>
+    </div>
+  );
+}
+
+/**
+ * What the page shows while the worker is reading.
+ *
+ * The spinner is a real one now. It used to be a word — "Reading…" — because a
+ * spinner animated on the main thread does not spin while pdf.js is on the
+ * main thread, and a frozen spinner reads worse than static text. With the
+ * parse in a worker there is nothing stopping it.
+ *
+ * `role="status"` announces the page count as it changes without interrupting.
+ */
+function ParsingStatus({ progress }: { progress: ParsePhase | null }) {
+  const message =
+    progress?.phase === 'parsing'
+      ? `Reading page ${progress.page} of ${progress.totalPages}…`
+      : 'Opening your transcript…';
+
+  return (
+    <div
+      role="status"
+      className="flex min-h-11 items-center justify-center gap-3 text-sm text-neutral-600 dark:text-neutral-300"
+    >
+      <span
+        aria-hidden="true"
+        className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-terp-red dark:border-neutral-700 dark:border-t-terp-red"
+      />
+      {message}
     </div>
   );
 }
