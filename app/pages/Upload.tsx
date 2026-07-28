@@ -1,14 +1,17 @@
 import { useCallback, useRef, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { ScannedPdfError } from '../../lib/parser/errors.ts';
+import { parseTranscriptText } from '../../lib/parser/fixedWidth.ts';
+import sampleTranscript from '../../fixtures/sample-infosci/transcript.txt?raw';
 
 interface Props {
   transcript: Transcript | null;
-  onParsed: (transcript: Transcript) => void;
+  isSample: boolean;
+  onParsed: (transcript: Transcript, isSample: boolean) => void;
   onForget: () => void;
 }
 
-export function UploadPage({ transcript, onParsed, onForget }: Props) {
+export function UploadPage({ transcript, isSample, onParsed, onForget }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [dragging, setDragging] = useState(false);
@@ -29,7 +32,7 @@ export function UploadPage({ transcript, onParsed, onForget }: Props) {
           );
           return;
         }
-        onParsed(parsed);
+        onParsed(parsed, false);
       } catch (cause) {
         setError(
           cause instanceof ScannedPdfError
@@ -42,6 +45,13 @@ export function UploadPage({ transcript, onParsed, onForget }: Props) {
     },
     [onParsed],
   );
+
+  const loadSample = useCallback(() => {
+    setError(null);
+    // Runs the same parser and self-check a real upload does, so what you see
+    // here is what the app will do with yours.
+    onParsed(parseTranscriptText(sampleTranscript), true);
+  }, [onParsed]);
 
   return (
     <div className="space-y-6">
@@ -81,6 +91,18 @@ export function UploadPage({ transcript, onParsed, onForget }: Props) {
         <button type="button" className="button" disabled={busy} onClick={() => inputRef.current?.click()}>
           {busy ? 'Reading…' : 'Choose a PDF'}
         </button>
+
+        <div className="mt-6 border-t border-neutral-200 pt-5 dark:border-neutral-800">
+          <p className="mb-3 text-sm text-neutral-600 dark:text-neutral-300">
+            Rather not hand your transcript to a site you have never heard of? Reasonable.
+          </p>
+          <button type="button" className="button-quiet px-4 py-2" onClick={loadSample}>
+            Try it with a sample transcript
+          </button>
+          <p className="mt-2 text-xs text-neutral-500 dark:text-neutral-400">
+            Made-up student, no file needed. Everything works exactly as it would with yours.
+          </p>
+        </div>
       </section>
 
       {error && (
@@ -102,7 +124,7 @@ export function UploadPage({ transcript, onParsed, onForget }: Props) {
         </p>
         {transcript && (
           <button type="button" className="button-quiet mt-2" onClick={onForget}>
-            Clear my transcript
+            {isSample ? 'Clear the sample' : 'Clear my transcript'}
           </button>
         )}
       </section>

@@ -1,11 +1,12 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import type { Transcript } from '../lib/types.ts';
 import { cumulativeTotals } from '../lib/planner/index.ts';
+import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { UploadPage } from './pages/Upload.tsx';
-import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
+import { clearEverything, loadIsSample, loadTranscript, saveTranscript } from './storage.ts';
 
-// These two pull in the cached catalog and PlanetTerp grade data — a megabyte
-// of JSON between them. Nobody who has not uploaded a transcript yet needs it.
+// These pull in the cached catalog, grade and section data — well over a
+// megabyte between them. Nobody who has not loaded a transcript yet needs it.
 const DashboardPage = lazy(() =>
   import('./pages/Dashboard.tsx').then((module) => ({ default: module.DashboardPage })),
 );
@@ -31,33 +32,41 @@ const TABS: Array<{ id: Tab; label: string }> = [
 
 export function App() {
   const [transcript, setTranscript] = useState<Transcript | null>(null);
+  const [isSample, setIsSample] = useState(false);
   const [tab, setTab] = useState<Tab>('upload');
 
   useEffect(() => {
     const stored = loadTranscript();
     if (stored) {
       setTranscript(stored);
+      setIsSample(loadIsSample());
       setTab('dashboard');
     }
   }, []);
 
-  const onParsed = useCallback((parsed: Transcript) => {
+  const onParsed = useCallback((parsed: Transcript, sample: boolean) => {
     setTranscript(parsed);
-    saveTranscript(parsed);
+    setIsSample(sample);
+    saveTranscript(parsed, sample);
     setTab('dashboard');
   }, []);
 
   const onForget = useCallback(() => {
     clearEverything();
     setTranscript(null);
+    setIsSample(false);
     setTab('upload');
   }, []);
 
   const totals = useMemo(() => (transcript ? cumulativeTotals(transcript) : null), [transcript]);
+  const check = useMemo(() => (transcript ? selfCheck(transcript) : null), [transcript]);
+  // A GPA we cannot reconcile against the transcript's own is not a GPA worth
+  // printing confidently. See the banner below and the detail on the dashboard.
+  const gpaSuspect = Boolean(check && check.statedGpa !== null && !check.ok);
 
   return (
     <div className="mx-auto min-h-screen max-w-4xl px-4 py-8">
-      <header className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+      <header className="mb-4 flex flex-wrap items-baseline justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">
             Terp<span className="text-terp-red">Tracker</span>
@@ -70,13 +79,45 @@ export function App() {
         </div>
         {totals?.gpa != null && (
           <div className="text-right">
-            <div className="text-3xl font-bold tabular-nums">{totals.gpa.toFixed(3)}</div>
+            <div
+              className={`text-3xl font-bold tabular-nums ${gpaSuspect ? 'text-amber-600 dark:text-amber-400' : ''}`}
+            >
+              {totals.gpa.toFixed(3)}
+              {gpaSuspect && <span className="ml-1 align-top text-base">⚠</span>}
+            </div>
             <div className="text-xs uppercase tracking-wide text-neutral-500">
               {totals.earnedCredits} credits
             </div>
           </div>
         )}
       </header>
+
+      {/* Deliberately above the fold rather than in the footer. Somebody acting
+          on a number here without checking it is the failure mode that matters. */}
+      <p className="mb-4 rounded-lg border border-amber-400/60 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-200">
+        <strong>Unofficial.</strong> Not affiliated with the University of Maryland. Confirm
+        anything here with your advisor and your official degree audit before you register.
+      </p>
+
+      {isSample && (
+        <p className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200">
+          You are looking at a <strong>made-up sample student</strong>, not your own record.
+          Everything below is real behaviour on invented data — load your own transcript from the
+          Transcript tab whenever you like.
+        </p>
+      )}
+
+      {gpaSuspect && check && (
+        <p
+          role="alert"
+          className="mb-4 rounded-lg border border-amber-500 bg-amber-100 px-3 py-2 text-sm text-amber-900 dark:border-amber-600 dark:bg-amber-950/50 dark:text-amber-100"
+        >
+          <strong>This GPA does not match your transcript.</strong> We compute{' '}
+          {check.computedGpa?.toFixed(3)} but your transcript prints {check.statedGpa?.toFixed(3)},
+          so something did not parse correctly. Treat every number here as unreliable until it
+          agrees.
+        </p>
+      )}
 
       <nav className="mb-6 flex gap-1 border-b border-neutral-200 dark:border-neutral-800">
         {TABS.map(({ id, label }) => (
@@ -100,7 +141,12 @@ export function App() {
       <main>
         <Suspense fallback={<p className="text-sm text-neutral-500">Loading…</p>}>
           {tab === 'upload' && (
-            <UploadPage transcript={transcript} onParsed={onParsed} onForget={onForget} />
+            <UploadPage
+              transcript={transcript}
+              isSample={isSample}
+              onParsed={onParsed}
+              onForget={onForget}
+            />
           )}
           {tab === 'dashboard' && transcript && <DashboardPage transcript={transcript} />}
           {tab === 'requirements' && transcript && <RequirementsPage transcript={transcript} />}
@@ -110,8 +156,8 @@ export function App() {
       </main>
 
       <footer className="mt-12 border-t border-neutral-200 pt-4 text-xs text-neutral-500 dark:border-neutral-800">
-        Not affiliated with the University of Maryland. Always confirm against your official
-        degree audit before you register.
+        Course data from api.umd.io, grades and ratings from PlanetTerp. Both are run by students
+        and volunteers, and both are cached here rather than called on your behalf.
       </footer>
     </div>
   );

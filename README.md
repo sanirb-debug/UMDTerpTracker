@@ -16,7 +16,11 @@ npm install
 npm run dev
 ```
 
-Then Testudo → Academics → Unofficial Transcript → save as PDF → drop it in.
+Then Testudo → Academics → Unofficial Transcript → save as PDF → drop it in. Or
+hit **Try it with a sample transcript** and skip the upload entirely — the
+sample is `fixtures/sample-infosci/`, which is also a tested fixture, so the
+demo runs the same parser and the same self-check as a real file and cannot
+drift from what it is demonstrating.
 
 ## Commands
 

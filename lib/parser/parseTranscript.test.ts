@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { allLines } from './lines.ts';
 import { parseTranscriptLines } from './parseTranscript.ts';
 import { withSelfCheck } from './selfCheck.ts';
-import { pagesFromText } from '../../fixtures/support/layout.ts';
+import { pagesFromText } from './fixedWidth.ts';
 
 function parse(layout: string) {
   return parseTranscriptLines(allLines(pagesFromText(layout)));

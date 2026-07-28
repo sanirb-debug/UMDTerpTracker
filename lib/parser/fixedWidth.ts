@@ -1,4 +1,7 @@
-import type { PositionedText, TextPage } from '../../lib/parser/textItems.ts';
+import type { PositionedText, TextPage } from './textItems.ts';
+import type { Transcript } from '../types.ts';
+import { parseTranscriptPages } from './parseTranscript.ts';
+import { withSelfCheck } from './selfCheck.ts';
 
 /**
  * Turn a fixed-width text layout into positioned text items, the way pdf.js
@@ -60,4 +63,16 @@ export function pagesFromText(layout: string, metrics: LayoutMetrics = DEFAULT_M
   return layout
     .split('\f')
     .map((page, index) => pageFromText(index + 1, page, metrics));
+}
+
+/**
+ * Parse a transcript that is already fixed-width text rather than a PDF.
+ *
+ * This is how the sample transcript loads: it runs the same row
+ * reconstruction, the same parser and the same self-check as a real upload, so
+ * the demo cannot drift from the thing it is demonstrating. It also skips
+ * pdf.js entirely, which keeps the "try it" button off the megabyte path.
+ */
+export function parseTranscriptText(layout: string, metrics: LayoutMetrics = DEFAULT_METRICS): Transcript {
+  return withSelfCheck(parseTranscriptPages(pagesFromText(layout, metrics)));
 }

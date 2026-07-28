@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { groupIntoLines } from './lines.ts';
-import { pageFromText } from '../../fixtures/support/layout.ts';
+import { pageFromText } from './fixedWidth.ts';
 
 describe('groupIntoLines', () => {
   it('keeps words in a title together but splits at column gaps', () => {

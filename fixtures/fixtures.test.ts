@@ -7,7 +7,7 @@ import { parseTranscriptPages } from '../lib/parser/parseTranscript.ts';
 import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { computeGpa } from '../lib/planner/gpa.ts';
 import type { Transcript } from '../lib/types.ts';
-import { pagesFromText } from './support/layout.ts';
+import { pagesFromText } from '../lib/parser/fixedWidth.ts';
 
 const here = dirname(fileURLToPath(import.meta.url));
 

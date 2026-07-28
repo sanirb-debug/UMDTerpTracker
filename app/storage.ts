@@ -6,6 +6,8 @@ import type { PlannedCourse, Transcript } from '../lib/types.ts';
  */
 const TRANSCRIPT_KEY = 'terptracker.transcript.v1';
 const PLAN_KEY = 'terptracker.plan.v1';
+/** Whether what is stored is the demo rather than somebody's real record. */
+const SAMPLE_KEY = 'terptracker.isSample.v1';
 
 export interface StoredPlan {
   courses: PlannedCourse[];
@@ -31,7 +33,12 @@ function write(key: string, value: unknown): void {
 }
 
 export const loadTranscript = (): Transcript | null => read<Transcript>(TRANSCRIPT_KEY);
-export const saveTranscript = (transcript: Transcript): void => write(TRANSCRIPT_KEY, transcript);
+export const loadIsSample = (): boolean => read<boolean>(SAMPLE_KEY) === true;
+
+export function saveTranscript(transcript: Transcript, isSample = false): void {
+  write(TRANSCRIPT_KEY, transcript);
+  write(SAMPLE_KEY, isSample);
+}
 export const loadPlan = (): StoredPlan | null => read<StoredPlan>(PLAN_KEY);
 export const savePlan = (plan: StoredPlan): void => write(PLAN_KEY, plan);
 
@@ -39,6 +46,7 @@ export function clearEverything(): void {
   try {
     window.localStorage.removeItem(TRANSCRIPT_KEY);
     window.localStorage.removeItem(PLAN_KEY);
+    window.localStorage.removeItem(SAMPLE_KEY);
   } catch {
     // Ignore.
   }
