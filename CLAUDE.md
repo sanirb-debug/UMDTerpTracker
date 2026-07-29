@@ -75,3 +75,25 @@ fixtures/      redacted transcripts + expected parse output
 
 `npm run typecheck && npm run build && npm test` all pass. For parser work, that
 includes every fixture. Don't report a task complete without running these.
+
+## Pushing is not shipping
+
+`main` is not what the site serves. GitHub Pages serves the `gh-pages` branch,
+which only changes when somebody runs:
+
+```bash
+npm run deploy      # builds, then pushes dist/ to gh-pages
+```
+
+There is no CI that does this — the token lacks `workflow` scope, so
+`tools/deploy-pages.sh` stands in for a workflow. A commit on `main` therefore
+changes nothing the user can see.
+
+This has already gone wrong once: eight commits, including the entire demo-mode
+sample chooser, sat on `main` while the live site served a build from before any
+of them existed. Every session reported "pushed to main" and every one of them
+was true and useless.
+
+**So: when a change is meant to be visible, deploy it and check the deployed
+URL, not localhost.** If a change is not meant to be visible yet, say so
+explicitly rather than leaving it ambiguous.
