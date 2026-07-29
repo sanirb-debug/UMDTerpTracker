@@ -13,6 +13,7 @@
     "fetch:catalog": "node tools/fetch-catalog.mjs",
     "fetch:grades": "node tools/fetch-grades.mjs",
     "deploy": "npm run build && bash tools/deploy-pages.sh",
+    "reconcile": "vite-node tools/reconcile.mts",
     "fetch:sections": "node tools/fetch-sections.mjs",
     "fetch:ratings": "node tools/fetch-ratings.mjs",
     "generate:samples": "node tools/generate-samples.mjs",

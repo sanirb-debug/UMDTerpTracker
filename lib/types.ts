@@ -103,7 +103,9 @@ export interface ParseWarning {
     | 'unparsed_line'
     | 'no_terms_found'
     | 'missing_stated_gpa'
-    | 'unknown_grade';
+    | 'unknown_grade'
+    /** A course appears twice and the GPA does not reconcile. See `lib/parser/repeats.ts`. */
+    | 'repeated_course';
   message: string;
   /** Page number the warning came from, when it is line-specific. */
   page?: number;

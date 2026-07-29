@@ -1,5 +1,6 @@
 import type { Transcript } from '../types.ts';
 import { cumulativeTotals } from '../planner/gpa.ts';
+import { gpaExcludingEarlierAttempts, repeatedCourses } from './repeats.ts';
 
 /**
  * The transcript prints its own cumulative GPA. If the GPA computed from the
@@ -53,6 +54,34 @@ export function withSelfCheck(transcript: Transcript): Transcript {
         'numbers below as approximate.',
       detail: `delta ${result.delta.toFixed(3)}`,
     });
+
+    // Say why, when we can. A bare "these numbers disagree" leaves a reader
+    // with no way to judge how much of the page to distrust.
+    const repeats = repeatedCourses(transcript);
+    if (repeats.length > 0) {
+      const excluding = gpaExcludingEarlierAttempts(transcript);
+      const explains =
+        excluding !== null &&
+        result.statedGpa !== null &&
+        Math.abs(excluding - result.statedGpa) <= GPA_TOLERANCE;
+      const names = repeats.map((repeat) => repeat.courseId).join(', ');
+
+      warnings.push({
+        code: 'repeated_course',
+        message: explains
+          ? `${names} appears on your transcript more than once. UMD's repeat policy counts ` +
+            'only the later attempt toward your GPA, and TerpTracker does not do that yet — ' +
+            'it is counting both. That fully explains the difference above: ignoring the ' +
+            `earlier attempt gives exactly the ${result.statedGpa!.toFixed(3)} your transcript ` +
+            'prints. Trust your transcript, not this page.'
+          : `${names} appears on your transcript more than once, which may be why the numbers ` +
+            "above disagree — TerpTracker counts every attempt, and UMD's repeat policy does " +
+            'not. It does not explain the whole difference, so something else is off as well.',
+        detail: repeats
+          .map((repeat) => `${repeat.courseId}×${repeat.attempts.length}`)
+          .join(' '),
+      });
+    }
   }
 
   if (

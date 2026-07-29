@@ -78,6 +78,33 @@ wrong, and the dashboard says so rather than quietly showing you a number that
 is off. Every fixture asserts this, so parser regressions fail in CI instead of
 in front of a student.
 
+To check a real transcript end to end:
+
+```bash
+npm run reconcile -- ~/Downloads/my-transcript.pdf
+```
+
+That compares every total the transcript prints — per semester and cumulative —
+against what the parser computed, and prints the rows of any term that
+disagrees. It runs entirely on your machine and writes nothing. Its output
+contains your grades, so do not paste it into an issue.
+
+## Known limitation: repeated courses
+
+**If you have repeated a course, the GPA and credit total on this site are
+wrong.** UMD's repeat policy counts only the later attempt; TerpTracker counts
+both. It is not fixed because fixing it means knowing exactly how Testudo marks
+the excluded attempt, and no real transcript with a repeat on it has been seen
+yet — guessing at the notation would mean guessing at somebody's GPA.
+
+The self-check catches it, so the numbers are flagged rather than presented as
+correct, and the warning names the repeated course and says the repeat is why.
+`lib/parser/repeats.ts` has the detail; `lib/parser/formats.test.ts` pins the
+behaviour so it changes deliberately or not at all.
+
+**If you have a transcript with a repeat on it**, that is the single most
+useful thing you could contribute — the notation is all that is missing.
+
 ## Refreshing the cached data
 
 Both APIs are run by other people. Nothing calls them at page load.
