@@ -6,9 +6,16 @@ import { selfCheck } from '../lib/parser/selfCheck.ts';
 import { parseTranscriptText } from '../lib/parser/fixedWidth.ts';
 import { findSample, majorOf } from './data/samples.ts';
 import { SomethingWrong } from './components/SomethingWrong.tsx';
+import { Feedback } from './components/Feedback.tsx';
 import { Testudo } from './components/Testudo.tsx';
 import { UploadPage } from './pages/Upload.tsx';
-import { clearEverything, loadTranscript, saveTranscript } from './storage.ts';
+import {
+  clearEverything,
+  feedbackPromptSeen,
+  loadTranscript,
+  markFeedbackPromptSeen,
+  saveTranscript,
+} from './storage.ts';
 
 // These pull in the cached catalog, grade and section data — well over a
 // megabyte between them. Nobody who has not loaded a transcript yet needs it.
@@ -49,6 +56,7 @@ export function App() {
   const [sampleId, setSampleId] = useState<string | undefined>(undefined);
   const [staleParse, setStaleParse] = useState(false);
   const [tab, setTab] = useState<Tab>('upload');
+  const [askForFeedback, setAskForFeedback] = useState(false);
 
   useEffect(() => {
     const stored = loadTranscript();
@@ -80,6 +88,17 @@ export function App() {
     setStaleParse(false);
     saveTranscript(parsed, sample);
     setTab('dashboard');
+  }, []);
+
+  const changeTab = useCallback((next: Tab) => {
+    setTab((current) => {
+      const finishedASession = current === 'requirements' || current === 'planner';
+      if (finishedASession && next !== current && !feedbackPromptSeen()) {
+        markFeedbackPromptSeen();
+        setAskForFeedback(true);
+      }
+      return next;
+    });
   }, []);
 
   const onForget = useCallback(() => {
@@ -178,7 +197,7 @@ export function App() {
           <button
             key={id}
             type="button"
-            onClick={() => setTab(id)}
+            onClick={() => changeTab(id)}
             disabled={id !== 'upload' && !transcript}
             aria-current={tab === id ? 'page' : undefined}
             className={`-mb-px min-h-11 border-b-2 px-3 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 sm:min-h-0 sm:px-4 ${
@@ -210,9 +229,35 @@ export function App() {
         </Suspense>
       </main>
 
+      {askForFeedback && (
+        <section className="mt-8 rounded-lg border border-info-300 bg-info-50 p-4 dark:border-info-800 dark:bg-info-950/30">
+          <p className="text-sm">
+            <strong>Did this get it right?</strong> A few taps would help — especially whether the
+            GPA and the requirements matched your official records.
+          </p>
+          <Feedback
+            view={VIEW_FOR_TAB[tab]}
+            transcript={transcript}
+            sampleId={sampleId}
+            startOpen
+            onClose={() => setAskForFeedback(false)}
+          />
+          <button
+            type="button"
+            className="mt-2 text-xs text-neutral-500 underline decoration-dotted underline-offset-2"
+            onClick={() => setAskForFeedback(false)}
+          >
+            No thanks
+          </button>
+        </section>
+      )}
+
       <footer className="mt-12 border-t border-neutral-200 pt-4 text-xs text-neutral-500 dark:border-neutral-800">
         Course data from api.umd.io, grades and ratings from PlanetTerp. Both are run by students
         and volunteers, and both are cached here rather than called on your behalf.
+        <div className="mt-2">
+          <Feedback view={VIEW_FOR_TAB[tab]} transcript={transcript} sampleId={sampleId} />
+        </div>
       </footer>
 
       {/* Last in the DOM, so last in the tab order — somebody driving this by

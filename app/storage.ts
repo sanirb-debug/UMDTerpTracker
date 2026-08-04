@@ -74,6 +74,23 @@ export function saveTranscript(transcript: Transcript, sampleId?: string): void 
   write(TRANSCRIPT_KEY, payload);
 }
 
+const FEEDBACK_PROMPT_KEY = 'terptracker.feedbackPrompt.v1';
+
+/** Whether the after-a-session feedback prompt has already had its one turn. */
+export function feedbackPromptSeen(): boolean {
+  try {
+    return window.localStorage.getItem(FEEDBACK_PROMPT_KEY) !== null;
+  } catch {
+    // Storage unavailable: treat as seen, so a prompt that cannot be dismissed
+    // permanently is never shown in the first place.
+    return true;
+  }
+}
+
+export function markFeedbackPromptSeen(): void {
+  write(FEEDBACK_PROMPT_KEY, { seen: true });
+}
+
 export const loadPlan = (): StoredPlan | null => read<StoredPlan>(PLAN_KEY);
 export const savePlan = (plan: StoredPlan): void => write(PLAN_KEY, plan);
 

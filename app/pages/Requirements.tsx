@@ -7,6 +7,7 @@ import { allRequirements } from '../data/requirements.ts';
 import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
 import { CourseLink, CourseLinkList } from '../components/CourseLink.tsx';
 import { SomethingWrong } from '../components/SomethingWrong.tsx';
+import { Feedback } from '../components/Feedback.tsx';
 
 interface Props {
   transcript: Transcript;
@@ -41,8 +42,15 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
           Requirements are transcribed by hand from the official catalog, one major at a time.
           Written up so far: {allRequirements.map((r) => r.major).join(', ')}.
         </p>
-        <div className="mt-3">
+        <div className="mt-3 flex flex-wrap items-center gap-4">
           <SomethingWrong view="Requirements" transcript={transcript} sampleId={sampleId} />
+          <Feedback
+            view="Requirements"
+            transcript={transcript}
+            sampleId={sampleId}
+            hasMajorAudit={false}
+            label="Tell us what's missing"
+          />
         </div>
       </section>
     );
@@ -158,6 +166,20 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
         and substitutions are a conversation with an advisor — this is a second opinion, not your
         official degree audit. Confirm before you register.
       </p>
+
+      <div className="border-t border-neutral-200 pt-4 dark:border-neutral-800">
+        <p className="text-xs text-neutral-500 dark:text-neutral-400">
+          Did this match your official degree audit? That answer is the only way anyone finds out
+          when it does not.
+        </p>
+        <Feedback
+          view="Requirements"
+          transcript={transcript}
+          sampleId={sampleId}
+          hasMajorAudit
+          label="Tell us how it went"
+        />
+      </div>
     </div>
   );
 }
