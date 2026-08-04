@@ -196,7 +196,6 @@ export function App() {
         <Suspense fallback={<p className="text-sm text-neutral-500">Loading…</p>}>
           {tab === 'upload' && (
             <UploadPage
-              transcript={transcript}
               sampleId={sampleId}
               onParsed={onParsed}
               onForget={onForget}

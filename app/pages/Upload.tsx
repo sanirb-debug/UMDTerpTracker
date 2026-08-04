@@ -1,23 +1,22 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { ScannedPdfError } from '../../lib/parser/errors.ts';
 import type { ParsePhase } from '../parsing/client.ts';
 import { parseTranscriptText } from '../../lib/parser/fixedWidth.ts';
 import { SAMPLE_MAJORS, SAMPLE_YEARS, sampleFor } from '../data/samples.ts';
+import { ClearMyData } from '../components/ClearMyData.tsx';
 
 interface Props {
-  transcript: Transcript | null;
   sampleId?: string;
   onParsed: (transcript: Transcript, sampleId?: string) => void;
   onForget: () => void;
 }
 
-export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) {
+export function UploadPage({ sampleId, onParsed, onForget }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [progress, setProgress] = useState<ParsePhase | null>(null);
   const [dragging, setDragging] = useState(false);
-  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFile = useCallback(
     async (file: File) => {
@@ -63,6 +62,17 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
   return (
     <div className="space-y-6">
       {/*
+        The reason somebody hesitates is right here, so the answer is too.
+        This used to live in a card below the sample grid, which is after the
+        point at which the decision gets made.
+      */}
+      <p className="rounded-lg border border-positive-300 bg-positive-50 px-4 py-3 text-sm text-positive-900 dark:border-positive-800 dark:bg-positive-950/30 dark:text-positive-100">
+        <strong>Your transcript is read here in your browser and never uploaded.</strong> There is
+        no server and no account — the file is opened by code running in this tab, and nothing
+        about it is sent anywhere. You can watch that yourself in your browser&apos;s network tab.
+      </p>
+
+      {/*
         Tap first, drag second.
         "Drop your transcript here" is instructions for a gesture a phone does
         not have, and it was the biggest thing on the page. The button is now
@@ -105,7 +115,6 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
           that Files does not grey the file out.
         */}
         <input
-          ref={inputRef}
           id="transcript-file"
           type="file"
           accept="application/pdf,.pdf"
@@ -258,13 +267,12 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
         </p>
         <p className="text-neutral-600 dark:text-neutral-300">
           The parsed result is kept in this browser&apos;s local storage so you do not have to
-          re-upload every visit. Clearing it removes every trace.
+          re-upload every visit. That is the only copy that exists anywhere, and the button below
+          deletes it.
         </p>
-        {transcript && (
-          <button type="button" className="button-quiet mt-2" onClick={onForget}>
-            {sampleId ? 'Clear the sample' : 'Clear my transcript'}
-          </button>
-        )}
+        <div className="pt-1">
+          <ClearMyData onCleared={onForget} />
+        </div>
       </section>
     </div>
   );

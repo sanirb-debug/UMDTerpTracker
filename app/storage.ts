@@ -77,13 +77,42 @@ export function saveTranscript(transcript: Transcript, sampleId?: string): void 
 export const loadPlan = (): StoredPlan | null => read<StoredPlan>(PLAN_KEY);
 export const savePlan = (plan: StoredPlan): void => write(PLAN_KEY, plan);
 
-export function clearEverything(): void {
+/**
+ * Everything this app has ever written lives under this prefix.
+ *
+ * Clearing enumerates by prefix rather than deleting a hard-coded list, so a
+ * key written by an older build — or a newer one somebody forgets to add here —
+ * still goes. "Clear my data" that leaves something behind is worse than not
+ * offering it.
+ */
+const KEY_PREFIX = 'terptracker.';
+
+/** Storage keys currently holding anything, for the UI to report honestly. */
+export function storedKeys(): string[] {
   try {
-    window.localStorage.removeItem(TRANSCRIPT_KEY);
-    window.localStorage.removeItem(PLAN_KEY);
-    // Written by an older build; remove it so nothing is left behind.
-    window.localStorage.removeItem('terptracker.isSample.v1');
+    const keys: string[] = [];
+    for (let i = 0; i < window.localStorage.length; i += 1) {
+      const key = window.localStorage.key(i);
+      if (key?.startsWith(KEY_PREFIX)) keys.push(key);
+    }
+    return keys.sort();
   } catch {
-    // Ignore.
+    // Private browsing with storage disabled: nothing is stored, so nothing
+    // needs clearing.
+    return [];
   }
+}
+
+/**
+ * Wipe every trace and say what went. Returns the keys removed so the button
+ * can confirm with something specific rather than an unverifiable "done!".
+ */
+export function clearEverything(): string[] {
+  const keys = storedKeys();
+  try {
+    for (const key of keys) window.localStorage.removeItem(key);
+  } catch {
+    // Ignore — nothing more can be done, and the caller reports what it sees.
+  }
+  return keys;
 }

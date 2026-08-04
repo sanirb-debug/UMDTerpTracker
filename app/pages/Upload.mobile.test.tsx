@@ -19,7 +19,7 @@ const noop = () => {};
 
 describe('choosing a file', () => {
   it('is a real label bound to a real file input', () => {
-    render(<UploadPage transcript={null} onParsed={noop} onForget={noop} />);
+    render(<UploadPage onParsed={noop} onForget={noop} />);
 
     const label = screen.getByText('Choose file').closest('label');
     const input = document.getElementById('transcript-file') as HTMLInputElement;
@@ -33,7 +33,7 @@ describe('choosing a file', () => {
   });
 
   it('accepts PDFs by both MIME type and extension', () => {
-    render(<UploadPage transcript={null} onParsed={noop} onForget={noop} />);
+    render(<UploadPage onParsed={noop} onForget={noop} />);
     const input = document.getElementById('transcript-file') as HTMLInputElement;
     // iOS Files greys out anything the accept list does not cover, and a PDF
     // saved from Testudo can arrive with either identification.
@@ -42,7 +42,7 @@ describe('choosing a file', () => {
   });
 
   it('keeps the input reachable by keyboard rather than display:none', () => {
-    render(<UploadPage transcript={null} onParsed={noop} onForget={noop} />);
+    render(<UploadPage onParsed={noop} onForget={noop} />);
     const input = document.getElementById('transcript-file') as HTMLInputElement;
     expect(input.className).toContain('sr-only');
     expect(input.disabled).toBe(false);
@@ -51,7 +51,7 @@ describe('choosing a file', () => {
 
 describe('the narrow-screen sample chooser', () => {
   it('offers every major and every year as native selects', () => {
-    render(<UploadPage transcript={null} onParsed={noop} onForget={noop} />);
+    render(<UploadPage onParsed={noop} onForget={noop} />);
 
     const major = screen.getByLabelText('Major') as HTMLSelectElement;
     const year = screen.getByLabelText('Class year') as HTMLSelectElement;
@@ -63,7 +63,7 @@ describe('the narrow-screen sample chooser', () => {
   });
 
   it('says which majors have no audit, the way the grid does', () => {
-    render(<UploadPage transcript={null} onParsed={noop} onForget={noop} />);
+    render(<UploadPage onParsed={noop} onForget={noop} />);
     const major = screen.getByLabelText('Major') as HTMLSelectElement;
 
     for (const option of [...major.options]) {
@@ -74,7 +74,7 @@ describe('the narrow-screen sample chooser', () => {
 
   it('loads the sample the two selects name, and only when asked', () => {
     const onParsed = vi.fn();
-    render(<UploadPage transcript={null} onParsed={onParsed} onForget={noop} />);
+    render(<UploadPage onParsed={onParsed} onForget={noop} />);
 
     const major = SAMPLE_MAJORS.find((m) => m.slug !== SAMPLE_MAJORS[0]!.slug)!;
     const year = SAMPLE_YEARS[2]!;
@@ -96,7 +96,7 @@ describe('the narrow-screen sample chooser', () => {
     const sample = sampleFor(major.slug, year.slug)!;
 
     render(
-      <UploadPage transcript={null} sampleId={sample.id} onParsed={noop} onForget={noop} />,
+      <UploadPage sampleId={sample.id} onParsed={noop} onForget={noop} />,
     );
 
     expect((screen.getByLabelText('Major') as HTMLSelectElement).value).toBe(major.slug);
