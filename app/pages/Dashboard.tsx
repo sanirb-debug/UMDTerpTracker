@@ -1,10 +1,12 @@
 import { useMemo } from 'react';
 import type { CourseEntry, Transcript } from '../../lib/types.ts';
+import type { GlossaryKey } from '../data/glossary.ts';
 import { cumulativeTotals, gpaByTerm } from '../../lib/planner/index.ts';
 import { selfCheck } from '../../lib/parser/selfCheck.ts';
 import { creditProgress, formatTermId, inProgressByTerm } from '../../lib/degree.ts';
 import { catalog } from '../data/catalog.ts';
 import { CourseLink } from '../components/CourseLink.tsx';
+import { Explain } from '../components/Explain.tsx';
 
 interface Props {
   transcript: Transcript;
@@ -22,7 +24,7 @@ export function DashboardPage({ transcript }: Props) {
       {transcript.warnings.length > 0 && (
         <section
           role="alert"
-          className="rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm dark:border-amber-800 dark:bg-amber-950/30"
+          className="rounded-lg border border-caution-300 bg-caution-50 p-4 text-sm dark:border-caution-800 dark:bg-caution-950/30"
         >
           <h2 className="mb-1 font-semibold">Check these before you trust the numbers</h2>
           <ul className="list-inside list-disc space-y-1">
@@ -34,19 +36,26 @@ export function DashboardPage({ transcript }: Props) {
       )}
 
       <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <Stat label="Cumulative GPA" value={totals.gpa?.toFixed(3) ?? '—'} />
+        <Stat label="Cumulative GPA" value={totals.gpa?.toFixed(3) ?? '—'} explain="cumulativeGpa" />
         <Stat
           label="Transcript says"
           value={check.statedGpa?.toFixed(3) ?? '—'}
           tone={check.ok ? 'ok' : 'warn'}
+          explain="transcriptSays"
         />
-        <Stat label="Credits earned" value={String(totals.earnedCredits)} />
-        <Stat label="GPA credits" value={String(totals.gpaCredits)} />
+        <Stat
+          label="Credits earned"
+          value={String(totals.earnedCredits)}
+          explain="creditsEarned"
+        />
+        <Stat label="GPA credits" value={String(totals.gpaCredits)} explain="gpaCredits" />
       </section>
 
       <section className="card">
         <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="font-semibold">Credits toward a degree</h2>
+          <h2 className="font-semibold">
+            Credits toward a degree <Explain term="creditsTowardDegree" className="ml-1" />
+          </h2>
           <p className="text-sm tabular-nums text-neutral-500 dark:text-neutral-400">
             {credits.earned + credits.inProgress} of {credits.required}
           </p>
@@ -58,11 +67,11 @@ export function DashboardPage({ transcript }: Props) {
           aria-label={`${credits.earned} credits earned, ${credits.inProgress} in progress, ${credits.remaining} still to take out of ${credits.required}`}
         >
           <div
-            className="bg-terp-red"
+            className="bg-accent-600"
             style={{ width: `${(credits.earned / credits.required) * 100}%` }}
           />
           <div
-            className="bg-terp-red/40"
+            className="bg-accent-600/40"
             style={{ width: `${(credits.inProgress / credits.required) * 100}%` }}
           />
         </div>
@@ -136,13 +145,26 @@ export function DashboardPage({ transcript }: Props) {
   );
 }
 
-function Stat({ label, value, tone }: { label: string; value: string; tone?: 'ok' | 'warn' }) {
+function Stat({
+  label,
+  value,
+  tone,
+  explain,
+}: {
+  label: string;
+  value: string;
+  tone?: 'ok' | 'warn';
+  explain?: GlossaryKey;
+}) {
   return (
     <div className="card">
-      <div className="label">{label}</div>
+      <div className="label">
+        {label}
+        {explain && <Explain term={explain} className="ml-1" />}
+      </div>
       <div
         className={`mt-1 text-2xl font-bold tabular-nums ${
-          tone === 'warn' ? 'text-amber-600 dark:text-amber-400' : ''
+          tone === 'warn' ? 'text-caution-600 dark:text-caution-400' : ''
         }`}
       >
         {value}

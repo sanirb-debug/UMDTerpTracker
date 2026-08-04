@@ -116,7 +116,7 @@ export function App() {
         {totals?.gpa != null && (
           <div className="text-right">
             <div
-              className={`text-3xl font-bold tabular-nums ${gpaSuspect ? 'text-amber-600 dark:text-amber-400' : ''}`}
+              className={`text-3xl font-bold tabular-nums ${gpaSuspect ? 'text-caution-600 dark:text-caution-400' : ''}`}
             >
               {totals.gpa.toFixed(3)}
               {gpaSuspect && <span className="ml-1 align-top text-base">⚠</span>}
@@ -136,7 +136,7 @@ export function App() {
 
       {/* Deliberately above the fold rather than in the footer. Somebody acting
           on a number here without checking it is the failure mode that matters. */}
-      <p className="mb-4 rounded-lg border border-amber-400/60 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:border-amber-700/60 dark:bg-amber-950/30 dark:text-amber-200">
+      <p className="mb-4 rounded-lg border border-caution-400/60 bg-caution-50 px-3 py-2 text-sm text-caution-900 dark:border-caution-700/60 dark:bg-caution-950/30 dark:text-caution-200">
         <strong>Unofficial.</strong> Not affiliated with the University of Maryland. Confirm
         anything here with your advisor and your official degree audit before you register.
       </p>
@@ -144,7 +144,7 @@ export function App() {
       {staleParse && (
         <p
           role="alert"
-          className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200"
+          className="mb-4 rounded-lg border border-info-400/60 bg-info-50 px-3 py-2 text-sm text-info-900 dark:border-info-700/60 dark:bg-info-950/30 dark:text-info-200"
         >
           <strong>TerpTracker got better at reading transcripts since you last used it.</strong>{' '}
           Your saved copy was read by the older version and would have shown requirements as unmet
@@ -154,7 +154,7 @@ export function App() {
       )}
 
       {sampleId && (
-        <p className="mb-4 rounded-lg border border-sky-400/60 bg-sky-50 px-3 py-2 text-sm text-sky-900 dark:border-sky-700/60 dark:bg-sky-950/30 dark:text-sky-200">
+        <p className="mb-4 rounded-lg border border-info-400/60 bg-info-50 px-3 py-2 text-sm text-info-900 dark:border-info-700/60 dark:bg-info-950/30 dark:text-info-200">
           Sample data — an invented <strong>{majorOf(sampleId)?.name ?? 'demo'}</strong> student,
           not your own record. Everything below is real behaviour on invented data; load your own
           transcript from the Transcript tab whenever you like.
@@ -164,7 +164,7 @@ export function App() {
       {gpaSuspect && check && (
         <p
           role="alert"
-          className="mb-4 rounded-lg border border-amber-500 bg-amber-100 px-3 py-2 text-sm text-amber-900 dark:border-amber-600 dark:bg-amber-950/50 dark:text-amber-100"
+          className="mb-4 rounded-lg border border-caution-500 bg-caution-100 px-3 py-2 text-sm text-caution-900 dark:border-caution-600 dark:bg-caution-950/50 dark:text-caution-100"
         >
           <strong>This GPA does not match your transcript.</strong> We compute{' '}
           {check.computedGpa?.toFixed(3)} but your transcript prints {check.statedGpa?.toFixed(3)},
@@ -183,7 +183,7 @@ export function App() {
             aria-current={tab === id ? 'page' : undefined}
             className={`-mb-px min-h-11 border-b-2 px-3 py-2 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-40 sm:min-h-0 sm:px-4 ${
               tab === id
-                ? 'border-terp-red text-terp-red'
+                ? 'border-accent-600 text-accent-700 dark:text-accent-400'
                 : 'border-transparent text-neutral-500 hover:text-neutral-900 dark:hover:text-neutral-100'
             }`}
           >

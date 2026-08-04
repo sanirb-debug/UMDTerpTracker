@@ -92,7 +92,7 @@ export function Testudo({ quotes = defaultQuotes, random }: Props) {
             return next;
           })
         }
-        className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full text-lg leading-none opacity-30 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-terp-red sm:h-8 sm:w-8"
+        className="pointer-events-auto flex h-11 w-11 items-center justify-center rounded-full text-lg leading-none opacity-30 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-600 sm:h-8 sm:w-8"
       >
         <span aria-hidden="true">🐢</span>
       </button>

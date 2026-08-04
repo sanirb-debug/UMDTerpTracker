@@ -197,8 +197,8 @@ function PinnedSummary({
               projected == null
                 ? ''
                 : reachesTarget
-                  ? 'text-emerald-600 dark:text-emerald-400'
-                  : 'text-amber-600 dark:text-amber-400'
+                  ? 'text-positive-600 dark:text-positive-400'
+                  : 'text-caution-600 dark:text-caution-400'
             }`}
           >
             {headline?.toFixed(3) ?? '—'}
@@ -257,8 +257,8 @@ function Verdict({
       <p
         className={`rounded-lg p-4 text-sm ${
           reaches
-            ? 'bg-emerald-50 text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200'
-            : 'bg-amber-50 text-amber-900 dark:bg-amber-950/30 dark:text-amber-100'
+            ? 'bg-positive-50 text-positive-900 dark:bg-positive-950/30 dark:text-positive-200'
+            : 'bg-caution-50 text-caution-900 dark:bg-caution-950/30 dark:text-caution-100'
         }`}
       >
         Those grades land you at <strong className="tabular-nums">{projected.toFixed(3)}</strong>
@@ -270,7 +270,7 @@ function Verdict({
   }
   if (needed.alreadyThere) {
     return (
-      <p className="rounded-lg bg-emerald-50 p-4 text-sm text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200">
+      <p className="rounded-lg bg-positive-50 p-4 text-sm text-positive-900 dark:bg-positive-950/30 dark:text-positive-200">
         You are already above {target.toFixed(2)}. Even the worst case here leaves you at{' '}
         <strong className="tabular-nums">{needed.worstCase.toFixed(3)}</strong>.
       </p>
@@ -278,7 +278,7 @@ function Verdict({
   }
   if (!needed.feasible) {
     return (
-      <p className="rounded-lg bg-red-50 p-4 text-sm text-red-900 dark:bg-red-950/30 dark:text-red-200">
+      <p className="rounded-lg bg-critical-50 p-4 text-sm text-critical-900 dark:bg-critical-950/30 dark:text-critical-200">
         {target.toFixed(2)} is out of reach this semester. Straight A&apos;s in everything below
         gets you to <strong className="tabular-nums">{needed.bestCase.toFixed(3)}</strong>.
       </p>

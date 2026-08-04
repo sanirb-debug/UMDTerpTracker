@@ -85,7 +85,7 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
         }}
         className={`rounded-xl border p-5 text-center transition-colors sm:border-2 sm:border-dashed sm:p-10 ${
           dragging
-            ? 'border-terp-red bg-red-50 dark:bg-red-950/20'
+            ? 'border-accent-600 bg-accent-50 dark:bg-accent-950/40'
             : 'border-neutral-200 dark:border-neutral-800 sm:border-neutral-300 sm:dark:border-neutral-700'
         }`}
       >
@@ -122,7 +122,7 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
         ) : (
           <label
             htmlFor="transcript-file"
-            className="button w-full cursor-pointer text-base focus-within:ring-2 focus-within:ring-terp-red focus-within:ring-offset-2 sm:w-auto sm:text-sm dark:focus-within:ring-offset-neutral-950"
+            className="button w-full cursor-pointer text-base focus-within:ring-2 focus-within:ring-accent-600 focus-within:ring-offset-2 sm:w-auto sm:text-sm dark:focus-within:ring-offset-neutral-950"
           >
             Choose file
           </label>
@@ -168,7 +168,7 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
                     <span
                       className={`block whitespace-nowrap text-[10px] font-normal ${
                         major.hasRequirements
-                          ? 'text-emerald-600 dark:text-emerald-400'
+                          ? 'text-positive-600 dark:text-positive-400'
                           : 'text-neutral-400 dark:text-neutral-500'
                       }`}
                     >
@@ -200,11 +200,11 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
                           aria-label={`${major.name}, ${year.label}${
                             major.hasRequirements ? '' : ' (no degree audit available)'
                           }`}
-                          className={`w-full whitespace-nowrap rounded border px-3 py-2 text-xs transition-colors hover:border-terp-red ${
+                          className={`w-full whitespace-nowrap rounded border px-3 py-2 text-xs transition-colors hover:border-accent-600 ${
                             selected
-                              ? 'border-terp-red bg-red-50 font-semibold dark:bg-red-950/20'
+                              ? 'border-accent-600 bg-accent-50 font-semibold dark:bg-accent-950/40'
                               : major.hasRequirements
-                                ? 'border-emerald-500/40 dark:border-emerald-500/30'
+                                ? 'border-positive-500/40 dark:border-positive-500/30'
                                 : 'border-dashed border-neutral-300 dark:border-neutral-700'
                           }`}
                         >
@@ -238,11 +238,11 @@ export function UploadPage({ transcript, sampleId, onParsed, onForget }: Props) 
       {error && (
         <section
           role="alert"
-          className="rounded-lg border border-red-300 bg-red-50 p-4 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200"
+          className="rounded-lg border border-critical-300 bg-critical-50 p-4 text-sm text-critical-800 dark:border-critical-900 dark:bg-critical-950/40 dark:text-critical-200"
         >
           <h2 className="font-semibold">That did not work</h2>
           <p className="mt-1">{error}</p>
-          <p className="mt-2 text-xs text-red-700 dark:text-red-300">
+          <p className="mt-2 text-xs text-critical-700 dark:text-critical-300">
             Nothing was kept and nothing was sent anywhere. Pick another file and try again, or use
             a sample above to see what the app does.
           </p>
@@ -293,7 +293,7 @@ function ParsingStatus({ progress }: { progress: ParsePhase | null }) {
     >
       <span
         aria-hidden="true"
-        className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-terp-red dark:border-neutral-700 dark:border-t-terp-red"
+        className="h-5 w-5 animate-spin rounded-full border-2 border-neutral-300 border-t-accent-700 dark:border-neutral-700 dark:border-t-accent-700"
       />
       {message}
     </div>

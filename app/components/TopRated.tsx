@@ -38,7 +38,7 @@ export function TopRated({ courseId, teaching = [], yours = [] }: Props) {
             <span>
               <span className="text-neutral-400">{index + 1}.</span>{' '}
               <strong className="font-semibold">{record.name}</strong>
-              <span className="ml-2 tabular-nums text-amber-600 dark:text-amber-400">
+              <span className="ml-2 tabular-nums text-caution-600 dark:text-caution-400">
                 {record.rating?.toFixed(2)}/5
               </span>
               <span className="ml-1 text-xs text-neutral-500">
@@ -52,7 +52,7 @@ export function TopRated({ courseId, teaching = [], yours = [] }: Props) {
                 </span>
               )}
               {!isYours && isTeaching && (
-                <span className="ml-2 rounded bg-emerald-500/20 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-emerald-700 dark:text-emerald-300">
+                <span className="ml-2 rounded bg-positive-500/20 px-1.5 py-0.5 text-[10px] uppercase tracking-wide text-positive-700 dark:text-positive-300">
                   teaching this term
                 </span>
               )}

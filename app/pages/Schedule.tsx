@@ -25,13 +25,13 @@ interface Props {
 
 /** Enough hues to tell a normal course load apart at a glance. */
 const COLORS = [
-  'bg-red-500/20 border-red-500/50',
-  'bg-sky-500/20 border-sky-500/50',
-  'bg-emerald-500/20 border-emerald-500/50',
-  'bg-amber-500/20 border-amber-500/50',
-  'bg-violet-500/20 border-violet-500/50',
-  'bg-pink-500/20 border-pink-500/50',
-  'bg-teal-500/20 border-teal-500/50',
+  'bg-course-1/20 border-course-1/60',
+  'bg-course-2/20 border-course-2/60',
+  'bg-course-3/20 border-course-3/60',
+  'bg-course-4/20 border-course-4/60',
+  'bg-course-5/20 border-course-5/60',
+  'bg-course-6/20 border-course-6/60',
+  'bg-course-7/20 border-course-7/60',
 ];
 
 const PIXELS_PER_MINUTE = 0.85;
@@ -97,7 +97,7 @@ export function SchedulePage({ transcript }: Props) {
       </section>
 
       {conflicts.length > 0 && (
-        <p role="alert" className="rounded-lg bg-amber-50 p-4 text-sm dark:bg-amber-950/30">
+        <p role="alert" className="rounded-lg bg-caution-50 p-4 text-sm dark:bg-caution-950/30">
           {conflicts.map((conflict) => (
             <span key={`${conflict.day}-${conflict.a.courseId}-${conflict.b.courseId}`}>
               {conflict.a.courseId} and {conflict.b.courseId} overlap on{' '}
@@ -291,7 +291,7 @@ function ProfessorVerdict({
           {betterAvailable && best && (
             <>
               {' '}
-              <span className="text-amber-600 dark:text-amber-400">
+              <span className="text-caution-600 dark:text-caution-400">
                 {best.name} averages {formatGpa(best.avgGpa)} and is also teaching it.
               </span>
             </>

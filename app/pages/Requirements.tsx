@@ -28,7 +28,7 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
   // empty one that reads like a finished degree.
   if (!requirements || !audit) {
     return (
-      <section className="card border-l-4 border-amber-500/60">
+      <section className="card border-l-4 border-caution-500/60">
         <h2 className="font-semibold">Degree audit not yet available for this major</h2>
         <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-300">
           {transcript.major
@@ -68,11 +68,11 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
         </div>
 
         {audit.satisfied ? (
-          <p className="mt-3 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200">
+          <p className="mt-3 rounded-lg bg-positive-50 p-3 text-sm text-positive-900 dark:bg-positive-950/30 dark:text-positive-200">
             Everything here is satisfied.
           </p>
         ) : audit.satisfiedIfInProgressPass ? (
-          <p className="mt-3 rounded-lg bg-emerald-50 p-3 text-sm text-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-200">
+          <p className="mt-3 rounded-lg bg-positive-50 p-3 text-sm text-positive-900 dark:bg-positive-950/30 dark:text-positive-200">
             Everything outstanding is already on your schedule. Pass what you are taking and this
             is done.
           </p>
@@ -192,10 +192,10 @@ function groupResults(results: RuleResult[]): Array<{ label: string; results: Ru
 function RequirementCard({ result }: { result: RuleResult }) {
   const covered = result.have + result.pending >= result.needed;
   const tone = result.satisfied
-    ? 'border-emerald-500/40'
+    ? 'border-positive-500/40'
     : covered
-      ? 'border-sky-500/40'
-      : 'border-amber-500/50';
+      ? 'border-info-500/40'
+      : 'border-caution-500/50';
 
   return (
     <article className={`card border-l-4 ${tone}`}>
