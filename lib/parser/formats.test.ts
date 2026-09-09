@@ -229,18 +229,15 @@ CMSC330 0201 3.00  REG A  05/28/25 05/28/25          DSSP
 });
 
 /**
- * The one that does not work.
+ * The repeat case, which the app resolves on its own.
  *
- * A repeated course is counted twice, so the GPA and the credit total are both
- * wrong. This is not a snapshot of a bug we intend to keep — it is a record of
- * a known, unfixed limitation, and it asserts the two things that make the
- * limitation survivable: the self-check catches it, and the reader is told why.
- *
- * When repeat handling lands, the first two expectations here flip to the
- * transcript's own 4.000 and 8 credits, and that is exactly the right way for
- * this test to fail.
+ * Counting every graded row twice gets both the GPA and the credit total wrong.
+ * Applying UMD's repeat policy fixes both, and the transcript's own printed
+ * figures are what confirm the fix landed — which is how the policy can be
+ * applied without knowing how Testudo marks the excluded attempt. If the
+ * correction did not reconcile, it would not be kept: see `./repeats.ts`.
  */
-describe('a repeated course — known to be wrong', () => {
+describe('a repeated course', () => {
   // CMSC131 taken twice: D, then A. UMD's policy counts only the retake, so the
   // transcript prints 4.000 over 8 credits.
   const repeated = parseTranscriptText(
@@ -264,29 +261,39 @@ UG Cumulative GPA             :         4.000
 `,
   );
 
-  it('gets the GPA and the credits wrong, because it counts both attempts', () => {
+  it('counts only the later attempt, matching the GPA and credits printed', () => {
     const totals = cumulativeTotals(repeated);
-    expect(totals.gpa).toBeCloseTo(3.0, 3); // the transcript says 4.000
-    expect(totals.earnedCredits).toBe(12); // the transcript says 8
+    expect(totals.gpa).toBeCloseTo(4.0, 3);
+    expect(totals.earnedCredits).toBe(8);
     expect(repeated.statedCumulativeGpa).toBe(4);
     expect(repeated.statedCumulativeCredits).toBe(8);
   });
 
-  it('does not present those numbers as trustworthy', () => {
-    // This is what makes the limitation survivable rather than dangerous.
-    expect(selfCheck(repeated).ok).toBe(false);
-    expect(repeated.warnings.map((w) => w.code)).toContain('gpa_mismatch');
+  it('marks the earlier attempt excluded rather than dropping the row', () => {
+    // The course still belongs on the transcript page; it just stops paying
+    // into the GPA and stops earning its credit a second time.
+    const attempts = repeated.terms.flatMap((term) =>
+      term.courses.filter((course) => course.courseId === 'CMSC131'),
+    );
+    expect(attempts).toHaveLength(2);
+    expect(attempts[0]!.grade).toBe('D');
+    expect(attempts[0]!.repeatExcluded).toBe(true);
+    expect(attempts[0]!.countsTowardGpa).toBe(false);
+    expect(attempts[1]!.repeatExcluded).toBeUndefined();
   });
 
-  it('names the course and says the repeat accounts for all of the difference', () => {
+  it('presents the numbers as trustworthy, because they now reconcile', () => {
+    expect(selfCheck(repeated).ok).toBe(true);
+    expect(repeated.warnings.map((w) => w.code)).not.toContain('gpa_mismatch');
+  });
+
+  it('still says which course was repeated, and what was done about it', () => {
     const warning = repeated.warnings.find((w) => w.code === 'repeated_course');
     expect(warning).toBeDefined();
     expect(warning!.message).toContain('CMSC131');
-    expect(warning!.message).toContain('repeat policy');
-    // Dropping the earlier attempt lands exactly on the printed 4.000, so the
-    // message is allowed to be definite rather than hedging.
-    expect(warning!.message).toContain('fully explains');
-    expect(warning!.message).toContain('Trust your transcript');
+    expect(warning!.message).toContain('latest');
+    // The printed GPA is cited as the reason the correction is trustworthy.
+    expect(warning!.message).toContain('4.000');
   });
 
   it('finds the repeated course and every attempt', () => {

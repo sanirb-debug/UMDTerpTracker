@@ -4,6 +4,8 @@ import type { CourseEntry, GpaTotals, Term, Transcript } from '../types.ts';
 const NO_CREDIT_MARKS = new Set(['W', 'I', 'NG', 'AU']);
 
 function earnedCreditsFor(entry: CourseEntry): number {
+  // A repeat earns its credit once, on the attempt that counted.
+  if (entry.repeatExcluded) return 0;
   if (entry.creditsEarned !== undefined) return entry.creditsEarned;
   if (NO_CREDIT_MARKS.has(entry.grade)) return 0;
   if (entry.gradePoints === 0) return 0;

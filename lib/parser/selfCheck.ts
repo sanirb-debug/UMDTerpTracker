@@ -1,6 +1,6 @@
 import type { Transcript } from '../types.ts';
 import { cumulativeTotals } from '../planner/gpa.ts';
-import { gpaExcludingEarlierAttempts, repeatedCourses } from './repeats.ts';
+import { repeatedCourses, withRepeatPolicyApplied } from './repeats.ts';
 
 /**
  * The transcript prints its own cumulative GPA. If the GPA computed from the
@@ -38,14 +38,47 @@ export function selfCheck(transcript: Transcript): SelfCheckResult {
 }
 
 /**
+ * Apply UMD's repeat policy, and keep the result only if it reconciles the GPA
+ * with the one the transcript prints. That agreement is what turns dropping the
+ * earlier attempt from a guess into a demonstration — see `./repeats.ts`.
+ */
+function reconciledByRepeatPolicy(transcript: Transcript): Transcript | null {
+  const adjusted = withRepeatPolicyApplied(transcript);
+  return selfCheck(adjusted).ok ? adjusted : null;
+}
+
+/**
  * Run the self-check and fold any disagreement into the transcript's warnings,
  * so the UI has one place to look for "something about this parse is off".
  */
 export function withSelfCheck(transcript: Transcript): Transcript {
-  const result = selfCheck(transcript);
-  const warnings = [...transcript.warnings];
+  const initial = selfCheck(transcript);
+  const repeats = repeatedCourses(transcript);
 
-  if (result.delta !== null && !result.ok) {
+  // A repeat is the one discrepancy this can settle on its own, because the
+  // printed GPA says whether the correction is right.
+  const repaired =
+    initial.delta !== null && !initial.ok && repeats.length > 0
+      ? reconciledByRepeatPolicy(transcript)
+      : null;
+
+  const subject = repaired ?? transcript;
+  const result = repaired ? selfCheck(subject) : initial;
+  const warnings = [...subject.warnings];
+  const names = repeats.map((repeat) => repeat.courseId).join(', ');
+  const detail = repeats.map((repeat) => `${repeat.courseId}×${repeat.attempts.length}`).join(' ');
+
+  if (repaired) {
+    warnings.push({
+      code: 'repeated_course',
+      message:
+        `${names} appears on your transcript more than once. UMD counts only your latest ` +
+        'attempt toward your GPA and awards the credit once, and TerpTracker has done the same ' +
+        `here — which is why the numbers below agree with the ${result.statedGpa!.toFixed(3)} ` +
+        'your transcript prints.',
+      detail,
+    });
+  } else if (result.delta !== null && !result.ok) {
     warnings.push({
       code: 'gpa_mismatch',
       message:
@@ -56,30 +89,16 @@ export function withSelfCheck(transcript: Transcript): Transcript {
     });
 
     // Say why, when we can. A bare "these numbers disagree" leaves a reader
-    // with no way to judge how much of the page to distrust.
-    const repeats = repeatedCourses(transcript);
+    // with no way to judge how much of the page to distrust. Reaching here with
+    // a repeat means the policy did *not* reconcile it, so this stays hedged.
     if (repeats.length > 0) {
-      const excluding = gpaExcludingEarlierAttempts(transcript);
-      const explains =
-        excluding !== null &&
-        result.statedGpa !== null &&
-        Math.abs(excluding - result.statedGpa) <= GPA_TOLERANCE;
-      const names = repeats.map((repeat) => repeat.courseId).join(', ');
-
       warnings.push({
         code: 'repeated_course',
-        message: explains
-          ? `${names} appears on your transcript more than once. UMD's repeat policy counts ` +
-            'only the later attempt toward your GPA, and TerpTracker does not do that yet — ' +
-            'it is counting both. That fully explains the difference above: ignoring the ' +
-            `earlier attempt gives exactly the ${result.statedGpa!.toFixed(3)} your transcript ` +
-            'prints. Trust your transcript, not this page.'
-          : `${names} appears on your transcript more than once, which may be why the numbers ` +
-            "above disagree — TerpTracker counts every attempt, and UMD's repeat policy does " +
-            'not. It does not explain the whole difference, so something else is off as well.',
-        detail: repeats
-          .map((repeat) => `${repeat.courseId}×${repeat.attempts.length}`)
-          .join(' '),
+        message:
+          `${names} appears on your transcript more than once, which may be why the numbers ` +
+          "above disagree — TerpTracker counts every attempt, and UMD's repeat policy does " +
+          'not. It does not explain the whole difference, so something else is off as well.',
+        detail,
       });
     }
   }
@@ -97,5 +116,5 @@ export function withSelfCheck(transcript: Transcript): Transcript {
     });
   }
 
-  return { ...transcript, warnings };
+  return { ...subject, warnings };
 }
