@@ -91,6 +91,32 @@ export function markFeedbackPromptSeen(): void {
   write(FEEDBACK_PROMPT_KEY, { seen: true });
 }
 
+const MAJOR_KEY = 'terptracker.major.v1';
+
+/**
+ * A major the student picked by hand, for when Testudo's name for their degree
+ * matches nothing authored — or matches the wrong thing.
+ *
+ * Stored as the requirements file's id rather than its display name, so that a
+ * major which is later renamed or withdrawn simply fails the lookup and falls
+ * back to the transcript, instead of auditing somebody against a stale file.
+ */
+export function loadChosenMajor(): string | undefined {
+  return read<{ id: string }>(MAJOR_KEY)?.id;
+}
+
+export function saveChosenMajor(id: string | undefined): void {
+  if (!id) {
+    try {
+      window.localStorage.removeItem(MAJOR_KEY);
+    } catch {
+      // Storage unavailable, so there was nothing stored to remove.
+    }
+    return;
+  }
+  write(MAJOR_KEY, { id });
+}
+
 export const loadPlan = (): StoredPlan | null => read<StoredPlan>(PLAN_KEY);
 export const savePlan = (plan: StoredPlan): void => write(PLAN_KEY, plan);
 

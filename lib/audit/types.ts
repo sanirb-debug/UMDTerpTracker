@@ -124,6 +124,11 @@ export interface RuleResult {
   /** How many groups a `distribute` rule drew on, and how many it needed. */
   groupsUsed?: number;
   groupsNeeded?: number;
+  /**
+   * This rule selects on something the transcript does not carry, so whether it
+   * is met is unknown rather than false. See `printsGenEd`.
+   */
+  unverifiable?: boolean;
 }
 
 export interface AuditResult {
@@ -136,4 +141,10 @@ export interface AuditResult {
   remainingCourses: string[];
   /** Shortfalls where the rule names no specific course. */
   remainingCredits: Array<{ label: string; credits: number }>;
+  /**
+   * This transcript prints no Gen Ed codes, so every rule that selects on them
+   * had to be left unchecked. The UI owes the reader that sentence: without it
+   * the page shows a dozen Gen Ed categories unmet and looks like a verdict.
+   */
+  genEdUnreadable: boolean;
 }

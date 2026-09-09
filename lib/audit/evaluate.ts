@@ -182,6 +182,22 @@ function poolMode(rule: Rule, selector: Selector): PoolMode {
   return 'mark';
 }
 
+/**
+ * Whether this transcript prints Gen Ed codes at all.
+ *
+ * They are read off the row tail, and not every Testudo format prints that
+ * column — older layouts and some transfer blocks omit it. A single course
+ * carrying a code proves the format prints them; none at all means the audit
+ * cannot see Gen Ed, which is a different thing from the student having none.
+ */
+export function printsGenEd(transcript: Transcript): boolean {
+  return [
+    ...transcript.terms.flatMap((term) => term.courses),
+    ...transcript.nonGpaCredits,
+    ...transcript.inProgress,
+  ].some((entry) => (entry.genEd?.length ?? 0) > 0);
+}
+
 export function evaluate(transcript: Transcript, requirements: Requirements): AuditResult {
   const minPoints = minPointsFor(requirements);
   const allCompleted = [
@@ -326,10 +342,19 @@ export function evaluate(transcript: Transcript, requirements: Requirements): Au
     };
   });
 
+  // A rule that selects on Gen Ed codes cannot be judged on a transcript that
+  // prints none. Marking it unverifiable keeps it off the "still to take" list,
+  // where it would otherwise read as a definite forty credits owed.
+  if (!printsGenEd(transcript)) {
+    for (const result of results) {
+      if ((normalizeSelector(result.rule).genEd?.length ?? 0) > 0) result.unverifiable = true;
+    }
+  }
+
   const remainingCourses: string[] = [];
   const remainingCredits: Array<{ label: string; credits: number }> = [];
   for (const result of results) {
-    if (result.satisfied) continue;
+    if (result.satisfied || result.unverifiable) continue;
     if (result.rule.type === 'all_of') {
       for (const id of result.missing) {
         if (!remainingCourses.includes(id)) remainingCourses.push(id);
@@ -349,6 +374,7 @@ export function evaluate(transcript: Transcript, requirements: Requirements): Au
     ),
     remainingCourses,
     remainingCredits,
+    genEdUnreadable: results.some((result) => result.unverifiable),
   };
 }
 

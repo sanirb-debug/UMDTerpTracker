@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { evaluate, findRequirements } from '../../lib/audit/index.ts';
 import type { RuleResult } from '../../lib/audit/index.ts';
@@ -8,6 +8,7 @@ import { RatingCaveat, TopRated } from '../components/TopRated.tsx';
 import { CourseLink, CourseLinkList } from '../components/CourseLink.tsx';
 import { SomethingWrong } from '../components/SomethingWrong.tsx';
 import { Feedback } from '../components/Feedback.tsx';
+import { loadChosenMajor, saveChosenMajor } from '../storage.ts';
 
 interface Props {
   transcript: Transcript;
@@ -15,14 +16,23 @@ interface Props {
 }
 
 export function RequirementsPage({ transcript, sampleId }: Props) {
+  const [chosenMajor, setChosenMajor] = useState<string | undefined>(loadChosenMajor);
   const requirements = useMemo(
-    () => findRequirements(transcript.major, allRequirements),
-    [transcript.major],
+    () => findRequirements(transcript.major, allRequirements, chosenMajor),
+    [transcript.major, chosenMajor],
   );
   const audit = useMemo(
     () => (requirements ? evaluate(transcript, requirements) : null),
     [transcript, requirements],
   );
+
+  const chooseMajor = useCallback((id: string | undefined) => {
+    setChosenMajor(id);
+    saveChosenMajor(id);
+  }, []);
+
+  const checkable = audit?.results.filter((result) => !result.unverifiable) ?? [];
+  const unchecked = (audit?.results.length ?? 0) - checkable.length;
 
   // No requirements file for this major. Everything else in the app still
   // works; only the audit is unavailable, and saying so beats rendering an
@@ -40,8 +50,12 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
         </p>
         <p className="mt-3 text-sm text-neutral-500 dark:text-neutral-400">
           Requirements are transcribed by hand from the official catalog, one major at a time.
-          Written up so far: {allRequirements.map((r) => r.major).join(', ')}.
+          If you are doing one of these under a name we did not recognise, pick it and the audit
+          runs.
         </p>
+        <div className="mt-3">
+          <MajorPicker chosen={chosenMajor} detected={transcript.major} onChoose={chooseMajor} />
+        </div>
         <div className="mt-3 flex flex-wrap items-center gap-4">
           <SomethingWrong view="Requirements" transcript={transcript} sampleId={sampleId} />
           <Feedback
@@ -68,12 +82,25 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
           </h2>
           <div className="text-right">
             <p className="text-sm tabular-nums text-neutral-500">
-              {audit.results.filter((r) => r.satisfied).length} of {audit.results.length}{' '}
-              requirements met
+              {checkable.filter((r) => r.satisfied).length} of {checkable.length} requirements met
+              {unchecked > 0 && ` · ${unchecked} not checked`}
             </p>
             <SomethingWrong view="Requirements" transcript={transcript} sampleId={sampleId} />
           </div>
         </div>
+
+        <div className="mt-3">
+          <MajorPicker chosen={chosenMajor} detected={transcript.major} onChoose={chooseMajor} />
+        </div>
+
+        {audit.genEdUnreadable && (
+          <p className="mt-3 rounded-lg border border-caution-400/60 bg-caution-50 p-3 text-sm text-caution-900 dark:border-caution-700/60 dark:bg-caution-950/30 dark:text-caution-200">
+            <strong>This transcript does not print Gen Ed codes.</strong> Testudo puts them on the
+            end of each course row, and there are none on yours — so the {unchecked} Gen Ed
+            requirements below could not be checked, and are left blank rather than counted
+            against you. Everything else on this page is unaffected.
+          </p>
+        )}
 
         {audit.satisfied ? (
           <p className="mt-3 rounded-lg bg-positive-50 p-3 text-sm text-positive-900 dark:bg-positive-950/30 dark:text-positive-200">
@@ -83,6 +110,11 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
           <p className="mt-3 rounded-lg bg-positive-50 p-3 text-sm text-positive-900 dark:bg-positive-950/30 dark:text-positive-200">
             Everything outstanding is already on your schedule. Pass what you are taking and this
             is done.
+          </p>
+        ) : audit.remainingCourses.length === 0 && audit.remainingCredits.length === 0 ? (
+          <p className="mt-3 rounded-lg bg-neutral-100 p-3 text-sm dark:bg-neutral-900">
+            Everything that could be checked is done. The unchecked requirements above are all
+            that stand between this and a complete audit.
           </p>
         ) : (
           <div className="mt-3 rounded-lg bg-neutral-100 p-3 text-sm dark:bg-neutral-900">
@@ -212,6 +244,23 @@ function groupResults(results: RuleResult[]): Array<{ label: string; results: Ru
 }
 
 function RequirementCard({ result }: { result: RuleResult }) {
+  // Neither met nor unmet. Showing "0 of 3 credits" here would be a claim about
+  // the student rather than about what the transcript happened to print.
+  if (result.unverifiable) {
+    return (
+      <article className="card border-l-4 border-neutral-400/40">
+        <header className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
+          <h3 className="font-semibold">{result.label}</h3>
+          <p className="text-sm text-neutral-500">Not checked</p>
+        </header>
+        <p className="text-sm text-neutral-500 dark:text-neutral-400">
+          Your transcript does not print the Gen Ed codes this needs, so it could not be checked
+          either way.
+        </p>
+      </article>
+    );
+  }
+
   const covered = result.have + result.pending >= result.needed;
   const tone = result.satisfied
     ? 'border-positive-500/40'
@@ -265,5 +314,43 @@ function RequirementCard({ result }: { result: RuleResult }) {
         </p>
       )}
     </article>
+  );
+}
+
+/**
+ * Choose a major by hand.
+ *
+ * Testudo prints degree names this app cannot always match — concentrations,
+ * double majors, and plenty of wording nobody has seen yet — and a student who
+ * knows their own degree should not be stuck behind a string comparison. The
+ * choice is remembered, and the first option puts it back to the transcript.
+ */
+function MajorPicker({
+  chosen,
+  detected,
+  onChoose,
+}: {
+  chosen: string | undefined;
+  detected: string | undefined;
+  onChoose: (id: string | undefined) => void;
+}) {
+  return (
+    <label className="inline-flex flex-wrap items-center gap-2 text-sm">
+      <span className="text-neutral-600 dark:text-neutral-300">Audit against</span>
+      <select
+        className="select w-auto"
+        value={chosen ?? ''}
+        onChange={(event) => onChoose(event.target.value || undefined)}
+      >
+        <option value="">
+          {detected ? `My transcript — ${detected}` : 'My transcript — no major printed'}
+        </option>
+        {allRequirements.map((requirements) => (
+          <option key={requirements.id} value={requirements.id}>
+            {requirements.major} ({requirements.degree})
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
