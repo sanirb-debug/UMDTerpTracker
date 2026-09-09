@@ -100,14 +100,14 @@ export const SAMPLE_MAJORS: SampleMajor[] = [
   { slug: 'management', name: 'Management', short: 'Mgmt', hasRequirements: true },
   { slug: 'finance', name: 'Finance', short: 'Finance', hasRequirements: true },
   { slug: 'information-systems', name: 'Information Systems', short: 'Info Sys', hasRequirements: true },
-  { slug: 'psychology', name: 'Psychology', short: 'Psych', hasRequirements: false },
-  { slug: 'criminology', name: 'Criminology and Criminal Justice', short: 'CCJS', hasRequirements: false },
-  { slug: 'economics', name: 'Economics', short: 'Econ', hasRequirements: false },
-  { slug: 'biology', name: 'Biological Sciences', short: 'Biology', hasRequirements: false },
-  { slug: 'government', name: 'Government and Politics', short: 'GVPT', hasRequirements: false },
-  { slug: 'mechanical-engineering', name: 'Mechanical Engineering', short: 'Mech E', hasRequirements: false },
-  { slug: 'communication', name: 'Communication', short: 'Comm', hasRequirements: false },
-  { slug: 'kinesiology', name: 'Kinesiology', short: 'Kines', hasRequirements: false },
+  { slug: 'psychology', name: 'Psychology', short: 'Psych', hasRequirements: true },
+  { slug: 'criminology', name: 'Criminology and Criminal Justice', short: 'CCJS', hasRequirements: true },
+  { slug: 'economics', name: 'Economics', short: 'Econ', hasRequirements: true },
+  { slug: 'biology', name: 'Biological Sciences', short: 'Biology', hasRequirements: true },
+  { slug: 'government', name: 'Government and Politics', short: 'GVPT', hasRequirements: true },
+  { slug: 'mechanical-engineering', name: 'Mechanical Engineering', short: 'Mech E', hasRequirements: true },
+  { slug: 'communication', name: 'Communication', short: 'Comm', hasRequirements: true },
+  { slug: 'kinesiology', name: 'Kinesiology', short: 'Kines', hasRequirements: true },
 ];
 
 export const SAMPLE_YEARS: SampleYear[] = [

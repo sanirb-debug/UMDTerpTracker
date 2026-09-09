@@ -81,57 +81,57 @@ const MAJORS: MajorExpectation[] = [
     slug: 'psychology',
     major: 'Psychology',
     gpa: { freshman: 3.593, sophomore: 3.464, junior: 3.443, senior: 3.457 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 14, sophomore: 7, junior: 4, senior: 2 },
+    ruleCount: 26,
   },
   {
     slug: 'criminology',
     major: 'Criminology and Criminal Justice',
     gpa: { freshman: 3.5, sophomore: 3.441, junior: 3.417, senior: 3.415 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 13, sophomore: 6, junior: 5, senior: 3 },
+    ruleCount: 24,
   },
   {
     slug: 'economics',
     major: 'Economics',
     gpa: { freshman: 3.413, sophomore: 3.354, junior: 3.369, senior: 3.372 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 14, sophomore: 8, junior: 5, senior: 5 },
+    ruleCount: 25,
   },
   {
     slug: 'biology',
     major: 'Biological Sciences',
     gpa: { freshman: 3.417, sophomore: 3.402, junior: 3.386, senior: 3.375 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 21, sophomore: 13, junior: 10, senior: 9 },
+    ruleCount: 30,
   },
   {
     slug: 'government',
     major: 'Government and Politics',
     gpa: { freshman: 3.46, sophomore: 3.421, junior: 3.403, senior: 3.403 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 10, sophomore: 3, junior: 2, senior: 1 },
+    ruleCount: 22,
   },
   {
     slug: 'mechanical-engineering',
     major: 'Mechanical Engineering',
     gpa: { freshman: 3.319, sophomore: 3.341, junior: 3.337, senior: 3.336 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 15, sophomore: 9, junior: 8, senior: 8 },
+    ruleCount: 24,
   },
   {
     slug: 'communication',
     major: 'Communication',
     gpa: { freshman: 3.43, sophomore: 3.426, junior: 3.417, senior: 3.415 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 18, sophomore: 11, junior: 6, senior: 6 },
+    ruleCount: 28,
   },
   {
     slug: 'kinesiology',
     major: 'Kinesiology',
     gpa: { freshman: 3.366, sophomore: 3.384, junior: 3.359, senior: 3.358 },
-    unmet: null,
-    ruleCount: null,
+    unmet: { freshman: 14, sophomore: 5, junior: 5, senior: 5 },
+    ruleCount: 24,
   },
 ];
 
@@ -235,9 +235,15 @@ describe('the demo grid as a whole', () => {
     }
   });
 
-  it('has majors both with and without requirements, so both paths stay exercised', () => {
-    expect(MAJORS.some((major) => major.unmet !== null)).toBe(true);
-    expect(MAJORS.some((major) => major.unmet === null)).toBe(true);
+  it('offers a real audit for every major it advertises', () => {
+    // This used to assert the opposite too — that some demo major had no
+    // requirements, so the unavailable path stayed exercised. Every major in
+    // the grid now has a file, so that path is covered in
+    // app/pages/Requirements.fallback.test.tsx against majors nobody has
+    // transcribed instead. What matters here is that the grid never again
+    // advertises a major it cannot audit.
+    expect(MAJORS.every((major) => major.unmet !== null)).toBe(true);
+    expect(MAJORS.every((major) => major.ruleCount !== null)).toBe(true);
   });
 
   it('gives each major a distinct set of coursework', () => {

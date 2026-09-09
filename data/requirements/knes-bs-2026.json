@@ -1,0 +1,248 @@
+{
+  "id": "knes-bs-2026",
+  "major": "Kinesiology",
+  "degree": "BS",
+  "catalogYear": 2026,
+  "source": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/public-health/kinesiology/kinesiology-major/",
+  "genEdSource": "https://gened.umd.edu/node/35",
+  "lastVerified": "2026-09-09",
+  "minGrade": "C-",
+  "rules": [
+    {
+      "type": "gpa",
+      "label": "[UNIV] Cumulative GPA Requirement",
+      "minimum": 2
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] UMD Degree Requirements",
+      "credits": 120
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] Credits in residence at UMD",
+      "credits": 30,
+      "source": "institution",
+      "pool": "residency"
+    },
+    {
+      "type": "all_of",
+      "label": "Supporting science",
+      "courses": [
+        "BSCI170",
+        "BSCI201",
+        "BSCI202"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Principles of biology laboratory",
+      "courses": [
+        "BSCI180",
+        "BSCI171"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Mathematics (MATH113 or higher)",
+      "courses": [
+        "MATH113",
+        "MATH115",
+        "MATH120",
+        "MATH130",
+        "MATH135",
+        "MATH136",
+        "MATH140",
+        "MATH141"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Statistics course (catalog names none specifically)",
+      "credits": 3,
+      "prefixes": [
+        "STAT"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Foundation",
+      "courses": [
+        "SPHL100",
+        "KNES200"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Kinesiology core",
+      "courses": [
+        "KNES285",
+        "KNES287",
+        "KNES300",
+        "KNES350",
+        "KNES360",
+        "KNES370",
+        "KNES385"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Upper-level KNES options, 15 credits (approved list not published)",
+      "credits": 15,
+      "prefixes": [
+        "KNES"
+      ],
+      "minLevel": 300,
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "[CORE/GenEd] General Education Required Credits",
+      "credits": 40,
+      "genEd": [
+        "FSAW",
+        "FSPW",
+        "FSOC",
+        "FSMA",
+        "FSAR",
+        "DSHS",
+        "DSHU",
+        "DSNS",
+        "DSNL",
+        "DSSP",
+        "SCIS",
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Academic Writing (FSAW)",
+      "credits": 3,
+      "genEd": [
+        "FSAW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Professional Writing (FSPW)",
+      "credits": 3,
+      "genEd": [
+        "FSPW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Oral Communication (FSOC)",
+      "credits": 3,
+      "genEd": [
+        "FSOC"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Mathematics (FSMA)",
+      "credits": 3,
+      "genEd": [
+        "FSMA"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Analytic Reasoning (FSAR)",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] History and Social Sciences (DSHS)",
+      "credits": 6,
+      "genEd": [
+        "DSHS"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Humanities (DSHU)",
+      "credits": 6,
+      "genEd": [
+        "DSHU"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Natural Sciences (DSNS/DSNL)",
+      "credits": 7,
+      "genEd": [
+        "DSNS",
+        "DSNL"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] Natural Science with a lab (DSNL)",
+      "genEd": [
+        "DSNL"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Scholarship in Practice (DSSP)",
+      "credits": 6,
+      "genEd": [
+        "DSSP"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] The Big Question / I-Series (SCIS)",
+      "credits": 6,
+      "genEd": [
+        "SCIS"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "n_of",
+      "label": "[GenEd] Diversity (DVUP/DVCC)",
+      "n": 2,
+      "genEd": [
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] At least one Understanding Plural Societies (DVUP)",
+      "genEd": [
+        "DVUP"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    }
+  ]
+}

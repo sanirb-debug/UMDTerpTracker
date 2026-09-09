@@ -1,0 +1,362 @@
+{
+  "id": "bsci-bs-2026",
+  "major": "Biological Sciences",
+  "degree": "BS",
+  "catalogYear": 2026,
+  "source": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/computer-mathematical-natural-sciences/biological-sciences/",
+  "genEdSource": "https://gened.umd.edu/node/35",
+  "lastVerified": "2026-09-09",
+  "minGrade": "C-",
+  "rules": [
+    {
+      "type": "gpa",
+      "label": "[UNIV] Cumulative GPA Requirement",
+      "minimum": 2
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] UMD Degree Requirements",
+      "credits": 120
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] Credits in residence at UMD",
+      "credits": 30,
+      "source": "institution",
+      "pool": "residency"
+    },
+    {
+      "type": "gpa",
+      "label": "Major GPA",
+      "minimum": 2,
+      "prefixes": [
+        "BSCI",
+        "BCHM"
+      ]
+    },
+    {
+      "type": "all_of",
+      "label": "Biology basic program",
+      "courses": [
+        "BSCI170",
+        "BSCI160",
+        "BSCI207",
+        "BSCI222"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Principles of biology laboratory",
+      "courses": [
+        "BSCI180",
+        "BSCI171",
+        "BSCI161"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Mathematics, eight credits (sequence not checked)",
+      "credits": 8,
+      "prefixes": [
+        "MATH"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Chemistry",
+      "courses": [
+        "CHEM131",
+        "CHEM132",
+        "CHEM231",
+        "CHEM232",
+        "CHEM241",
+        "CHEM242",
+        "CHEM271",
+        "CHEM272"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Physics I (PHYS131 or PHYS141)",
+      "courses": [
+        "PHYS131",
+        "PHYS141"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Physics II (PHYS132 or PHYS142)",
+      "courses": [
+        "PHYS132",
+        "PHYS142"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Biochemistry (BCHM461 or BCHM463)",
+      "courses": [
+        "BCHM461",
+        "BCHM463"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Quantitative course",
+      "courses": [
+        "BIOM301",
+        "BSCI374",
+        "STAT400",
+        "STAT464",
+        "MATH240"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Area: Genetics and Evolution",
+      "courses": [
+        "BCHM465",
+        "BSCI370",
+        "BSCI402",
+        "BSCI405",
+        "BSCI407",
+        "BSCI410",
+        "BSCI411",
+        "BSCI412",
+        "BSCI414",
+        "BSCI415",
+        "BSCI416",
+        "BSCI471"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Area: Cell Biology, Development and Physiology",
+      "courses": [
+        "BCHM462",
+        "BCHM464",
+        "BSCI342",
+        "BSCI331",
+        "BSCI332",
+        "BSCI348",
+        "BSCI353",
+        "BSCI404",
+        "BSCI406",
+        "BSCI417",
+        "BSCI420",
+        "BSCI422",
+        "BSCI423",
+        "BSCI424",
+        "BSCI425",
+        "BSCI413",
+        "BSCI430",
+        "BSCI432",
+        "BSCI433",
+        "BSCI437",
+        "BSCI442",
+        "BSCI443",
+        "BSCI446",
+        "BSCI447",
+        "BSCI450",
+        "BSCI451",
+        "BSCI452",
+        "BSCI454"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Area: Ecology, Behavior and Organismal",
+      "courses": [
+        "BSCI333",
+        "BSCI334",
+        "BSCI335",
+        "BSCI337",
+        "BSCI360",
+        "BSCI361",
+        "BSCI363",
+        "BSCI364",
+        "BSCI373",
+        "BSCI392",
+        "BSCI393",
+        "BSCI401",
+        "BSCI403",
+        "BSCI460",
+        "BSCI462",
+        "BSCI464",
+        "BSCI465",
+        "BSCI467",
+        "BSCI473",
+        "BSCI480",
+        "BSCI481",
+        "BSCI483",
+        "BSCI494"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Advanced program, 27 credits (two-lab rule not checked)",
+      "credits": 27,
+      "prefixes": [
+        "BSCI",
+        "BCHM",
+        "BIOM"
+      ],
+      "minLevel": 300,
+      "consumes": false,
+      "pool": "advanced"
+    },
+    {
+      "type": "credits",
+      "label": "[CORE/GenEd] General Education Required Credits",
+      "credits": 40,
+      "genEd": [
+        "FSAW",
+        "FSPW",
+        "FSOC",
+        "FSMA",
+        "FSAR",
+        "DSHS",
+        "DSHU",
+        "DSNS",
+        "DSNL",
+        "DSSP",
+        "SCIS",
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Academic Writing (FSAW)",
+      "credits": 3,
+      "genEd": [
+        "FSAW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Professional Writing (FSPW)",
+      "credits": 3,
+      "genEd": [
+        "FSPW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Oral Communication (FSOC)",
+      "credits": 3,
+      "genEd": [
+        "FSOC"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Mathematics (FSMA)",
+      "credits": 3,
+      "genEd": [
+        "FSMA"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Analytic Reasoning (FSAR)",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] History and Social Sciences (DSHS)",
+      "credits": 6,
+      "genEd": [
+        "DSHS"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Humanities (DSHU)",
+      "credits": 6,
+      "genEd": [
+        "DSHU"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Natural Sciences (DSNS/DSNL)",
+      "credits": 7,
+      "genEd": [
+        "DSNS",
+        "DSNL"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] Natural Science with a lab (DSNL)",
+      "genEd": [
+        "DSNL"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Scholarship in Practice (DSSP)",
+      "credits": 6,
+      "genEd": [
+        "DSSP"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] The Big Question / I-Series (SCIS)",
+      "credits": 6,
+      "genEd": [
+        "SCIS"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "n_of",
+      "label": "[GenEd] Diversity (DVUP/DVCC)",
+      "n": 2,
+      "genEd": [
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] At least one Understanding Plural Societies (DVUP)",
+      "genEd": [
+        "DVUP"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    }
+  ]
+}

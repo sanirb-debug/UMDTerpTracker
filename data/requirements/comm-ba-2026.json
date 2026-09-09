@@ -1,0 +1,308 @@
+{
+  "id": "comm-ba-2026",
+  "major": "Communication",
+  "degree": "BA",
+  "catalogYear": 2026,
+  "source": "https://academiccatalog.umd.edu/undergraduate/colleges-schools/arts-humanities/communication/communication-major/",
+  "genEdSource": "https://gened.umd.edu/node/35",
+  "lastVerified": "2026-09-09",
+  "rules": [
+    {
+      "type": "gpa",
+      "label": "[UNIV] Cumulative GPA Requirement",
+      "minimum": 2
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] UMD Degree Requirements",
+      "credits": 120
+    },
+    {
+      "type": "credits",
+      "label": "[UNIV] Credits in residence at UMD",
+      "credits": 30,
+      "source": "institution",
+      "pool": "residency"
+    },
+    {
+      "type": "one_of",
+      "label": "Oral communication",
+      "courses": [
+        "COMM107",
+        "COMM200",
+        "COMM230"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Communication core",
+      "courses": [
+        "COMM250",
+        "COMM130"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Statistics",
+      "courses": [
+        "BMGT230",
+        "STAT100",
+        "QMMS251",
+        "CCJS200",
+        "PSYC200",
+        "SOCY201"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "n_of",
+      "label": "Theory and principles (two courses)",
+      "n": 2,
+      "courses": [
+        "COMM201",
+        "COMM301",
+        "COMM302",
+        "COMM303"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "all_of",
+      "label": "Research methods (COMM304)",
+      "courses": [
+        "COMM304"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Second research methods course",
+      "courses": [
+        "COMM305",
+        "COMM306",
+        "COMM307"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Leadership and social change",
+      "courses": [
+        "COMM330",
+        "COMM385",
+        "COMM420",
+        "COMM421",
+        "COMM422",
+        "COMM424",
+        "COMM425",
+        "COMM428",
+        "COMM436",
+        "COMM448",
+        "COMM449",
+        "COMM455",
+        "COMM459",
+        "COMM461",
+        "COMM462",
+        "COMM469",
+        "COMM470",
+        "COMM475"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Diversity and inclusion",
+      "courses": [
+        "COMM324",
+        "COMM360",
+        "COMM382",
+        "COMM454",
+        "COMM460"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Applied communication",
+      "courses": [
+        "COMM311",
+        "COMM386",
+        "COMM388"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "one_of",
+      "label": "Second applied course",
+      "courses": [
+        "COMM311",
+        "COMM330",
+        "COMM331",
+        "COMM370",
+        "COMM371",
+        "COMM375",
+        "COMM386",
+        "COMM388",
+        "COMM425",
+        "COMM426",
+        "COMM455"
+      ],
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "Upper-level COMM electives (12 credits)",
+      "credits": 12,
+      "prefixes": [
+        "COMM"
+      ],
+      "minLevel": 300,
+      "pool": "major"
+    },
+    {
+      "type": "credits",
+      "label": "[CORE/GenEd] General Education Required Credits",
+      "credits": 40,
+      "genEd": [
+        "FSAW",
+        "FSPW",
+        "FSOC",
+        "FSMA",
+        "FSAR",
+        "DSHS",
+        "DSHU",
+        "DSNS",
+        "DSNL",
+        "DSSP",
+        "SCIS",
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Academic Writing (FSAW)",
+      "credits": 3,
+      "genEd": [
+        "FSAW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Professional Writing (FSPW)",
+      "credits": 3,
+      "genEd": [
+        "FSPW"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Oral Communication (FSOC)",
+      "credits": 3,
+      "genEd": [
+        "FSOC"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Mathematics (FSMA)",
+      "credits": 3,
+      "genEd": [
+        "FSMA"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Analytic Reasoning (FSAR)",
+      "credits": 3,
+      "genEd": [
+        "FSAR"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] History and Social Sciences (DSHS)",
+      "credits": 6,
+      "genEd": [
+        "DSHS"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Humanities (DSHU)",
+      "credits": 6,
+      "genEd": [
+        "DSHU"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Natural Sciences (DSNS/DSNL)",
+      "credits": 7,
+      "genEd": [
+        "DSNS",
+        "DSNL"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] Natural Science with a lab (DSNL)",
+      "genEd": [
+        "DSNL"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] Scholarship in Practice (DSSP)",
+      "credits": 6,
+      "genEd": [
+        "DSSP"
+      ],
+      "pool": "gened"
+    },
+    {
+      "type": "credits",
+      "label": "[GenEd] The Big Question / I-Series (SCIS)",
+      "credits": 6,
+      "genEd": [
+        "SCIS"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "n_of",
+      "label": "[GenEd] Diversity (DVUP/DVCC)",
+      "n": 2,
+      "genEd": [
+        "DVUP",
+        "DVCC"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    },
+    {
+      "type": "one_of",
+      "label": "[GenEd] At least one Understanding Plural Societies (DVUP)",
+      "genEd": [
+        "DVUP"
+      ],
+      "consumes": false,
+      "pool": "gened"
+    }
+  ]
+}

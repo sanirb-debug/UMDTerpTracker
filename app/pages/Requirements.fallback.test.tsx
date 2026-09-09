@@ -44,16 +44,24 @@ function transcript(major: string | undefined): Transcript {
   };
 }
 
-/** Every major in the demo grid that has no requirements file. */
+/**
+ * Real UMD majors nobody has transcribed yet.
+ *
+ * This list used to be the demo grid's own unaudited majors, but every major in
+ * the grid now has a requirements file. The state it guards is not gone though —
+ * UMD has far more majors than this app has rules for — so the list points at
+ * degrees that genuinely have none, and must be repointed again rather than
+ * deleted whenever one of these gets written up.
+ */
 const UNAUDITED = [
-  'Psychology',
-  'Criminology and Criminal Justice',
-  'Economics',
-  'Biological Sciences',
-  'Government and Politics',
-  'Mechanical Engineering',
-  'Communication',
-  'Kinesiology',
+  'Philosophy',
+  'Anthropology',
+  'Journalism',
+  'Architecture',
+  'Chemistry',
+  'Linguistics',
+  'Nursing',
+  'Astronomy',
 ];
 
 describe.each(UNAUDITED)('requirements page for %s', (major) => {
@@ -73,13 +81,13 @@ describe.each(UNAUDITED)('requirements page for %s', (major) => {
 describe('requirements page without a requirements file', () => {
 
   it('never shows a requirements-met tally it cannot compute', () => {
-    render(<RequirementsPage transcript={transcript('Psychology')} />);
+    render(<RequirementsPage transcript={transcript('Philosophy')} />);
     expect(screen.queryByText(/requirements met/i)).toBeNull();
     expect(screen.queryByText(/Still to take/i)).toBeNull();
   });
 
   it('says the rest of the app is unaffected', () => {
-    render(<RequirementsPage transcript={transcript('Psychology')} />);
+    render(<RequirementsPage transcript={transcript('Philosophy')} />);
     expect(screen.getByText(/GPA, schedule and planner are unaffected/i)).toBeTruthy();
   });
 

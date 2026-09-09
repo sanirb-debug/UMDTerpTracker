@@ -3,6 +3,14 @@ import cmscBs2026 from '../../data/requirements/cmsc-bs-2026.json';
 import managementBs2026 from '../../data/requirements/bmgt-management-bs-2026.json';
 import financeBs2026 from '../../data/requirements/bmgt-finance-bs-2026.json';
 import informationSystemsBs2026 from '../../data/requirements/bmgt-information-systems-bs-2026.json';
+import psychologyBa2026 from '../../data/requirements/psyc-ba-2026.json';
+import criminologyBa2026 from '../../data/requirements/ccjs-ba-2026.json';
+import economicsBa2026 from '../../data/requirements/econ-ba-2026.json';
+import biologicalSciencesBs2026 from '../../data/requirements/bsci-bs-2026.json';
+import governmentBa2026 from '../../data/requirements/gvpt-ba-2026.json';
+import mechanicalEngineeringBs2026 from '../../data/requirements/enme-bs-2026.json';
+import communicationBa2026 from '../../data/requirements/comm-ba-2026.json';
+import kinesiologyBs2026 from '../../data/requirements/knes-bs-2026.json';
 import type { Requirements } from '../../lib/audit/index.ts';
 
 /**
@@ -23,4 +31,12 @@ export const allRequirements: Requirements[] = [
   managementBs2026,
   financeBs2026,
   informationSystemsBs2026,
+  psychologyBa2026,
+  criminologyBa2026,
+  economicsBa2026,
+  biologicalSciencesBs2026,
+  governmentBa2026,
+  mechanicalEngineeringBs2026,
+  communicationBa2026,
+  kinesiologyBs2026,
 ] as unknown as Requirements[];
