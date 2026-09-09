@@ -1,6 +1,10 @@
 import * as pdfjs from 'pdfjs-dist';
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
-import { ScannedPdfError } from './errors.ts';
+import {
+  EncryptedPdfError,
+  ScannedPdfError,
+  UnreadablePdfError,
+} from './errors.ts';
 
 export { ScannedPdfError } from './errors.ts';
 
@@ -28,6 +32,22 @@ export interface TextPage {
 const MIN_TEXT_ITEMS = 25;
 
 /**
+ * pdf.js names its open failures after the PDF spec rather than after anything
+ * the person holding the file can do about them.
+ *
+ * Anything unrecognised is passed through untouched: an unexpected failure here
+ * is a bug worth seeing, not a reassuring message worth inventing.
+ */
+function translateOpenFailure(cause: unknown): unknown {
+  const name = cause instanceof Error ? cause.name : '';
+  if (name === 'PasswordException') return new EncryptedPdfError();
+  if (name === 'InvalidPDFException' || name === 'MissingPDFException') {
+    return new UnreadablePdfError();
+  }
+  return cause;
+}
+
+/**
  * Called after each page comes out. Synchronous, and nothing is awaited on it —
  * a caller that wants to put a number on screen can, and one that does not pays
  * nothing. This is the whole extent of the parser's interest in progress: it
@@ -46,13 +66,18 @@ export async function extractTextPages(
   data: ArrayBuffer,
   onPage?: PageProgress,
 ): Promise<TextPage[]> {
-  const doc = await pdfjs.getDocument({
-    data,
-    // The transcript never leaves the browser, and neither should any fetch
-    // pdf.js might otherwise make on its behalf.
-    isEvalSupported: false,
-    disableFontFace: true,
-  }).promise;
+  let doc;
+  try {
+    doc = await pdfjs.getDocument({
+      data,
+      // The transcript never leaves the browser, and neither should any fetch
+      // pdf.js might otherwise make on its behalf.
+      isEvalSupported: false,
+      disableFontFace: true,
+    }).promise;
+  } catch (cause) {
+    throw translateOpenFailure(cause);
+  }
 
   const pages: TextPage[] = [];
   let itemCount = 0;

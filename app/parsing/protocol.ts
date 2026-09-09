@@ -1,4 +1,9 @@
-import { ScannedPdfError } from '../../lib/parser/errors.ts';
+import {
+  EncryptedPdfError,
+  ScannedPdfError,
+  UnreadablePdfError,
+} from '../../lib/parser/errors.ts';
+import type { TranscriptPdfError } from '../../lib/parser/errors.ts';
 import type { Transcript } from '../../lib/types.ts';
 
 /**
@@ -28,30 +33,42 @@ export type ParseResponse =
   | { id: number; type: 'done'; transcript: Transcript }
   | { id: number; type: 'error'; error: SerializedError };
 
+/** Which of the parser's own failures this was. */
+export type ParserErrorKind = 'scanned' | 'encrypted' | 'unreadable';
+
+const KINDS: ReadonlyArray<{ kind: ParserErrorKind; type: new () => TranscriptPdfError }> = [
+  { kind: 'scanned', type: ScannedPdfError },
+  { kind: 'encrypted', type: EncryptedPdfError },
+  { kind: 'unreadable', type: UnreadablePdfError },
+];
+
 export interface SerializedError {
   name: string;
   message: string;
   /**
-   * Whether this was `ScannedPdfError`. Carried as a flag rather than inferred
-   * from `name` at the far end, so a minifier renaming the class cannot turn a
-   * scanned-PDF message into a generic failure.
+   * Which parser error this was, when it was one of ours. Carried explicitly
+   * rather than inferred from `name` at the far end, so a minifier renaming a
+   * class cannot turn a recognised failure into a generic one.
    */
-  scanned: boolean;
+  kind?: ParserErrorKind;
 }
 
 export function serializeError(cause: unknown): SerializedError {
-  if (cause instanceof ScannedPdfError) {
-    return { name: cause.name, message: cause.message, scanned: true };
-  }
   if (cause instanceof Error) {
-    return { name: cause.name, message: cause.message, scanned: false };
+    const known = KINDS.find(({ type }) => cause instanceof type);
+    return {
+      name: cause.name,
+      message: cause.message,
+      ...(known ? { kind: known.kind } : {}),
+    };
   }
-  return { name: 'Error', message: String(cause), scanned: false };
+  return { name: 'Error', message: String(cause) };
 }
 
 /** Rebuild the error on the main thread, prototype and all. */
 export function deserializeError(error: SerializedError): Error {
-  if (error.scanned) return new ScannedPdfError();
+  const known = KINDS.find(({ kind }) => kind === error.kind);
+  if (known) return new known.type();
   const rebuilt = new Error(error.message);
   rebuilt.name = error.name;
   return rebuilt;

@@ -1,6 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { deserializeError, serializeError } from './protocol.ts';
-import { ScannedPdfError } from '../../lib/parser/errors.ts';
+import {
+  EncryptedPdfError,
+  ScannedPdfError,
+  UnreadablePdfError,
+} from '../../lib/parser/errors.ts';
 
 /**
  * This runs in plain Node with no worker and no DOM, which is the point: the
@@ -24,8 +28,19 @@ describe('carrying an error across the worker boundary', () => {
   });
 
   it('flags it rather than relying on the class name surviving minification', () => {
-    expect(serializeError(new ScannedPdfError()).scanned).toBe(true);
-    expect(serializeError(new Error('anything else')).scanned).toBe(false);
+    expect(serializeError(new ScannedPdfError()).kind).toBe('scanned');
+    expect(serializeError(new Error('anything else')).kind).toBeUndefined();
+  });
+
+  it('keeps a locked PDF distinguishable from a broken one', () => {
+    // Both are "we could not open it", and the two answers are completely
+    // different: unlock the file, versus download it again.
+    const locked = deserializeError(serializeError(new EncryptedPdfError()));
+    const broken = deserializeError(serializeError(new UnreadablePdfError()));
+
+    expect(locked).toBeInstanceOf(EncryptedPdfError);
+    expect(broken).toBeInstanceOf(UnreadablePdfError);
+    expect(locked.message).not.toBe(broken.message);
   });
 
   it('keeps an ordinary error ordinary, with its name and message', () => {
@@ -47,6 +62,6 @@ describe('carrying an error across the worker boundary', () => {
     const serialized = serializeError(new ScannedPdfError());
     // No prototype chain, no functions — the shape a worker can post.
     expect(JSON.parse(JSON.stringify(serialized))).toEqual(serialized);
-    expect(Object.keys(serialized).sort()).toEqual(['message', 'name', 'scanned']);
+    expect(Object.keys(serialized).sort()).toEqual(['kind', 'message', 'name']);
   });
 });

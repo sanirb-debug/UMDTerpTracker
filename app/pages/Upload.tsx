@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
-import { ScannedPdfError } from '../../lib/parser/errors.ts';
+import { TranscriptPdfError } from '../../lib/parser/errors.ts';
 import type { ParsePhase } from '../parsing/client.ts';
 import { parseTranscriptText } from '../../lib/parser/fixedWidth.ts';
 import { SAMPLE_MAJORS, SAMPLE_YEARS, sampleFor } from '../data/samples.ts';
@@ -37,7 +37,7 @@ export function UploadPage({ sampleId, onParsed, onForget }: Props) {
         onParsed(parsed);
       } catch (cause) {
         setError(
-          cause instanceof ScannedPdfError
+          cause instanceof TranscriptPdfError
             ? cause.message
             : `That PDF could not be read. ${cause instanceof Error ? cause.message : ''}`.trim(),
         );
