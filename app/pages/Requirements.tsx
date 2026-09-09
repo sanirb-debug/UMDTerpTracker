@@ -183,14 +183,14 @@ export function RequirementsPage({ transcript, sampleId }: Props) {
         {requirements.crossChecked && (
           <>
             {' '}
-            and cross-checked against the{' '}
+            and cross-checked against{' '}
             <a
               className="underline"
               href={requirements.crossChecked}
               target="_blank"
               rel="noopener noreferrer"
             >
-              iSchool curriculum page
+              a second source
             </a>
           </>
         )}
