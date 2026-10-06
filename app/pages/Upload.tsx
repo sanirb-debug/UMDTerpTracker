@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { Transcript } from '../../lib/types.ts';
 import { TranscriptPdfError } from '../../lib/parser/errors.ts';
 import type { ParsePhase } from '../parsing/client.ts';
@@ -49,6 +49,63 @@ export function UploadPage({ sampleId, onParsed, onForget }: Props) {
     [onParsed],
   );
 
+  /**
+   * The whole window is the drop target, not just the dashed box.
+   *
+   * A PDF dropped a few pixels outside that box used to hit the browser's own
+   * default, which navigates the tab to the file — the app vanishes and a PDF
+   * viewer takes its place, losing whatever was already loaded. On a tall page
+   * with a modest box that is the likely outcome, and it reads as "dragging
+   * does not work". Now a miss cannot happen: anywhere on the page accepts the
+   * file, and the box is only where the instructions live.
+   */
+  useEffect(() => {
+    const carriesFile = (event: DragEvent) =>
+      Array.from(event.dataTransfer?.types ?? []).includes('Files');
+
+    // dragenter/dragleave fire for every element the pointer crosses, so a
+    // plain boolean flickers off the moment the cursor moves over a child.
+    let depth = 0;
+
+    const onEnter = (event: DragEvent) => {
+      if (!carriesFile(event)) return;
+      event.preventDefault();
+      depth += 1;
+      if (!busy) setDragging(true);
+    };
+    const onLeave = (event: DragEvent) => {
+      if (!carriesFile(event)) return;
+      depth = Math.max(0, depth - 1);
+      if (depth === 0) setDragging(false);
+    };
+    // Without preventDefault here the drop event never fires at all.
+    const onOver = (event: DragEvent) => {
+      if (carriesFile(event)) event.preventDefault();
+    };
+    const onDrop = (event: DragEvent) => {
+      if (!carriesFile(event)) return;
+      // Prevented even while busy: the alternative is navigating away from a
+      // parse already in progress.
+      event.preventDefault();
+      depth = 0;
+      setDragging(false);
+      if (busy) return;
+      const file = event.dataTransfer?.files?.[0];
+      if (file) void handleFile(file);
+    };
+
+    window.addEventListener('dragenter', onEnter);
+    window.addEventListener('dragleave', onLeave);
+    window.addEventListener('dragover', onOver);
+    window.addEventListener('drop', onDrop);
+    return () => {
+      window.removeEventListener('dragenter', onEnter);
+      window.removeEventListener('dragleave', onLeave);
+      window.removeEventListener('dragover', onOver);
+      window.removeEventListener('drop', onDrop);
+    };
+  }, [busy, handleFile]);
+
   const loadSample = useCallback(
     (id: string, text: string) => {
       setError(null);
@@ -61,6 +118,19 @@ export function UploadPage({ sampleId, onParsed, onForget }: Props) {
 
   return (
     <div className="space-y-6">
+      {/* Says the target is the page, at the moment somebody is holding a file
+          over it. Without this the only cue is a box they may not be aiming at. */}
+      {dragging && !busy && (
+        <div
+          aria-hidden="true"
+          className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center bg-accent-950/50 backdrop-blur-sm"
+        >
+          <p className="rounded-xl border-2 border-dashed border-white/70 bg-neutral-950/80 px-8 py-6 text-lg font-semibold text-white">
+            Drop your transcript anywhere
+          </p>
+        </div>
+      )}
+
       {/*
         The reason somebody hesitates is right here, so the answer is too.
         This used to live in a card below the sample grid, which is after the
@@ -82,17 +152,6 @@ export function UploadPage({ sampleId, onParsed, onForget }: Props) {
         never fire on a touch device.
       */}
       <section
-        onDragOver={(event) => {
-          event.preventDefault();
-          setDragging(true);
-        }}
-        onDragLeave={() => setDragging(false)}
-        onDrop={(event) => {
-          event.preventDefault();
-          setDragging(false);
-          const file = event.dataTransfer.files[0];
-          if (file) void handleFile(file);
-        }}
         className={`rounded-xl border p-5 text-center transition-colors sm:border-2 sm:border-dashed sm:p-10 ${
           dragging
             ? 'border-accent-600 bg-accent-50 dark:bg-accent-950/40'
@@ -137,7 +196,7 @@ export function UploadPage({ sampleId, onParsed, onForget }: Props) {
           </label>
         )}
         <p className="mt-3 hidden text-xs text-neutral-500 sm:block dark:text-neutral-400">
-          or drag it onto this box
+          or drag it anywhere on this page
         </p>
       </section>
 
