@@ -114,10 +114,17 @@ export interface ParseWarning {
 
 export interface Transcript {
   /**
-   * Non-identifying header fields only. The parser deliberately never reads
-   * the student's name, email or UID — nothing needs them, and not storing
-   * them means there is nothing sensitive in localStorage beyond coursework.
+   * The student's own name, as `First Last`, when the header prints it in a
+   * shape that can be told apart from the banner above it.
+   *
+   * This is the one identifying field that is read, and only to greet somebody
+   * on their own dashboard. It is kept out of everything that leaves the
+   * browser by construction rather than by care: `IssueContext` in
+   * `lib/issueReport.ts` has no field it could occupy and no free text, so a
+   * bug report cannot carry it even by accident. Email and UID are still never
+   * read — nothing needs them.
    */
+  name?: string;
   major?: string;
   terms: Term[];
   /** Transfer and exam credit, which carries credits but no quality points. */

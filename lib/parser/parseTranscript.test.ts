@@ -39,12 +39,32 @@ describe('parseTranscriptLines', () => {
     expect(transcript.terms[0]!.courses.map((c) => c.courseId)).toEqual(['CMSC131', 'MATH141']);
   });
 
-  it('reads the major but never the name or email', () => {
+  it('reads the major and the name, and still never the email', () => {
+    // The name is read so the dashboard can greet somebody by it, and it is
+    // the only identifying field that is. Email and UID stay unread: nothing
+    // needs them, and a field that is never populated cannot leak.
     const transcript = parse(ONE_TERM);
     expect(transcript.major).toBe('Computer Science');
+    expect(transcript.name).toBe('Sample Student');
+
     const serialized = JSON.stringify(transcript);
-    expect(serialized).not.toMatch(/Sample/);
     expect(serialized).not.toMatch(/terpmail/);
+    expect(serialized).not.toMatch(/\d{9}/);
+  });
+
+  it('does not mistake the letterhead for a name', () => {
+    // "COLLEGE PARK, MD" is Word-comma-Word, exactly like "Last, First", and
+    // sits two lines above the real name. Greeting somebody as "Md College"
+    // would be worse than not greeting them at all.
+    const letterhead = [
+      '                    UNIVERSITY OF MARYLAND',
+      '                    COLLEGE PARK, MD',
+      '                    Office of the Registrar',
+      'Major: Computer Science',
+    ].join('\n');
+    const transcript = parse(ONE_TERM.replace(HEADER, letterhead));
+    expect(transcript.name).toBeUndefined();
+    expect(transcript.major).toBe('Computer Science');
   });
 
   it('keeps the two summer sessions apart', () => {

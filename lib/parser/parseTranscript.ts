@@ -28,6 +28,27 @@ const CUMULATIVE_CREDIT = /^UG\s+Cumulative\s+Credit\s*:\s*([\d.]+)/i;
 const CUMULATIVE_GPA = /^UG\s+Cumulative\s+GPA\s*:\s*([\d.]+)/i;
 
 const MAJOR = /^Major\s*:\s*(.+)$/i;
+
+/**
+ * `Terrapin, Sample T` — the header line shaped like a name.
+ *
+ * Shape alone is not enough: the banner above carries `COLLEGE PARK, MD`,
+ * which is also Word-comma-Word. So a line that reads like part of the
+ * letterhead is rejected outright, and anything still ambiguous is left alone.
+ * Greeting somebody by the wrong name is worse than not greeting them.
+ */
+const NAME = /^([A-Za-z'’-]+(?:[ -][A-Za-z'’-]+)*),\s+([A-Za-z'’-]+)(?:\s+[A-Za-z]\.?)?$/;
+const LETTERHEAD =
+  /\b(UNIVERSITY|COLLEGE|MARYLAND|PARK|REGISTRAR|TRANSCRIPT|ADVISING|PURPOSES|OFFICE|PROGRAM|STATUS|DEGREE|SEEKING|UNOFFICIAL|MD)\b/i;
+
+/** `Last, First M` as printed becomes `First Last` as spoken. */
+function readName(line: string): string | undefined {
+  if (LETTERHEAD.test(line)) return undefined;
+  const found = NAME.exec(line.trim());
+  if (!found) return undefined;
+  const [, last, first] = found;
+  return `${first} ${last}`;
+}
 const SEPARATOR = /^[=\s]+$/;
 
 type Section = 'header' | 'transfer' | 'historic' | 'current';
@@ -53,7 +74,8 @@ function readTermHeader(line: string): { season: Season; session?: string; year:
  * and which row shape to expect there.
  *
  * Rows are only read inside a known section. Before the first banner there is
- * only the student's name, email and UID, which this deliberately never reads.
+ * the student's name, which is read to greet them, and their email and UID,
+ * which are not read at all.
  */
 export function parseTranscriptLines(lines: Line[]): Transcript {
   const warnings: ParseWarning[] = [];
@@ -68,6 +90,7 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
   let registrationTermId: string | undefined;
   let statedCumulativeGpa: number | null = null;
   let statedCumulativeCredits: number | null = null;
+  let name: string | undefined;
   let major: string | undefined;
 
   for (const line of lines) {
@@ -93,6 +116,7 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
 
     if (section === 'header') {
       major ??= MAJOR.exec(text)?.[1]?.trim();
+      name ??= readName(text);
       continue;
     }
 
@@ -213,6 +237,7 @@ export function parseTranscriptLines(lines: Line[]): Transcript {
   }
 
   return {
+    name,
     major,
     terms,
     nonGpaCredits,

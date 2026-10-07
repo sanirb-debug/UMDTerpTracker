@@ -21,6 +21,17 @@ export function DashboardPage({ transcript }: Props) {
 
   return (
     <div className="space-y-6">
+      {/* Only when the header printed a name this could read with confidence.
+          A greeting is not worth a wrong name, so there simply isn't one. */}
+      {transcript.name && (
+        <h2 className="text-xl font-semibold">
+          Welcome, {transcript.name}.{' '}
+          <span className="font-normal text-neutral-500 dark:text-neutral-400">
+            Here is your academic dashboard.
+          </span>
+        </h2>
+      )}
+
       {transcript.warnings.length > 0 && (
         <section
           role="alert"
