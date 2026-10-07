@@ -28,8 +28,21 @@ export interface TextPage {
   items: PositionedText[];
 }
 
-/** Below this many text runs across the whole document, assume there is no text layer. */
-const MIN_TEXT_ITEMS = 25;
+/**
+ * Below this many characters across the whole document, assume there is no
+ * text layer.
+ *
+ * This counted text *runs* and wanted 25 of them, which measures how the PDF
+ * was generated rather than whether it has any text. Testudo hands over
+ * roughly one run per row, so any transcript shorter than 25 rows — a
+ * freshman, or anyone with a light record — was told "this PDF has no text in
+ * it, so it looks like a scan or a photo" and sent away to re-download a file
+ * that was already correct. A ten-line transcript measures 23 runs.
+ *
+ * Characters do not vary that way. A scan has none at all, and the shortest
+ * real transcript still carries its own header.
+ */
+const MIN_TEXT_CHARS = 200;
 
 /**
  * pdf.js names its open failures after the PDF spec rather than after anything
@@ -80,7 +93,7 @@ export async function extractTextPages(
   }
 
   const pages: TextPage[] = [];
-  let itemCount = 0;
+  let charCount = 0;
 
   try {
     for (let pageNumber = 1; pageNumber <= doc.numPages; pageNumber += 1) {
@@ -102,7 +115,7 @@ export async function extractTextPages(
         });
       }
 
-      itemCount += items.length;
+      charCount += items.reduce((total, item) => total + item.text.length, 0);
       pages.push({ pageNumber, items });
       page.cleanup();
       onPage?.(pageNumber, doc.numPages);
@@ -111,7 +124,7 @@ export async function extractTextPages(
     await doc.destroy();
   }
 
-  if (itemCount < MIN_TEXT_ITEMS) {
+  if (charCount < MIN_TEXT_CHARS) {
     throw new ScannedPdfError();
   }
 
