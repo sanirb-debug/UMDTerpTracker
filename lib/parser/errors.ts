@@ -42,6 +42,25 @@ export class EncryptedPdfError extends TranscriptPdfError {
 }
 
 /**
+ * The parser accepted the file and then stopped answering.
+ *
+ * Reading a transcript takes a second or two, so silence past that means
+ * something is stuck rather than slow — a pdf.js edge case, or a worker that
+ * died without saying so. Whatever the cause, a spinner that never stops is
+ * the one outcome with no way out, so it is turned into an error somebody can
+ * actually report.
+ */
+export class ParseTimeoutError extends TranscriptPdfError {
+  constructor() {
+    super(
+      'Reading that PDF took too long and was stopped. This is a bug in TerpTracker rather ' +
+        'than a problem with your file — please report it, and say which browser you used.',
+    );
+    this.name = 'ParseTimeoutError';
+  }
+}
+
+/**
  * The file is not a readable PDF at all — truncated mid-download, corrupt, or
  * something that merely ends in `.pdf`.
  */

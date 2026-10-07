@@ -1,5 +1,6 @@
 import type { Transcript } from '../../lib/types.ts';
 import { deserializeError } from './protocol.ts';
+import { ParseTimeoutError } from '../../lib/parser/errors.ts';
 import type { ParseRequest, ParseResponse } from './protocol.ts';
 
 /**
@@ -23,10 +24,37 @@ export type OnParseProgress = (progress: ParsePhase) => void;
 
 let nextId = 1;
 
+/**
+ * How long the worker may go without saying anything before it is given up on.
+ *
+ * It reports progress after every page, so this is a gap between pages rather
+ * than a budget for the whole file — a long transcript on a slow phone keeps
+ * resetting it. Silence this long means stuck, not slow.
+ *
+ * Kept short on purpose. Giving up here is not the end of the attempt: it
+ * falls back to the main thread, which is a materially different environment.
+ * pdf.js starts a worker of its own, and doing that from inside this one is a
+ * nested worker — something browsers vary on. If that is what wedges, the
+ * fallback is not a consolation prize, it is the path that works, and waiting
+ * half a minute to reach it would be its own bug.
+ */
+const SILENCE_LIMIT_MS = 15_000;
+
+/** The ceiling, for when even the main-thread fallback will not finish. */
+const TOTAL_LIMIT_MS = 90_000;
+
 export async function parseTranscriptFile(
   file: File,
   onProgress?: OnParseProgress,
 ): Promise<Transcript> {
+  // Nothing below may hang. A spinner that never stops is the only failure
+  // with no way out of it: there is no message to read, nothing to report and
+  // nothing to retry, which is exactly how it was described — "it circles but
+  // then doesn't load".
+  return withCeiling(parse(file, onProgress));
+}
+
+async function parse(file: File, onProgress?: OnParseProgress): Promise<Transcript> {
   onProgress?.({ phase: 'reading' });
 
   const worker = startWorker();
@@ -37,11 +65,21 @@ export async function parseTranscriptFile(
   } catch (cause) {
     if (!(cause instanceof WorkerUnavailable)) throw cause;
     // The buffer was transferred to the worker and is detached now, so the
-    // fallback reads the file again rather than parsing zero bytes.
+    // fallback reads the file again rather than parsing zero bytes. A worker
+    // that went quiet is treated the same as one that never started, so a
+    // stuck worker still gets one honest attempt on the main thread.
     return parseOnMainThread(await file.arrayBuffer(), onProgress);
   } finally {
     worker.terminate();
   }
+}
+
+function withCeiling(work: Promise<Transcript>): Promise<Transcript> {
+  let timer: ReturnType<typeof setTimeout>;
+  const ceiling = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new ParseTimeoutError()), TOTAL_LIMIT_MS);
+  });
+  return Promise.race([work, ceiling]).finally(() => clearTimeout(timer));
 }
 
 /** The worker could not be started or died before answering. Not a parse failure. */
@@ -65,9 +103,24 @@ function parseInWorker(
   const id = nextId++;
 
   return new Promise<Transcript>((resolve, reject) => {
+    // Reset on every message, so steady progress never trips it.
+    let watchdog: ReturnType<typeof setTimeout>;
+    const expectSomething = () => {
+      clearTimeout(watchdog);
+      watchdog = setTimeout(() => reject(new WorkerUnavailable()), SILENCE_LIMIT_MS);
+    };
+    const settle = <T>(outcome: (value: T) => void) => (value: T) => {
+      clearTimeout(watchdog);
+      outcome(value);
+    };
+    const finish = settle(resolve);
+    const fail = settle(reject);
+    expectSomething();
+
     worker.onmessage = (event: MessageEvent<ParseResponse>) => {
       const message = event.data;
       if (message.id !== id) return;
+      expectSomething();
       if (message.type === 'progress') {
         onProgress?.({
           phase: 'parsing',
@@ -77,21 +130,21 @@ function parseInWorker(
         return;
       }
       if (message.type === 'done') {
-        resolve(message.transcript);
+        finish(message.transcript);
         return;
       }
       // A real failure inside the parser — a scan, a corrupt file. Rebuilt as
       // the error class it was thrown as, because the caller checks for it.
-      reject(deserializeError(message.error));
+      fail(deserializeError(message.error));
     };
 
     // Fired when the worker script itself will not load or run: an old browser
     // without module workers, a blocked URL. Distinct from the parse throwing.
     worker.onerror = (event) => {
       event.preventDefault();
-      reject(new WorkerUnavailable());
+      fail(new WorkerUnavailable());
     };
-    worker.onmessageerror = () => reject(new WorkerUnavailable());
+    worker.onmessageerror = () => fail(new WorkerUnavailable());
 
     const request: ParseRequest = { id, data };
     // Hand the bytes over rather than copying them. Nothing here reads `data`

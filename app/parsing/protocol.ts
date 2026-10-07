@@ -1,5 +1,6 @@
 import {
   EncryptedPdfError,
+  ParseTimeoutError,
   ScannedPdfError,
   UnreadablePdfError,
 } from '../../lib/parser/errors.ts';
@@ -34,12 +35,13 @@ export type ParseResponse =
   | { id: number; type: 'error'; error: SerializedError };
 
 /** Which of the parser's own failures this was. */
-export type ParserErrorKind = 'scanned' | 'encrypted' | 'unreadable';
+export type ParserErrorKind = 'scanned' | 'encrypted' | 'unreadable' | 'timeout';
 
 const KINDS: ReadonlyArray<{ kind: ParserErrorKind; type: new () => TranscriptPdfError }> = [
   { kind: 'scanned', type: ScannedPdfError },
   { kind: 'encrypted', type: EncryptedPdfError },
   { kind: 'unreadable', type: UnreadablePdfError },
+  { kind: 'timeout', type: ParseTimeoutError },
 ];
 
 export interface SerializedError {
